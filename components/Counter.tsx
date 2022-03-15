@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from '../styles/Counter.module.css'
 import {ButtonDanger, ButtonPrimary} from '../components'
 
@@ -6,14 +6,9 @@ type CounterProps = {
     defaultValue?: number,
 }
 
-const Counter = ({defaultValue=0}: CounterProps): JSX.Element => {
-    const [count, setCount] = useState(0)
+const Counter = ({defaultValue=0}: CounterProps) => {
+    const [count, setCount] = useState(defaultValue)
     
-    useLayoutEffect(() => {
-        setCount(defaultValue)
-    }, [])
-    
-
     const decrease = () => { setCount(count - 1) }
     const increase = () => { setCount(count + 1) }
     const reset = () => { setCount(defaultValue) }
