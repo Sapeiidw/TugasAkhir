@@ -1,3 +1,5 @@
+import { IProfile, TProfile } from "../types"
+
 const angka: number = 1
 const kata: string = "Tes"
 const isJomblo: boolean = true
@@ -8,25 +10,26 @@ const Profile1: { name: string, age: number, job?: string } = {
 	name : "Sakti Pujo Edi",
 	age : 21
 }
+// dipindah ke folder interfaces
+// interface Profile2 {
+// 	name: string,
+// 	age: number,
+// 	job?: string
+// }
 
-interface Profile2 {
-	name: string,
-	age: number,
-	job?: string
-}
-
-const profile2: Profile2 = {
+const profile2: IProfile = {
 	name: "Sakti Pujo Edi",
 	age: 21
 }
 
-type Profile3 = {
-	name: string,
-	age: number,
-	job?: string
-}
+// dipindah ke folder types
+// type Profile3 = {
+// 	name: string,
+// 	age: number,
+// 	job?: string
+// }
 
-const profile3: Profile3 = {
+const profile3: TProfile = {
 	name: "Sakti Pujo Edi",
 	age: 21
 }
@@ -52,14 +55,14 @@ const Profiles1: Array<typeof Profile1> = [
     }
 ]
 
-const Profiles2: Array<Profile2> = [
+const Profiles2: Array<IProfile> = [
     {
         name: "Sakti Pujo Edi",
 	    age: 21
     }
 ]
 
-const Profiles3: Profile3[] = [
+const Profiles3: TProfile[] = [
     {
         name: "Sakti Pujo Edi",
 	    age: 21

@@ -1,4 +1,4 @@
-export type IButton = {
+export default interface IButton {
     text: string,
     onClick?: () => void,
     children?: React.ReactNode,
