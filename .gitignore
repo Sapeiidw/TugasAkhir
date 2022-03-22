@@ -37,6 +37,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# images
-/public/images
-/public/icons

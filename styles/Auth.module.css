@@ -1,0 +1,54 @@
+.text, .signForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    min-height: 100vh;
+}
+.text {
+    background-color: var(--lighter-gray);
+}
+.img {
+    position: relative;
+    width: 450px;
+    height: 400px;
+}
+.header, .footer {
+    max-width: 500px;
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 20px;
+}
+.title {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--primer-blue);
+}
+.subtitle {
+    font-size: 18px;
+    font-weight: 300;
+}
+.footer {
+    font-size: 24px;
+    margin: 30px;
+}
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+}
+.formGroup label {
+    font-size: 18px;
+    font-style: 600;
+}
+.formGroup input {
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    padding: 18px 20px;
+}
