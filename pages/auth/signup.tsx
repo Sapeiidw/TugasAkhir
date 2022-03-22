@@ -31,7 +31,7 @@ const Signup: React.FC<Props> = (props) => {
                         <Input type='email' name='email' placeholder='Email' label='Email' />
                         <Input type='password' name='password' placeholder='Password' label='Password' />
                         <Button type='btn-primary' text='Create Your Account' />
-                        <Button type='btn-inverse' text='Sign Up With Google' icon='' />
+                        <Button type='btn-inverse' text='Sign Up With Google' icon='/icons/google.svg' />
                     </form>
                 </div>
             </div>
