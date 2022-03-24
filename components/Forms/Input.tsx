@@ -4,7 +4,7 @@ import style from '../../styles/Auth.module.css'
 type Props = {
   type: string,
   name: string,
-  label: string,
+  label?: string,
   placeholder: string,
   className?: string,
 }
