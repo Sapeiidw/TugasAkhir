@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button, Input } from '../../components'
-import Form from '../../components/Forms/Form'
+import { Button } from '../../components'
 import style from '../../styles/Auth.module.css'
 
 type Props = {}
@@ -20,7 +19,7 @@ const ResendEmail: React.FC<Props> = (props) => {
                         <p className='subtitle'>We already send you a link to reset your password at youremail@gmail.com</p>
                         <p className='subtitle'>Didn't receive an email?</p>
                     </div>
-                    <form action="" className={style.forgotPasswordForm}>
+                    <form action="/" className={style.forgotPasswordForm}>
                         <Button type="btn-primary" text="Resend email" />
                     </form>
                     <Link href="/auth/forgot-password"><a>Want changes email?</a></Link>
