@@ -1,363 +1,365 @@
 /* header */
 .header {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
 .header a {
-    font-weight: 600;
-    margin: 12px auto;
+  font-weight: 600;
+  margin: 12px auto;
 }
 .headerText {
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
 }
 .title {
-    font-size: 42px;
-    font-weight: 700;
-    line-height: 72px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 72px;
 }
 .subtitle {
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 55px;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 55px;
 }
 
 .headerArt {
-    flex: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    height: 100%;
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
 }
 .headerArt img {
-    position: absolute;
+  position: absolute;
 }
 
 /* feature */
 .longbox {
-    position: absolute;
-    bottom: 4px;
-    width: 300px;
-    height: 10px;
-    background-color: var(--primer-light-blue);
-    z-index: -1;
+  position: absolute;
+  bottom: 4px;
+  width: 300px;
+  height: 10px;
+  background-color: var(--primer-light-blue);
+  z-index: -1;
 }
 .feature {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
 }
 .featureTitle {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    font-size: 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  font-size: 36px;
 }
 .featureSubtitle {
-    width: 80%;
-    margin: 40px auto;
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
+  width: 80%;
+  margin: 40px auto;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
 }
 .featureGrid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 36px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 36px;
 }
 .eclipse {
-    width: 350px;
-    height: 350px;
-    position: absolute;
-    z-index: -1;
+  width: 350px;
+  height: 350px;
+  position: absolute;
+  z-index: -1;
 }
 .feature .eclipse1 {
-    left: -62px;
-    top: 62px;
+  left: -62px;
+  top: 62px;
 }
 .feature .eclipse2 {
-    right: -120px;
-    bottom: -200px;
-    transform: rotateY(180deg);
+  right: -120px;
+  bottom: -200px;
+  transform: rotateY(180deg);
 }
 
 /* benefits */
 .benefits {
-    position: relative;
-    z-index: 10;
-    padding: 80px 0;
+  position: relative;
+  z-index: 10;
+  padding: 80px 0;
 }
 .benefitsCard {
-    border-radius: 18px;
-    padding: 32px;
-    background-color: var(--white);
-    height: 100%;
+  border-radius: 18px;
+  padding: 32px;
+  background-color: var(--white);
+  height: 100%;
 }
 .ilustration2 {
-    max-width: 641px;
+  max-width: 641px;
 }
 .benefits h1 {
-    font-size: 36px;
-    text-align: center;
+  font-size: 36px;
+  text-align: center;
 }
 .benefits ul {
-    padding: 40px;
+  padding: 40px;
 }
 .benefits li {
-    font-weight: 400;
-    font-size: 24px;
-    margin: 28px;
-    list-style: none;
-    position: relative;
-    display: flex;
-    align-items: center;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 28px;
+  list-style: none;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 .benefits li:before {
-    content: "";
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    background: var(--primer-blue);
-    position: absolute;
-    left: -50px;
+  content: "";
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--primer-blue);
+  position: absolute;
+  left: -50px;
 }
 
 /* faq */
 .faq {
-    position: relative;
-    padding: 100px 0;
-    display: flex;
-    align-items: center;
+  position: relative;
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+  height: auto;
 }
 .faqWrapper {
-    width: 50%;
+  width: 50%;
 }
 .faqTitle {
-    font-size: 35px;
-    font-weight: 700;
-    position: relative;
-    z-index: 10;
-    margin: 40px 0;
-    width: max-content;
+  font-size: 35px;
+  font-weight: 700;
+  position: relative;
+  z-index: 10;
+  margin: 40px 0;
+  width: max-content;
 }
 .faqTitle:before {
-    content: "";
-    width: 100%;
-    height: 5px;
-    background-color: var(--primer-blue);
-    position: absolute;
-    bottom: 3px;
-    z-index: 1;
+  content: "";
+  width: 100%;
+  height: 5px;
+  background-color: var(--primer-blue);
+  position: absolute;
+  bottom: 3px;
+  z-index: 1;
 }
 .faqUl {
-    padding-left: 40px;
+  padding-left: 40px;
 }
 .faqLi {
-    width: 100%;
-    list-style-type: none;
-    border-bottom: 4px solid var(--light-gray);
-    padding: 24px 0;
+  width: 100%;
+  list-style-type: none;
+  border-bottom: 4px solid var(--light-gray);
+  padding: 24px 0;
 }
 .faqQuestion {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
-    font-size: 24px;
-    font-weight: 500;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
 }
 .faqIcon,
 .faqIconActive {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    height: 24px;
-    width: 24px;
-    right: 0;
-    transition: ease-in-out .25s all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 24px;
+  width: 24px;
+  right: 0;
+  transition: ease-in-out 0.25s all;
 }
 
 .faqIconActive {
-    transform: rotate(180deg);
-    transition: ease-in-out .25s all;
+  transform: rotate(180deg);
+  transition: ease-in-out 0.25s all;
 }
 .faqIconActive span:nth-child(1) {
-    transform: rotate(180deg);
-    transition: ease-in-out .25s all;
+  transform: rotate(180deg);
+  transition: ease-in-out 0.25s all;
 }
 .faqIcon span,
 .faqIconActive span {
-    transition: ease-in-out .25s all;
-    position: absolute;
-    background-color: var(--primer-blue);
-    height: 3px;
-    width: 100%;
+  transition: ease-in-out 0.25s all;
+  position: absolute;
+  background-color: var(--primer-blue);
+  height: 3px;
+  width: 100%;
 }
 .faqIcon span:nth-child(1) {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 .faq-answer {
-    transition: ease-in-out .25s all;
-    padding: 12px 0;
-    overflow: hidden;
-    color: var(--light-gray);
+  transition: ease-in-out 0.25s all;
+  padding: 12px 0;
+  overflow: hidden;
+  color: var(--light-gray);
 }
 .ilustration3 {
-    position: absolute;
-    right: 0;
-    transition: ease-in-out .25s all;
+  position: relative;
+  margin-left: auto;
+  max-width: 503px;
+  max-height: 500.42px;
+  width: 503px;
+  height: 500.42px;
 }
 
 /* plans */
 .plans {
-    width: 100%;
-    padding: 50px 0;
-    text-align: center;
-    background: var(--white);
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background: var(--white);
 }
 .plansTitle {
-    font-size: 36px;
-    font-weight: 600;
-    margin: 12px auto;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 12px auto;
 }
 .plansSubtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0 auto;
 }
 .plansWraper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-    height: 600px;
-    margin: auto;
-    margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  height: 600px;
+  margin: auto;
+  margin-top: 50px;
 }
 /* review */
 .review {
-    position: relative;
-    z-index: 10;
-    padding: 100px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  z-index: 10;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .reviewText {
-    max-width: 70%;
-    width: fit-content;
+  max-width: 70%;
+  width: fit-content;
 }
 .reviewTitle {
-    text-align: center;
-    font-size: 36px;
-    font-weight: 600;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
 }
 .reviewSubtitle {
-    text-align: center;
-    font-size: 24px;
-    font-weight: 400;
-    font-family: 'Montserrat', sans-serif;
-    margin: 24px auto;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  margin: 24px auto;
 }
 .reviewWraper {
-    margin-top: 40px;
-    padding: 50px 0;
-    display: flex;
-    align-items: flex-start;
-    height: 400px;
-    gap: 10px;
+  margin-top: 40px;
+  padding: 50px 0;
+  display: flex;
+  align-items: flex-start;
+  height: 400px;
+  gap: 10px;
 }
-
 
 .reviewControl {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 .review .eclipse1 {
-    top: 0;
-    left: -100px;
+  top: 0;
+  left: -100px;
 }
 .review .eclipse2 {
-    bottom: -20px;
-    right: -140px;
-    transform: rotateY(180deg);
+  bottom: -20px;
+  right: -140px;
+  transform: rotateY(180deg);
 }
 /* mobile */
 .mobile {
-    background-color: var(--primer-blue);
-    padding: 60px 0;
-    position: relative;
-    overflow: hidden;
+  background-color: var(--primer-blue);
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
 }
 .mobileWraper {
-    max-width: 55%;
-    width: fit-content;
+  max-width: 55%;
+  width: fit-content;
 }
 .mobileTitle {
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 60px;
-    margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 60px;
+  margin-bottom: 20px;
 }
 .mobileTitle span {
-    color: var(--white);
+  color: var(--white);
 }
 .mobileSubtitle {
-    font-weight: 400px;
-    font-size: 18px;
-    line-height: 28px;
-    padding-right: 60px;
+  font-weight: 400px;
+  font-size: 18px;
+  line-height: 28px;
+  padding-right: 60px;
 }
 .mobileImg1 {
-    position: absolute;
-    right: 20%;
-    bottom: 50%;
-    transform: rotate(180deg);
+  position: absolute;
+  right: 20%;
+  bottom: 50%;
+  transform: rotate(180deg);
 }
 .mobileImg2 {
-    position: absolute;
-    right: 0;
-    top: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
 }
 /* prefooter */
 .prefooter {
-    padding: 25px 0;
-    font-size: 12px;
-    font-weight: 500;
+  padding: 25px 0;
+  font-size: 12px;
+  font-weight: 500;
 }
 .prefooterText {
-    width: max-content;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    margin: 25px 0;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 25px 0;
 }
 .prefooterNav {
-    width: max-content;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 .prefooterNavItem {
-    color: var(--black);
-    font-weight: 500;
-    text-decoration: none!important;
+  color: var(--black);
+  font-weight: 500;
+  text-decoration: none !important;
 }
-

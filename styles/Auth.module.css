@@ -79,17 +79,23 @@
 }
 .formGroup label {
   font-size: 18px;
-  font-style: 600;
+  font-weight: 600;
 }
 .formGroup input {
   display: block;
-  border: 1px solid var(--black);
+  border: 1px solid var(--light-gray);
   border-radius: 4px;
   padding: 18px 20px;
-  color: var(--lighter-gray);
+  color: var(--light-black);
   font-size: 16px;
   font-weight: 300;
   width: 100%;
+}
+.formGroup::placeholder {
+  color: var(--light-gray);
+}
+.formGroup input:focus {
+  outline: 2px solid var(--primer-blue);
 }
 .stroke {
   position: relative;
@@ -109,4 +115,43 @@
 .stroke span {
   background-color: var(--white);
   padding: 2px 10px;
+}
+.forgotPasswordLink {
+  align-self: flex-end;
+}
+.forgotPassword {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.forgotPasswordWrapper {
+  width: 1095px;
+  min-height: 617px;
+  border-radius: 40px;
+  border: 1px solid var(--light-gray);
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+  padding: 20px;
+}
+.forgotPasswordWrapper .img {
+  width: 242px;
+  height: 201px;
+  position: relative;
+}
+.forgotPasswordForm {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
 }
