@@ -70,7 +70,9 @@ const Home: NextPage = () => {
                 <Dropdown question='How many shops can I create in once' answer='Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, rem eos, quaerat ut dignissimos ipsa commodi doloribus excepturi vero quam reiciendis, saepe id nobis natus dolore fugit ducimus debitis architecto!' />
               </ul>
             </div>
-            <img src="/images/ilustration3.svg" alt="Ilustration 3" className={style.ilustration3} />
+            <div className={style.ilustration3}>
+              <Image src="/images/ilustration3.svg" alt="Ilustration 3" layout='fill' />
+            </div>
           </div>
         </section>
         <section className={style.plans}>
