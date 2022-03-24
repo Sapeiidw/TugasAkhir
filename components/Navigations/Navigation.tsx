@@ -16,7 +16,7 @@ const Navigation: React.FC<Props> = (props) => {
             <Link href=""><a className={style.navItem}>Review</a></Link>
             <Link href=""><a className={style.navItem}>Pricing</a></Link>
           </div>
-          <Link href=""><a className='btn btn-link'>Masuk</a></Link>`
+          <Link href="/auth/signin"><a className='btn btn-link'>Masuk</a></Link>`
         </div>
       </nav>
     </>

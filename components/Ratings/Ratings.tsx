@@ -4,11 +4,11 @@ import style from '../../styles/Ratings.module.css'
 
 type Props = {
     disable?: boolean,
-    rating?: number,
+    ratings?: number,
 }
 
 const Ratings: React.FC<Props> = (props) => {
-    const [rating, setRating] = useState<number>(props.rating || 0)
+    const [rating, setRating] = useState<number>(props.ratings || 0)
     const [hoverRating, setHoverRating] = useState<number>(0)
 
     const onMouseEnter = (index: number) => {
@@ -29,6 +29,7 @@ const Ratings: React.FC<Props> = (props) => {
                     [1, 2, 3, 4, 5].map(index => {
                         return (
                             <RatingDisplay
+                                key={index}
                                 index={index}
                                 rating={rating}
                             />
@@ -38,6 +39,7 @@ const Ratings: React.FC<Props> = (props) => {
                     [1, 2, 3, 4, 5].map(index => {
                         return (
                             <RatingIcon
+                                key={index}
                                 index={index}
                                 rating={rating}
                                 hoverRating={hoverRating}

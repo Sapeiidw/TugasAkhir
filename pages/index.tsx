@@ -124,7 +124,7 @@ const Home: NextPage = () => {
               <p>License</p>
             </div>
             <div className={style.prefooterNav}>
-              <Link href=""><a className={style.preefooterNavItem}>Home</a></Link>
+              <Link href="/"><a className={style.preefooterNavItem}>Home</a></Link>
               <Link href=""><a className={style.preefooterNavItem}>Feature</a></Link>
               <Link href=""><a className={style.preefooterNavItem}>Review</a></Link>
               <Link href=""><a className={style.preefooterNavItem}>Pricing</a></Link>

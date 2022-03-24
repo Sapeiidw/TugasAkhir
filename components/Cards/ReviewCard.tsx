@@ -21,7 +21,7 @@ const ReviewCard: React.FC<Props> = (props) => {
                 <div className={style.reviewer}>{props.reviewer}</div>
                 <div className="flex-row-center justify-between">
                     <div className={style.reviewerJob}>{props.job}</div>
-                    <Ratings disable={true} rating={props.rating} />
+                    <Ratings disable={true} ratings={props.rating} />
                 </div>
                 <div className={style.reviewerText}>{props.text}</div>
             </div>
