@@ -5,7 +5,7 @@ type Props = {}
 const Form: React.FC<Props> = (props) => {
   return (
     <>
-        <form action=""></form>
+      <form action=""></form>
     </>
   )
 }

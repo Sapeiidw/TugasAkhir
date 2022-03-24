@@ -12,21 +12,21 @@ type Props = {
 }
 
 const ReviewCard: React.FC<Props> = (props) => {
-  return (
-    <>
-        <div className={style.reviewCard}>
-            <div className={style.reviewImg}>
-                <Image src={props.img} layout="fill" objectFit='cover'/>
+    return (
+        <>
+            <div className={style.reviewCard}>
+                <div className={style.reviewImg}>
+                    <Image src={props.img} layout="fill" objectFit='cover' />
+                </div>
+                <div className={style.reviewer}>{props.reviewer}</div>
+                <div className="flex-row-center justify-between">
+                    <div className={style.reviewerJob}>{props.job}</div>
+                    <Ratings disable={true} rating={props.rating} />
+                </div>
+                <div className={style.reviewerText}>{props.text}</div>
             </div>
-            <div className={style.reviewer}>{props.reviewer}</div>
-            <div className="flex-row-center justify-between">
-                <div className={style.reviewerJob}>{props.job}</div>
-                <Ratings disable={true} rating={props.rating}/>
-            </div>
-            <div className={style.reviewerText}>{props.text}</div>
-        </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default ReviewCard

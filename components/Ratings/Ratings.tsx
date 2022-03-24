@@ -20,38 +20,38 @@ const Ratings: React.FC<Props> = (props) => {
     const onSaveRating = (index: number) => {
         setRating(index)
     }
-    
-  return (
-    <>
-        <div className={style.ratings}>
-           {props.disable 
-           ?
-            [1,2,3,4,5].map(index => {
-                return (
-                    <RatingDisplay
-                        index={index}
-                        rating={rating}
-                        />
-                )
-            })
-            :
-            [1,2,3,4,5].map(index => {
-                return (
-                    <RatingIcon 
-                        index={index}
-                        rating={rating}
-                        hoverRating={hoverRating}
-                        onMouseEnter={onMouseEnter}
-                        onMouseLeave={onMouseLeave}
-                        onSaveRating={onSaveRating} 
-                        />
-                )
-            })
-            
-        }
-        </div>
-    </>
-  )
+
+    return (
+        <>
+            <div className={style.ratings}>
+                {props.disable
+                    ?
+                    [1, 2, 3, 4, 5].map(index => {
+                        return (
+                            <RatingDisplay
+                                index={index}
+                                rating={rating}
+                            />
+                        )
+                    })
+                    :
+                    [1, 2, 3, 4, 5].map(index => {
+                        return (
+                            <RatingIcon
+                                index={index}
+                                rating={rating}
+                                hoverRating={hoverRating}
+                                onMouseEnter={onMouseEnter}
+                                onMouseLeave={onMouseLeave}
+                                onSaveRating={onSaveRating}
+                            />
+                        )
+                    })
+
+                }
+            </div>
+        </>
+    )
 }
 
 export default Ratings;

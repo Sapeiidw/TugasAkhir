@@ -7,24 +7,24 @@ type Props = {
 }
 
 const Dropdown: React.FC<Props> = (props) => {
-    const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
-    const toggleDropdown = () => setOpen(!open)
-    
+  const toggleDropdown = () => setOpen(!open)
+
   return (
     <>
-        <li className={style.faqLi} onFocus={()=>toggleDropdown()} onBlur={()=>toggleDropdown()} tabIndex={0}>
-          <div className={style.faqQuestion}>{props.question}
-            <div className={open ? style.faqIconActive : style.faqIcon}>
-              <span></span>
-              <span></span>
-            </div>
+      <li className={style.faqLi} onFocus={() => toggleDropdown()} onBlur={() => toggleDropdown()} tabIndex={0}>
+        <div className={style.faqQuestion}>{props.question}
+          <div className={open ? style.faqIconActive : style.faqIcon}>
+            <span></span>
+            <span></span>
           </div>
-          {
-            open && (
-              <div className={style.faqAnswer}>{props.answer}</div>
-            )
-          }
+        </div>
+        {
+          open && (
+            <div className={style.faqAnswer}>{props.answer}</div>
+          )
+        }
       </li>
     </>
   )
