@@ -15,9 +15,9 @@ const ResendEmail: React.FC<Props> = (props) => {
                         <Image src="/images/Currency Crush Password.svg" layout='fill' />
                     </div>
                     <div className="text">
-                        <h1 className='title'>Please Check Your Email</h1>
-                        <p className='subtitle'>We already send you a link to reset your password at youremail@gmail.com</p>
-                        <p className='subtitle'>Didn't receive an email?</p>
+                        <h1 className="title">Please Check Your Email</h1>
+                        <p className="subtitle">We already send you a link to reset your password at youremail@gmail.com</p>
+                        <p className="subtitle">Didn't receive an email?</p>
                     </div>
                     <form action="/" className={style.forgotPasswordForm}>
                         <Button type="btn-primary" text="Resend email" />
