@@ -20,11 +20,7 @@ const Dropdown: React.FC<Props> = (props) => {
             <span></span>
           </div>
         </div>
-        {
-          open && (
-            <div className={style.faqAnswer}>{props.answer}</div>
-          )
-        }
+        {open && <div className={style.faqAnswer}>{props.answer}</div>}
       </li>
     </>
   )

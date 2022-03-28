@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from '../components'
 import style from '../styles/CustomPage.module.css'
 
-const Custom404 = () => {
+const Maintenance = () => {
     return (
         <>
             <div className={style.page}>
@@ -22,4 +22,4 @@ const Custom404 = () => {
     )
 }
 
-export default Custom404
+export default Maintenance

@@ -7,6 +7,7 @@ import style from '../../styles/Auth.module.css'
 type Props = {}
 
 const Signup: React.FC<Props> = (props) => {
+    const e = process.env.NEXT_PUBLIC_MAINTENANCE
     return (
         <>
             <div className="flex-row-center">
@@ -24,8 +25,9 @@ const Signup: React.FC<Props> = (props) => {
                     <div className={style.wrapper}>
                         <div className={style.text}>
                             <h1 className={style.title}>SIGN UP</h1>
-                            <h1 className={style.subtitle}>Already have an account? <Link href=""><a>Login here.</a></Link></h1>
+                            <h1 className={style.subtitle}>Already have an account? <Link href="/auth/signin"><a>Login here.</a></Link></h1>
                         </div>
+
                         <form action="" className={style.form}>
                             <Input type='text' name='name' placeholder='Name' label='Name' />
                             <Input type='email' name='email' placeholder='Email' label='Email' />

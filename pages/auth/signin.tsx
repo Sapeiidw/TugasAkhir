@@ -23,7 +23,7 @@ const Signin: React.FC<Props> = (props) => {
                     <div className={style.wrapper}>
                         <div className={style.text}>
                             <h1 className={style.title}>SIGN IN</h1>
-                            <h1 className={style.subtitle}>Didn’t have an account yet? <Link href=""><a>Register here.</a></Link></h1>
+                            <h1 className={style.subtitle}>Didn’t have an account yet? <Link href="/auth/signup"><a>Register here.</a></Link></h1>
                         </div>
                         <form action="" className={style.form}>
                             <Input type='email' name='email' placeholder='Email' label='Email' />
