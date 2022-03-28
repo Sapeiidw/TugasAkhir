@@ -147,6 +147,14 @@
   height: 201px;
   position: relative;
 }
+.forgotPasswordTitle {
+  font-size: 38px;
+  font-weight: 600;
+}
+.forgotPasswordSubtitle {
+  font-size: 18px;
+  font-weight: 300;
+}
 .forgotPasswordForm {
   width: 450px;
   display: flex;
