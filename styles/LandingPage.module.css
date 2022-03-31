@@ -208,11 +208,16 @@
 .faqIcon span:nth-child(1) {
   transform: rotate(90deg);
 }
-.faq-answer {
-  transition: ease-in-out 0.25s all;
-  padding: 12px 0;
+.faqAnswer {
+  transition: ease-in-out 0.15s all;
   overflow: hidden;
   color: var(--light-gray);
+  max-height: 0px;
+}
+.faqAnswerOpen {
+  padding: 12px 0;
+  max-height: 1000px;
+  transition: ease-in-out 0.15s all;
 }
 .ilustration3 {
   position: relative;
@@ -221,6 +226,7 @@
   max-height: 500.42px;
   width: 503px;
   height: 500.42px;
+  transition: ease-in-out 0.8s all;
 }
 
 /* plans */
