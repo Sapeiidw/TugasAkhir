@@ -19,7 +19,7 @@ const ForgotPassword: React.FC<Props> = (props) => {
                         <p className={style.forgotPasswordSubtitle}>No worries, we’ll send you reset instruction</p>
                     </div>
                     <form action="" className={style.forgotPasswordForm}>
-                        <Input type='text' name='email' placeholder='Your Email' />
+                        <Input onChange={() => null} type='text' name='email' placeholder='Your Email' />
                         <Button type="btn-primary" text="Send me an email" />
                     </form>
                     <Link href="/auth/signin"><a>Back to Login</a></Link>

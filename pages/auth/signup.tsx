@@ -29,9 +29,9 @@ const Signup: React.FC<Props> = (props) => {
                         </div>
 
                         <form action="" className={style.form}>
-                            <Input type='text' name='name' placeholder='Name' label='Name' />
-                            <Input type='email' name='email' placeholder='Email' label='Email' />
-                            <Input type='password' name='password' placeholder='Password' label='Password' />
+                            <Input onChange={() => null} type='text' name='name' placeholder='Name' label='Name' />
+                            <Input onChange={() => null} type='email' name='email' placeholder='Email' label='Email' />
+                            <Input onChange={() => null} type='password' name='password' placeholder='Password' label='Password' />
                             <br />
                             <Button type='btn-primary' text='Create Your Account' />
                             <div className={style.stroke}>

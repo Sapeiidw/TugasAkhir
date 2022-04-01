@@ -20,8 +20,8 @@ const ChangePassword: React.FC<Props> = (props) => {
                         <p className='subtitle'>Your password must be different from your previously used password</p>
                     </div>
                     <form action="" className={style.forgotPasswordForm}>
-                        <Input label='Password' type='password' name='password' placeholder='Password' />
-                        <Input label='Password Confirmation' type='password' name='password_confirmation' placeholder='Password Confirmation' />
+                        <Input onChange={() => null} label='Password' type='password' name='password' placeholder='Password' />
+                        <Input onChange={() => null} label='Password Confirmation' type='password' name='password_confirmation' placeholder='Password Confirmation' />
                         <Button type="btn-primary" text="Reset Password" />
                     </form>
                     <Link href="/auth/signin"><a>Back to Login</a></Link>
