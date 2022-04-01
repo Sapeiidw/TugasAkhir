@@ -60,6 +60,12 @@ body {
   height: 36px;
   width: auto;
 }
+.guestLogo {
+  position: absolute;
+  margin: 20px;
+  top: 0;
+  left: 0;
+}
 .text-blue-primer {
   color: var(--primer-blue);
 }

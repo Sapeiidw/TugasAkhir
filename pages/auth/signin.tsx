@@ -2,13 +2,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Button, Input } from '../../components'
+import Guest from '../../components/Layouts/Guest'
+import useForm from '../../hooks/useForm'
 import style from '../../styles/Auth.module.css'
 
 type Props = {}
 
 const Signin: React.FC<Props> = (props) => {
+    const {handleSubmit, handleChange} = useForm()
     return (
-        <>
+        <Guest>
             <div className="flex-row-center">
                 <div className={style.banner}>
                     <div className={style.header}>
@@ -25,9 +28,9 @@ const Signin: React.FC<Props> = (props) => {
                             <h1 className={style.title}>SIGN IN</h1>
                             <h1 className={style.subtitle}>Didn’t have an account yet? <Link href="/auth/signup"><a>Register here.</a></Link></h1>
                         </div>
-                        <form action="" className={style.form}>
-                            <Input type='email' name='email' placeholder='Email' label='Email' />
-                            <Input type='password' name='password' placeholder='Password' label='Password' />
+                        <form onSubmit={handleSubmit} className={style.form}>
+                            <Input onChange={handleChange} type='email' name='email' placeholder='Email' label='Email' />
+                            <Input onChange={handleChange} type='password' name='password' placeholder='Password' label='Password' />
                             <Link href="/auth/forgot-password"><a className={style.forgotPasswordLink}>Forgot Password?</a></Link>
                             <Button type='btn-primary' text='Login' />
                             <div className={style.stroke}>
@@ -39,7 +42,7 @@ const Signin: React.FC<Props> = (props) => {
                     </div>
                 </div>
             </div>
-        </>
+        </Guest>
     )
 }
 
