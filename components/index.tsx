@@ -10,5 +10,7 @@ export { default as Button } from './Buttons/Button'
 export { default as Input } from './Forms/Input'
 
 export { default as Layout } from './Layouts/Layout'
+export { default as Guest } from './Layouts/Guest'
+export { default as Dashboard } from './Layouts/Dashboard'
 export { default as Navigation } from './Navigations/Navigation'
 export { default as Footer } from './Footers/Footer'

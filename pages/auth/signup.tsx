@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button, Input } from '../../components'
+import { Button, Guest, Input } from '../../components'
 import style from '../../styles/Auth.module.css'
 
 type Props = {}
@@ -9,7 +9,7 @@ type Props = {}
 const Signup: React.FC<Props> = (props) => {
     const e = process.env.NEXT_PUBLIC_MAINTENANCE
     return (
-        <>
+        <Guest>
             <div className="flex-row-center">
                 <div className={style.banner}>
                     <div className={style.header}>
@@ -43,7 +43,7 @@ const Signup: React.FC<Props> = (props) => {
                     </div>
                 </div>
             </div>
-        </>
+        </Guest>
     )
 }
 

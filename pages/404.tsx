@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import React from 'react'
-import { Button } from '../components'
+import { Button, Guest } from '../components'
 import style from '../styles/CustomPage.module.css'
 
 const Custom404 = () => {
     return (
-        <>
+        <Guest>
             <div className={style.page}>
                 <div className={style.wraper}>
                     <div className={style.img}>
@@ -19,7 +19,7 @@ const Custom404 = () => {
                     <Button type="btn-primary" text='Back' />
                 </div>
             </div>
-        </>
+        </Guest>
     )
 }
 

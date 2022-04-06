@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button, Input } from '../../components'
+import { Button, Guest, Input } from '../../components'
 import Form from '../../components/Forms/Form'
 import style from '../../styles/Auth.module.css'
 
@@ -9,7 +9,7 @@ type Props = {}
 
 const ChangePassword: React.FC<Props> = (props) => {
     return (
-        <>
+        <Guest>
             <div className={style.forgotPassword}>
                 <div className={style.forgotPasswordWrapper}>
                     <div className={style.img}>
@@ -27,7 +27,7 @@ const ChangePassword: React.FC<Props> = (props) => {
                     <Link href="/auth/signin"><a>Back to Login</a></Link>
                 </div>
             </div>
-        </>
+        </Guest>
     )
 }
 

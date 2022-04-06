@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Button } from '../../components'
+import { Button, Guest } from '../../components'
 import style from '../../styles/Auth.module.css'
 
 type Props = {}
 
 const ResendEmail: React.FC<Props> = (props) => {
     return (
-        <>
+        <Guest>
             <div className={style.forgotPassword}>
                 <div className={style.forgotPasswordWrapper}>
                     <div className={style.img}>
@@ -25,7 +25,7 @@ const ResendEmail: React.FC<Props> = (props) => {
                     <Link href="/auth/forgot-password"><a>Want changes email?</a></Link>
                 </div>
             </div>
-        </>
+        </Guest>
     )
 }
 
