@@ -1,0 +1,15 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.diamonds {
+    position: relative;
+    width: 21px;
+    height: 21px;
+}
+.logo {
+    position: relative;
+    width: 95px;
+    height: 21px;
+}
