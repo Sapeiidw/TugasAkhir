@@ -1,7 +1,16 @@
 .nav {
+    position: relative;
+    width: 100%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.start {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
 }
 .diamonds {
     position: relative;
@@ -12,4 +21,18 @@
     position: relative;
     width: 95px;
     height: 21px;
+}
+.end {
+    display: flex;
+    align-items: center;
+}
+.notif {
+    position: relative;
+    height: 20px;
+    width: 20px;
+}
+.profile {
+    position: relative;
+    width: 34px;
+    height: 34px;
 }

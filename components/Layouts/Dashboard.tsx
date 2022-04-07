@@ -7,22 +7,25 @@ type Props = {}
 const Dashboard: React.FC<Props> = (props) => {
   return (
     <>
-        <nav className='nav'>
-            <div className="start">
+        <nav className={style.nav}>
+            <div className={style.start}>
                 <div className={style.diamonds}>
                     <Image src="/icons/diamonds.svg" alt="logo" layout='fill'/>
                 </div>
-                <div className="logo">
+                <div className={style.logo}>
                     <Image src="/icons/InPOSery.svg" alt="logo" layout="fill" />
                 </div>
             </div>
-            <div className="end">
-                <div className="profile">
+            <div className={style.end}>
+                <div className={style.notif}>
+                    <Image src="/icons/bell.svg" alt="logo" layout="fill" />
+                </div>
+                <div className={style.profile}>
                     
                 </div>
             </div>
-            {props.children}
         </nav>
+            {props.children}
     </>
   )
 }
