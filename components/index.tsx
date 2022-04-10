@@ -1,4 +1,5 @@
 export { default as Dropdown } from './Dropdown'
+export { default as Modal } from './Modal'
 export { default as Card } from './Cards/Card'
 export { default as PlanCard } from './Cards/PlanCard'
 export { default as ReviewCard } from './Cards/ReviewCard'

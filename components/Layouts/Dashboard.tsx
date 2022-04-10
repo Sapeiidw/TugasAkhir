@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import style from '../../styles/Dashboard.module.css'
 
@@ -25,7 +26,35 @@ const Dashboard: React.FC<Props> = (props) => {
                 </div>
             </div>
         </nav>
+        <div className={style.sidebar}>
+            <div className={style.sidebarTop}>
+                <Link href="/">
+                    <a className={style.sidebarItems}>
+                        <img src="/icons/home.svg" alt="" />
+                        Home</a>
+                </Link>
+                <Link href="/">
+                    <a className={style.sidebarItems}>
+                        <img src="/icons/home.svg" alt="" />
+                        Home</a>
+                </Link>
+                <Link href="/">
+                    <a className={style.sidebarItems}>
+                        <img src="/icons/home.svg" alt="" />
+                        Home</a>
+                </Link>
+            </div>
+            <div className={style.sidebarBottom}>
+                <Link href="/">
+                    <a className={style.sidebarItems}>
+                        <img src="/icons/home.svg" alt="" />
+                        Home</a>
+                </Link>
+            </div>
+        </div>
+        <main className={style.main}>
             {props.children}
+        </main>
     </>
   )
 }
