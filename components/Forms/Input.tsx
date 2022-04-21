@@ -15,7 +15,7 @@ const Input: React.FC<Props> = (props) => {
   return (
     <>
       <div className={style.formGroup}>
-        <label htmlFor={props.name}>{props.label}</label>
+        { props.label && <label htmlFor={props.name}>{props.label}</label>}
         <input type={props.type} name={props.name} placeholder={props.placeholder} onChange={props.onChange} />
       </div>
     </>

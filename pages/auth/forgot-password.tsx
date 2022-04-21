@@ -20,7 +20,7 @@ const ForgotPassword: React.FC<Props> = (props) => {
                     </div>
                     <form action="" className={style.forgotPasswordForm}>
                         <Input onChange={() => null} type='text' name='email' placeholder='Your Email' />
-                        <Button type="btn-primary" text="Send me an email" />
+                        <Button type="btnPrimary" text="Send me an email" />
                     </form>
                     <Link href="/auth/signin"><a>Back to Login</a></Link>
                 </div>

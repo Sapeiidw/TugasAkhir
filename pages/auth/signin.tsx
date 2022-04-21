@@ -32,11 +32,11 @@ const Signin: React.FC<Props> = (props) => {
                             <Input onChange={handleChange} type='email' name='email' placeholder='Email' label='Email' />
                             <Input onChange={handleChange} type='password' name='password' placeholder='Password' label='Password' />
                             <Link href="/auth/forgot-password"><a className={style.forgotPasswordLink}>Forgot Password?</a></Link>
-                            <Button type='btn-primary' text='Login' />
+                            <Button type="btnPrimary" text='Login' />
                             <div className={style.stroke}>
                                 <span>Or</span>
                             </div>
-                            <Button type='btn-inverse' text='Sign Up With Google' icon='/icons/google.svg' />
+                            <Button type="btnInverse" text='Sign Up With Google' icon='/icons/google.svg' />
 
                         </form>
                     </div>

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import 'Button.module.css';
 :root {
   --dark-blue: #011c7b;
   --primer-blue: #5171e1;
@@ -97,6 +97,7 @@ body {
   border-radius: 12px;
   letter-spacing: -0.025em;
 }
+
 .modal-container {
   height: 100vh;
   width: 100%;
@@ -105,10 +106,12 @@ body {
   left: 0;
   z-index: 100;
   background: #0000004f;
-}
+  transition: all ease-in-out .5s;
+  backdrop-filter: blur(5px);
+} 
 .modal {
   width: max-content;
-  max-width: 600px;
+  /* max-width: 600px; */
   padding: 20px;
   height: auto;
   background-color: var(--white);
@@ -119,8 +122,12 @@ body {
   transform: translate(-50%,-50%);
   z-index: 100;
   transition: all ease-in-out .5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-.modal button {
+.modal .closeButton {
   position: absolute;
   top: -37.5px;
   right: -37.5px;
@@ -135,4 +142,49 @@ body {
 .modal-container .open {
   top: 50%;
   transition: all ease-in-out .5s;
+}
+.modalHeader {
+  text-align: center;
+}
+.modalPlan {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.tokoForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}
+.formHeader {
+  margin-bottom: 20px;
+}
+.formFooter {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid var(--light-gray);
+}
+thead {
+  background-color:var(--lighter-gray);
+}
+tr {
+  background-color: white;
+}
+td,th {
+  text-align: center;
+  width: max-content;
+  padding: 8px;
 }

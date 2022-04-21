@@ -20,7 +20,7 @@ const ResendEmail: React.FC<Props> = (props) => {
                         <p className="subtitle">Didn&apos;t receive an email?</p>
                     </div>
                     <form action="/" className={style.forgotPasswordForm}>
-                        <Button type="btn-primary" text="Resend email" />
+                        <Button type="btnPrimary" text="Resend email" />
                     </form>
                     <Link href="/auth/forgot-password"><a>Want changes email?</a></Link>
                 </div>
