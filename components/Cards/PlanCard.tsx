@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { SyntheticEvent } from 'react'
 import style from '../../styles/Cards.module.css'
 
 type Props = {
-  recomend?: boolean
+  recomend?: boolean,
+  onClick?: (e: SyntheticEvent) => void;
 }
 
 const PlanCard: React.FC<Props> = (props) => {
@@ -18,7 +19,7 @@ const PlanCard: React.FC<Props> = (props) => {
           <li>Lorem ipsum dolor sit amet.</li>
         </ul>
         <p className={style.planPrice}>Rp.<span>123</span>/month</p>
-        <button className="btn btn-link">Choose</button>
+        <button className="btn btn-link" onClick={props.onClick}>Choose</button>
       </div>
     </>
   )

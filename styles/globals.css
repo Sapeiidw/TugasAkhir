@@ -111,7 +111,7 @@ body {
 } 
 .modal {
   width: max-content;
-  /* max-width: 600px; */
+  max-width: 80vw;
   padding: 20px;
   height: auto;
   background-color: var(--white);
@@ -187,4 +187,10 @@ td,th {
   text-align: center;
   width: max-content;
   padding: 8px;
+}
+
+select {
+  width: 100%;
+  border: 1px solid var(--black);
+  padding: 10px 15px;
 }
