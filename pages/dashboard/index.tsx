@@ -13,7 +13,7 @@ import style from "../../styles/Dashboard.module.css";
 
 type Props = {};
 
-const index: React.FC<Props> = (props) => {
+const Index: React.FC<Props> = (props) => {
   const toko = 1;
   const bayar = true;
   const { open, toggler } = useModal();
@@ -33,10 +33,8 @@ const index: React.FC<Props> = (props) => {
             type="text"
             placeholder="Search your store ..."
           />
-        </form>
-        <button className="btn btnPrimary" onClick={() => toggler()}>
-          + Create New Store
-        </button>
+        </form>        
+        <Button color="btnPrimary" text="+ Create New Store" onClick={()=>toggler()} size="big" />
       </header>
       {toko ? (
         <div className={style.mainContent}>
@@ -83,8 +81,8 @@ const index: React.FC<Props> = (props) => {
               onChange={() => null}
             />
             <div className="formFooter">
-              <Button type="btnPrimary" text="Submit" />
-              <Button type="btnInverse" text="Batal" />
+              <Button color="btnPrimary" size="btnBig" text="Submit" />
+              <Button color="btnInverse" text="Batal" size="btnBig" />
             </div>
           </form>
         ) : (
@@ -106,4 +104,4 @@ const index: React.FC<Props> = (props) => {
   );
 };
 
-export default index;
+export default Index;

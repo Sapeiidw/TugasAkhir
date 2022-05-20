@@ -16,7 +16,7 @@ const Custom404 = () => {
                         <div className={style.title}>Oopss...</div>
                         <div className={style.subtitle}>Page not Found</div>
                     </div>
-                    <Button type="btnPrimary" text='Back' />
+                    <Button color="btnPrimary" size="btnBig" text='Back' />
                 </div>
             </div>
         </Guest>

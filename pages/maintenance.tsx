@@ -15,7 +15,7 @@ const Maintenance = () => {
                         <div className={style.title}>Under Maintence</div>
                         <div className={style.subtitle}>The pages you currently want is undermaintence and we will back soon</div>
                     </div>
-                    <Button type="btnPrimary" text='Back' />
+                    <Button color="btnPrimary" size="btnBig" text='Back' />
                 </div>
             </div>
         </Guest>

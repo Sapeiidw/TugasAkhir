@@ -1,11 +1,10 @@
-import { stringify } from "querystring";
 import React, { useState } from "react";
 import { Button, Dashboard, Modal, PlanCard } from "../../components";
 import useModal from "../../hooks/useModal";
 
 type Props = {};
 
-const test: React.FC<Props> = (props) => {
+const Test: React.FC<Props> = (props) => {
   const { open, toggler } = useModal();
   const [plan, setPlan] = useState({})
   const [total, setTotal] = useState(1)
@@ -29,7 +28,7 @@ const test: React.FC<Props> = (props) => {
               <PlanCard onClick={() => selected(data)} recomend={true} />
               <PlanCard onClick={() => selected(data)} />
             </div>
-            <Button type="btnPrimary" onClick={nextStep} text="next" />
+            <Button color="btnPrimary" size="btnBig" onClick={nextStep} text="next" />
           </>
         );
       case 2:
@@ -48,9 +47,9 @@ const test: React.FC<Props> = (props) => {
               <tbody>
                 <td>Lorem, ipsum.</td>
                 <td className="flex-row-center">
-                  <Button onClick={e => total > 0 && setTotal(total - 1)} text="-" type="btnPrimary" />
+                  <Button onClick={e => total > 0 && setTotal(total - 1)} text="-" color="btnPrimary" size="sd" />
                   <span>{total}</span>
-                  <Button onClick={e => setTotal(total + 1)} text="+" type="btnPrimary" />
+                  <Button onClick={e => setTotal(total + 1)} text="+" color="btnPrimary" size="sd" />
                 </td>
                 <td>{data.price * total}</td>
               </tbody>
@@ -60,7 +59,7 @@ const test: React.FC<Props> = (props) => {
               <option value="BRI">BRI</option>
               <option value="otomatis">otomatis</option>
             </select>
-            <Button onClick={nextStep} text="Prev" type="btnPrimary" />
+            <Button onClick={nextStep} text="Prev" color="btnPrimary" size="btnBig" />
           </>
         );
       case 3:
@@ -76,7 +75,7 @@ const test: React.FC<Props> = (props) => {
             <div className="circle"></div>
             <p>BRI Virtual Account</p>
             <h1>12731982749156924</h1>
-            <Button onClick={()=>{}} text="Konfirmasi Pembayran" type="btnPrimary" />
+            <Button onClick={()=>{}} text="Konfirmasi Pembayran" color="btnPrimary" size="btnBig" />
           </>
         )
 
@@ -93,4 +92,4 @@ const test: React.FC<Props> = (props) => {
   )
 };
 
-export default test;
+export default Test;

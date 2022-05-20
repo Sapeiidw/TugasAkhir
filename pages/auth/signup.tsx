@@ -33,11 +33,11 @@ const Signup: React.FC<Props> = (props) => {
                             <Input onChange={() => null} type='email' name='email' placeholder='Email' label='Email' />
                             <Input onChange={() => null} type='password' name='password' placeholder='Password' label='Password' />
                             <br />
-                            <Button type="btnPrimary" text='Create Your Account' />
+                            <Button color="btnPrimary" size="btnBig" text='Create Your Account' />
                             <div className={style.stroke}>
                                 <span>Or</span>
                             </div>
-                            <Button type="btnInverse" text='Sign Up With Google' icon='/icons/google.svg' />
+                            <Button color="btnInverse" text='Sign Up With Google' icon='/icons/google.svg' size="btnBig" />
 
                         </form>
                     </div>

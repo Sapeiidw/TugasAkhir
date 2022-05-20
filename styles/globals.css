@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import 'Button.module.css';
+@import 'Reset.module.css';
+
 :root {
   --dark-blue: #011c7b;
   --primer-blue: #5171e1;
@@ -28,6 +30,9 @@ body {
 }
 body {
   overflow-x: hidden;
+}
+a {
+  color: var(--primer-blue);
 }
 .flex-row-center {
   display: flex;
@@ -68,13 +73,6 @@ body {
 }
 .text-blue-primer {
   color: var(--primer-blue);
-}
-.btn {
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  padding: 14px 60px;
-  border-radius: 12px;
 }
 
 .btn-link {

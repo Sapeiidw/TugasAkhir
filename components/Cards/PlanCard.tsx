@@ -1,4 +1,5 @@
 import React, { SyntheticEvent } from 'react'
+import { Button } from '..'
 import style from '../../styles/Cards.module.css'
 
 type Props = {
@@ -19,7 +20,7 @@ const PlanCard: React.FC<Props> = (props) => {
           <li>Lorem ipsum dolor sit amet.</li>
         </ul>
         <p className={style.planPrice}>Rp.<span>123</span>/month</p>
-        <button className="btn btn-link" onClick={props.onClick}>Choose</button>
+        <Button size="btnBig" color='btnPrimary' onClick={props.onClick} text="Choose" />
       </div>
     </>
   )

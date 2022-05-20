@@ -41,8 +41,8 @@ const RiwayatTransaksi = () => {
             <td>kolom</td>
             <td>kolom</td>
             <td>
-              <Button text="Konfirmasi" type="btnPrimary" />
-              <Button text="Batal" type="btnInverse" />
+              <Button text="Konfirmasi" color="btnPrimary" size="btnBig" />
+              <Button text="Batal" color="btnInverse" size="btnSmall" />
             </td>
           </tr>
         </tbody>

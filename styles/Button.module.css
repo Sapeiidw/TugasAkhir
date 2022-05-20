@@ -1,17 +1,18 @@
 .btn {
+  width: auto;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
   border-radius: 8px;
-  padding: 16px;
-  font-size: 18px;
+  padding: 16px 20px;
   font-weight: 600;
   box-shadow: 2px 2px 8px 2px #00000040;
   cursor: pointer;
 }
 
+/* color */
 .btnPrimary {
   background-color: var(--primer-blue);
   color: var(--white);
@@ -24,4 +25,23 @@
   color: var(--black);
   border: 1px solid var(--primer-blue);
   /* box-shadow: 2px 2px 8px 2px #00000040; */
+}
+
+/* hover */
+.btnPrimary:hover {
+  background-color: var(--dark-blue);
+}
+.btnInverse:hover {
+  background-color: var(--lighter-gray);
+}
+/* size */
+.btnSmall {
+  font-size: small;
+}
+.btnMedium {
+  font-size: medium;
+}
+.btnBig {
+  min-width: 200px;
+  width: 100% !important;
 }
