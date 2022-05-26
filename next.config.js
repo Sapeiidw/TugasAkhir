@@ -2,10 +2,10 @@
 const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
-  // images: {
-  //   loader: 'akamai',
-  //   path: 'https://inposery.com',
-  // },
+  images: {
+    loader: 'akamai',
+    path: 'https://inposery.com',
+  },
 }
 
 module.exports = nextConfig
