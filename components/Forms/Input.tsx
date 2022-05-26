@@ -9,7 +9,7 @@ type Props = {
   placeholder: string,
   className?: string,
   onChange: (e: SyntheticEvent)=>void,
-  value: any
+  value?: any
 }
 
 const Input: React.FC<Props> = (props) => {

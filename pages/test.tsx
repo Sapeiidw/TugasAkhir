@@ -14,7 +14,7 @@ const Test: React.FC<Props> = (props) => {
     }}).then(res=>res.data)
     const  {data, error} = useSWR('https://api-dev.inposery.com/api/v1/auth/login', fetcher)
     if (error) return <div>{JSON.stringify(error)}</div>;
-    if (!data) return <div>Loading...</div>;s
+    if (!data) return <div>Loading...</div>;
   return (
     <div>{data.email}</div>
   )
