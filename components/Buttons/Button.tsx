@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { SyntheticEvent } from "react";
+import React, { ReactNode, SyntheticEvent } from "react";
 import style from "../../styles/Button.module.css";
 
 type Props = {
@@ -9,6 +9,7 @@ type Props = {
   size: string;
   icon?: string;
   className?: string;
+  disabled?: ReactNode;
   onClick?: (e: SyntheticEvent) => void;
 };
 
