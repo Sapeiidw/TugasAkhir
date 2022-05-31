@@ -25,11 +25,11 @@ const ForgotPassword: React.FC<Props> = (props) => {
     dispatch({ name: "SET_IS_SUBMITTED" });
 
     if (!email) return;
-    dispatch({ name: "SET_SENDING", payload: true });
 
     authService
       .forgotPassword(inputs)
       .then((resp) => {
+        dispatch({ name: "SET_SENDING", payload: true });
         console.log(resp);
         Router.push("/auth/resend-email");
       })
