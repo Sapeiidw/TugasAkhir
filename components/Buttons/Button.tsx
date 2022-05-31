@@ -9,13 +9,17 @@ type Props = {
   size: string;
   icon?: string;
   className?: string;
-  disabled?: ReactNode;
+  disabled?: boolean;
   onClick?: (e: SyntheticEvent) => void;
 };
 
 const Button: React.FC<Props> = (props) => {
   return (
-    <button className={`${style.btn} ${props.type} ${props.size} ${props.color}`} onClick={props.onClick}>
+    <button
+      disabled={props.disabled || false}
+      className={`${style.btn} ${props.type} ${props.size} ${props.color}`}
+      onClick={props.onClick}
+    >
       {props.icon && (
         <Image
           src={props.icon}

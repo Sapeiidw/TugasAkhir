@@ -28,6 +28,9 @@ body {
   background-color: #f5f5fb;
   scroll-behavior: smooth;
 }
+button {
+  cursor: pointer;
+}
 body {
   overflow-x: hidden;
 }
