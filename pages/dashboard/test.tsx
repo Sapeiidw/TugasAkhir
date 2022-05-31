@@ -6,17 +6,17 @@ type Props = {};
 
 const Test: React.FC<Props> = (props) => {
   const { open, toggler } = useModal();
-  const [plan, setPlan] = useState({})
-  const [total, setTotal] = useState(1)
+  const [plan, setPlan] = useState({});
+  const [total, setTotal] = useState(1);
 
   const [step, setStep] = useState(1);
-  const prevStep = () => step !== 0 && setStep(step - 1);
+  const prevStep = () => step > 1 && setStep(step - 1);
   const nextStep = () => setStep(step + 1);
   const selected = (data: object) => {
-    nextStep()
-    setPlan(data)
-  }
-  const data = { price: 27000, name: "Monthly" }
+    nextStep();
+    setPlan(data);
+  };
+  const data = { price: 27000, name: "Monthly" };
 
   const payment = () => {
     switch (step) {
@@ -28,13 +28,12 @@ const Test: React.FC<Props> = (props) => {
               <PlanCard onClick={() => selected(data)} recomend={true} />
               <PlanCard onClick={() => selected(data)} />
             </div>
-            <Button color="btnPrimary" size="btnBig" onClick={nextStep} text="next" />
           </>
         );
       case 2:
         return (
           <>
-          <button onClick={prevStep}>back</button>
+            <button onClick={prevStep}>back</button>
             <h1>Informasi Pembayaran</h1>
 
             <h3>Detail Pemesanan</h3>
@@ -47,9 +46,19 @@ const Test: React.FC<Props> = (props) => {
               <tbody>
                 <td>Lorem, ipsum.</td>
                 <td className="flex-row-center">
-                  <Button onClick={e => total > 0 && setTotal(total - 1)} text="-" color="btnPrimary" size="sd" />
+                  <Button
+                    onClick={(e) => total > 0 && setTotal(total - 1)}
+                    text="-"
+                    color="btnPrimary"
+                    size="sd"
+                  />
                   <span>{total}</span>
-                  <Button onClick={e => setTotal(total + 1)} text="+" color="btnPrimary" size="sd" />
+                  <Button
+                    onClick={(e) => setTotal(total + 1)}
+                    text="+"
+                    color="btnPrimary"
+                    size="sd"
+                  />
                 </td>
                 <td>{data.price * total}</td>
               </tbody>
@@ -59,13 +68,18 @@ const Test: React.FC<Props> = (props) => {
               <option value="BRI">BRI</option>
               <option value="otomatis">otomatis</option>
             </select>
-            <Button onClick={nextStep} text="Prev" color="btnPrimary" size="btnBig" />
+            <Button
+              onClick={nextStep}
+              text="Prev"
+              color="btnPrimary"
+              size="btnBig"
+            />
           </>
         );
       case 3:
         return (
           <>
-          <button onClick={prevStep}>back</button>
+            <button onClick={prevStep}>back</button>
             <h1>Informasi Pembayaran</h1>
             <div className="cricle"></div>
             <h3>Pesanan 0R0001 telah dibuat</h3>
@@ -75,21 +89,51 @@ const Test: React.FC<Props> = (props) => {
             <div className="circle"></div>
             <p>BRI Virtual Account</p>
             <h1>12731982749156924</h1>
-            <Button onClick={()=>{}} text="Konfirmasi Pembayran" color="btnPrimary" size="btnBig" />
+            <Button
+              onClick={() => {}}
+              text="Konfirmasi Pembayran"
+              color="btnPrimary"
+              size="btnBig"
+            />
           </>
-        )
+        );
 
       default:
         "asd";
     }
-  }
+  };
+
+  const [showModal, setShowModal] = useState<boolean>(true);
+  const [deleting, setDeleting] = useState<boolean>(false);
+  const deleteSembarang = () => {
+    setDeleting(true);
+    try {
+      setTimeout(() => {
+        setDeleting(false);
+        setShowModal(false);
+      }, 5000);
+    } catch (error) {
+      setDeleting(false);
+    }
+  };
 
   return (
     <Dashboard>
-      <button onClick={() => toggler()}>Buka</button>
-      <Modal hide={toggler} open={open}>{payment()}</Modal>
+      <button onClick={() => setShowModal(true)}>Buka</button>
+      <Modal
+        visible={showModal}
+        okText={deleting ? "Deleting..." : "Delete"}
+        title="Modal"
+        onOK={() => deleteSembarang()}
+        onCancel={() => setShowModal(false)}
+        onBack={prevStep}
+        okButtonProps={{ disabled: deleting }}
+        cancelButtonProps={{ disabled: deleting }}
+      >
+        {payment()}
+      </Modal>
     </Dashboard>
-  )
+  );
 };
 
 export default Test;

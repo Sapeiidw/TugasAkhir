@@ -33,8 +33,13 @@ const Index: React.FC<Props> = (props) => {
             type="text"
             placeholder="Search your store ..."
           />
-        </form>        
-        <Button color="btnPrimary" text="+ Create New Store" onClick={()=>toggler()} size="big" />
+        </form>
+        <Button
+          color="btnPrimary"
+          text="+ Create New Store"
+          onClick={() => toggler()}
+          size="big"
+        />
       </header>
       {toko ? (
         <div className={style.mainContent}>
@@ -49,7 +54,7 @@ const Index: React.FC<Props> = (props) => {
           <h2>Kamu belum memiliki toko.</h2>
         </div>
       )}
-      <Modal open={open} hide={toggler}>
+      {/* <Modal open={open} hide={toggler}>
         {bayar ? (
           <form className="tokoForm" onSubmit={hanldeSubmit}>
             <div className="formHeader">
@@ -99,7 +104,7 @@ const Index: React.FC<Props> = (props) => {
             </Link>
           </>
         )}
-      </Modal>
+      </Modal> */}
     </Dashboard>
   );
 };
