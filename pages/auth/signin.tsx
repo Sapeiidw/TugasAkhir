@@ -1,51 +1,71 @@
+import axios from "axios";
+import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 import Link from "next/link";
-import React, { FormEvent, useReducer } from "react";
-import { Button, Input } from "../../components";
+import Router from "next/router";
+import React, { FormEvent, useReducer, useState } from "react";
+import { Button, Input, Modal } from "../../components";
+import ErrorMsg from "../../components/Forms/ErrorMsg";
 import Guest from "../../components/Layouts/Guest";
+import { LoginReducer } from "../../reducer";
 import { authService, storageService } from "../../services";
-import { reducer } from "../../services/auth/Login";
+
 import style from "../../styles/Auth.module.css";
 
 type Props = {};
 
 const Signin: React.FC<Props> = (props) => {
-  const [state, dispatch] = useReducer(reducer, {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [state, dispatch] = useReducer(LoginReducer, {
     isSubmitted: false,
     sending: false,
     inputs: {
       email: "",
       password: "",
     },
+    error: {
+      statusCode: 0,
+      message: "",
+    },
   });
 
-  const { isSubmitted, inputs } = state;
+  const { isSubmitted, inputs, sending } = state;
   const { email, password } = inputs;
 
   const login = () => {
     dispatch({ name: "SET_IS_SUBMITTED" });
 
     if (!email && !password) return;
-    dispatch({ name: "SET_SENDING", payload: false });
-
-    console.log("state", state);
 
     authService
       .login(inputs)
-      .then((res) => {
-        console.log("res", res);
-        storageService.setToken(res.data.token);
-        // navigation("/u")
+      .then((resp) => {
+        dispatch({ name: "SET_SENDING", payload: true });
+        storageService.setToken(resp.data.data.token);
+        // window.location.replace("/dashboard");
+        Router.push("/dashboard");
       })
-      .catch((error) => console.log("error", error))
+      .catch((error) => {
+        console.log("error", error.response.data.message);
+        dispatch({
+          name: "SET_ERROR",
+          payload: {
+            statusCode: error.response.data.statusCode,
+            message: error.response.data.message,
+          },
+        });
+      })
       .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
   };
 
   const handleSubmit = (e: FormEvent) => {
-      e.preventDefault()
-      login()
-  }
+    e.preventDefault();
+    login();
+  };
 
+  const google = () => {
+    authService.google().then((resp) => Router.push("/dashboard"));
+  };
   return (
     <Guest>
       <div className="flex-row-center">
@@ -71,13 +91,16 @@ const Signin: React.FC<Props> = (props) => {
                 </Link>
               </h1>
             </div>
-            <form className={style.form} onSubmit={(e)=> handleSubmit(e)}>
+            <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
+              <span style={{ color: "red" }}>{state.error.message}</span>
+
               <Input
                 value={state.inputs.email}
                 type="email"
                 name="email"
                 placeholder="Email"
                 label="Email"
+                required={true}
                 onChange={(event) =>
                   dispatch({
                     name: "SET_INPUTS",
@@ -87,17 +110,20 @@ const Signin: React.FC<Props> = (props) => {
                   })
                 }
               />
-              <div>
-                {isSubmitted && !email ? (
-                  <span style={{ color: "red" }}>Email wajib diisi</span>
-                ) : null}
-              </div>
+              <ErrorMsg
+                isSubmitted={isSubmitted}
+                value={email}
+                isEmpty={!email}
+                name="Email"
+                min={4}
+              />
               <Input
                 value={state.inputs.password}
                 type="password"
                 name="password"
                 placeholder="Password"
                 label="Password"
+                required={true}
                 onChange={(event) =>
                   dispatch({
                     name: "SET_INPUTS",
@@ -107,25 +133,38 @@ const Signin: React.FC<Props> = (props) => {
                   })
                 }
               />
-              <div>
-                {isSubmitted && !password ? (
-                  <span style={{ color: "red" }}>Password wajib diisi</span>
-                ) : null}
-              </div>
+              <ErrorMsg
+                isSubmitted={isSubmitted}
+                value={password}
+                isEmpty={!password}
+                name="Password"
+                min={4}
+                max={12}
+              />
               <Link href="/auth/forgot-password">
                 <a className={style.forgotPasswordLink}>Forgot Password?</a>
               </Link>
-              <Button color="btnPrimary" size="btnBig" text="Login" disabled={state.sending} />
-              <div className={style.stroke}>
-                <span>Or</span>
-              </div>
-              <Button
-                color="btnInverse"
-                size="btnMedium"
-                text="Sign Up With Google"
-                icon="/icons/google.svg"
-              />
             </form>
+            <Button
+              color="btnPrimary"
+              size="btnBig"
+              text="Login"
+              disabled={sending}
+              onClick={(e) => handleSubmit(e)}
+            />
+            <div className={style.stroke}>
+              <span>Or</span>
+            </div>
+            <Button
+              onClick={() => google()}
+              color="btnInverse"
+              size="btnMedium"
+              text="Sign Up With Google"
+              icon="/icons/google.svg"
+            />
+            <Link href={"http://localhost:4000/api/v1/auth/google"}>
+              <a target="_blank">google</a>
+            </Link>
           </div>
         </div>
       </div>
