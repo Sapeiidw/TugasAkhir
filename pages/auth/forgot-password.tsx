@@ -10,7 +10,7 @@ import style from "../../styles/Auth.module.css";
 
 type Props = {};
 
-const ForgotPassword: React.FC<Props> = (props) => {
+export const ForgotPassword: React.FC<Props> = (props) => {
   const [state, dispatch] = useReducer(ForgotPasswordReducer, {
     isSubmitted: false,
     sending: false,
@@ -91,7 +91,7 @@ const ForgotPassword: React.FC<Props> = (props) => {
   );
 };
 
-export default ForgotPassword;
-function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
-  throw new Error("Function not implemented.");
-}
+// export default ForgotPassword;
+// function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+//   throw new Error("Function not implemented.");
+// }
