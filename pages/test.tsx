@@ -70,6 +70,7 @@ const Test: React.FC<Props> = (props) => {
   return (
     <>
       <Modal
+        onBack={() => null}
         visible={showModal}
         okText={deleting ? "Deleting..." : "Delete"}
         title="Modal"
