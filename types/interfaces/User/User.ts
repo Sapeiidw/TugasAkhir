@@ -1,13 +1,13 @@
 export interface User {
-    _createdAt: Date;
-    _id: string;
-    _updatedAt: Date;
+  data: {
+    id: number;
+    name: string;
     email: string;
-    facebook: string;
-    firstName: string;
-    google: string;
-    isEmailVerified: boolean;
-    lastName: string;
-    phoneNumber: string;
-    role: string[];
+    password: string;
+    phone: number;
+    verifed: boolean;
+    role: string;
+    token: string;
+    profilePhoto: null;
+  };
 }
