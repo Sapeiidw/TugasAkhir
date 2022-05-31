@@ -66,7 +66,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
   align-items: stretch;
   width: 100%;
 }
@@ -76,6 +76,7 @@
   align-items: start;
   gap: 12px;
   width: 100%;
+  text-align: left;
 }
 .formGroup label {
   font-size: 18px;
@@ -161,5 +162,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  gap: 30px;
+  gap: 10px;
 }

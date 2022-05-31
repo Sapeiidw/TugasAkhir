@@ -1,5 +1,12 @@
-export const setToken = (token: string) => localStorage.setItem("TOKEN", `Bearer ${token}`)
+import jwtDecode from "jwt-decode";
 
-export const getToken = () => localStorage.getItem('TOKEN')
+export const setToken = (token: string) =>
+  localStorage.setItem("TOKEN", `Bearer ${token}`);
 
-export const removeToken = () => localStorage.removeItem("TOKEN")
+export const getToken = () => localStorage?.getItem("TOKEN");
+
+export const removeToken = () => localStorage.removeItem("TOKEN");
+
+// export const decodeToken = (token: string) => {
+//   jwtDecode(token);
+// };
