@@ -4,7 +4,7 @@ import Router from "next/router";
 import React, { FormEvent, useReducer } from "react";
 import { Button, Guest, Input } from "../../components";
 import ErrorMsg from "../../components/Forms/ErrorMsg";
-import { ForgotPasswordReducer } from "../../reducer";
+// import { ForgotPasswordReducer } from "../../reducer";
 import { authService } from "../../services";
 import style from "../../styles/Auth.module.css";
 
