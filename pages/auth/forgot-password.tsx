@@ -11,40 +11,40 @@ import style from "../../styles/Auth.module.css";
 type Props = {};
 
 export const ForgotPassword: React.FC<Props> = (props) => {
-  const [state, dispatch] = useReducer(ForgotPasswordReducer, {
-    isSubmitted: false,
-    sending: false,
-    inputs: {
-      email: "",
-    },
-  });
+  // const [state, dispatch] = useReducer(ForgotPasswordReducer, {
+  //   isSubmitted: false,
+  //   sending: false,
+  //   inputs: {
+  //     email: "",
+  //   },
+  // });
 
-  const { isSubmitted, inputs, sending } = state;
-  const { email } = inputs;
-  const forgotPassword = () => {
-    dispatch({ name: "SET_IS_SUBMITTED" });
+  // const { isSubmitted, inputs, sending } = state;
+  // const { email } = inputs;
+  // const forgotPassword = () => {
+  //   dispatch({ name: "SET_IS_SUBMITTED" });
 
-    if (!email) return;
+  //   if (!email) return;
 
-    authService
-      .forgotPassword(inputs)
-      .then((resp) => {
-        dispatch({ name: "SET_SENDING", payload: true });
-        console.log(resp);
-        Router.push("/auth/resend-email");
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
-  };
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    forgotPassword();
-  };
+  //   authService
+  //     .forgotPassword(inputs)
+  //     .then((resp) => {
+  //       dispatch({ name: "SET_SENDING", payload: true });
+  //       console.log(resp);
+  //       Router.push("/auth/resend-email");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  //     .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
+  // };
+  // const handleSubmit = (e: FormEvent) => {
+  //   e.preventDefault();
+  //   forgotPassword();
+  // };
   return (
     <Guest>
-      <div className={style.forgotPassword}>
+      {/* <div className={style.forgotPassword}>
         <div className={style.forgotPasswordWrapper}>
           <div className={style.img}>
             <Image src="/images/Currency Crush Security.svg" layout="fill" />
@@ -86,7 +86,7 @@ export const ForgotPassword: React.FC<Props> = (props) => {
             <a>Back to Login</a>
           </Link>
         </div>
-      </div>
+      </div> */}
     </Guest>
   );
 };
