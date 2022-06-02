@@ -35,8 +35,8 @@ const Test: React.FC<Props> = (props) => {
   //   .then((res) => console.log(res));
   // userService.profile().then((resp) => console.log(resp));
 
-  const [showModal, setShowModal] = useState<boolean>(true);
-  const [deleting, setDeleting] = useState<boolean>(false);
+  // const [showModal, setShowModal] = useState<boolean>(true);
+  // const [deleting, setDeleting] = useState<boolean>(false);
 
   // const getProfile = async () => {
   //   try {
@@ -47,36 +47,36 @@ const Test: React.FC<Props> = (props) => {
   //   }
   // };
 
-  const deleteSembarang = () => {
-    setDeleting(true);
-    try {
-      setTimeout(() => {
-        setDeleting(false);
-        setShowModal(false);
-      }, 5000);
-    } catch (error) {
-      setDeleting(false);
-    }
-  };
+  // const deleteSembarang = () => {
+  //   setDeleting(true);
+  //   try {
+  //     setTimeout(() => {
+  //       setDeleting(false);
+  //       setShowModal(false);
+  //     }, 5000);
+  //   } catch (error) {
+  //     setDeleting(false);
+  //   }
+  // };
 
   // useEffect(() => {
   //   getProfile();
   // }, []);
 
-  let emailVerifiedStatus = "Belum Terverifikasi";
+  // let emailVerifiedStatus = "Belum Terverifikasi";
   // if (profile && profile.isEmailVerified) {
   //   emailVerifiedStatus = "Terverifikasi";
   // }
-  const avatar = () =>
-    axios
-      .get("http://localhost:4000/api/v1/users/profile", {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXBlaWlkd0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOCR5Q0Y2dU0wUlEuNi52c3FZdTY2dGwud2JxSnRjMlJyNXI2L3NmR2FBZUhKaVEyNU1RUWJlNiIsInJvbGUiOiJTdXBlckFkbWluIiwiaWF0IjoxNjUzOTg2NTU1LCJleHAiOjE2NTQwNzI5NTV9.LOVI_89uMNtp-9g9rB9lcN4Zwa95jZxHnu9OeHZc1Vc`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-      });
+  // const avatar = () =>
+  //   axios
+  //     .get("http://localhost:4000/api/v1/users/profile", {
+  //       headers: {
+  //         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXBlaWlkd0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOCR5Q0Y2dU0wUlEuNi52c3FZdTY2dGwud2JxSnRjMlJyNXI2L3NmR2FBZUhKaVEyNU1RUWJlNiIsInJvbGUiOiJTdXBlckFkbWluIiwiaWF0IjoxNjUzOTg2NTU1LCJleHAiOjE2NTQwNzI5NTV9.LOVI_89uMNtp-9g9rB9lcN4Zwa95jZxHnu9OeHZc1Vc`,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     });
 
   return (
     <>
@@ -90,7 +90,7 @@ const Test: React.FC<Props> = (props) => {
         okButtonProps={{ disabled: deleting }}
         cancelButtonProps={{ disabled: deleting }}
       /> */}
-      {avatar()}
+      {/* {avatar()} */}
       <h1>Nama</h1>
       <h1>Nama</h1>
     </>
