@@ -14,13 +14,16 @@ import style from "../../styles/Dashboard.module.css";
 type Props = {};
 
 const Index: React.FC<Props> = (props) => {
-  const toko = 1;
+  const toko = 0;
   const bayar = true;
   const { open, toggler } = useModal();
   const hanldeSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault;
     return null;
   };
+
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [deleting, setDeleting] = useState<boolean>(false);
   return (
     <Dashboard>
       <header className={style.header}>
@@ -37,7 +40,7 @@ const Index: React.FC<Props> = (props) => {
         <Button
           color="btnPrimary"
           text="+ Create New Store"
-          onClick={() => toggler()}
+          onClick={() => setShowModal(true)}
           size="big"
         />
       </header>
@@ -54,7 +57,13 @@ const Index: React.FC<Props> = (props) => {
           <h2>Kamu belum memiliki toko.</h2>
         </div>
       )}
-      {/* <Modal open={open} hide={toggler}>
+      <Modal
+        visible={showModal}
+        title="Create Toko"
+        onOK={() => null}
+        onCancel={() => setShowModal(false)}
+        onBack={() => null}
+      >
         {bayar ? (
           <form className="tokoForm" onSubmit={hanldeSubmit}>
             <div className="formHeader">
@@ -75,7 +84,7 @@ const Index: React.FC<Props> = (props) => {
               name="notelp"
               placeholder="No Telp Toko Anda"
               type="text"
-              label="Nama Telpon Toko"
+              label="No Telpon Toko"
               onChange={() => null}
             />
             <Input
@@ -104,7 +113,7 @@ const Index: React.FC<Props> = (props) => {
             </Link>
           </>
         )}
-      </Modal> */}
+      </Modal>
     </Dashboard>
   );
 };

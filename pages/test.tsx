@@ -67,9 +67,20 @@ const Test: React.FC<Props> = (props) => {
   // if (profile && profile.isEmailVerified) {
   //   emailVerifiedStatus = "Terverifikasi";
   // }
+  const avatar = () =>
+    axios
+      .get("http://localhost:4000/api/v1/users/profile", {
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXBlaWlkd0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOCR5Q0Y2dU0wUlEuNi52c3FZdTY2dGwud2JxSnRjMlJyNXI2L3NmR2FBZUhKaVEyNU1RUWJlNiIsInJvbGUiOiJTdXBlckFkbWluIiwiaWF0IjoxNjUzOTg2NTU1LCJleHAiOjE2NTQwNzI5NTV9.LOVI_89uMNtp-9g9rB9lcN4Zwa95jZxHnu9OeHZc1Vc`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+
   return (
     <>
-      <Modal
+      {/* <Modal
         onBack={() => null}
         visible={showModal}
         okText={deleting ? "Deleting..." : "Delete"}
@@ -78,7 +89,8 @@ const Test: React.FC<Props> = (props) => {
         onCancel={() => setShowModal(false)}
         okButtonProps={{ disabled: deleting }}
         cancelButtonProps={{ disabled: deleting }}
-      />
+      /> */}
+      {avatar()}
       <h1>Nama</h1>
       <h1>Nama</h1>
     </>

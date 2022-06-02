@@ -1,11 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { userService } from "../../services";
 import style from "../../styles/Dashboard.module.css";
 
 type Props = {};
 
 const Dashboard: React.FC<Props> = (props) => {
+  const avatar = () => {
+    userService.avatar().then((response) => {
+      console.log(response);
+      return (
+        <div className={style.avatar}>
+          <Image
+            src={response.data.avatar}
+            alt="avatar"
+            width={150}
+            height={150}
+          />
+        </div>
+      );
+    });
+  };
   return (
     <>
       <nav className={style.nav}>
@@ -21,6 +37,7 @@ const Dashboard: React.FC<Props> = (props) => {
           <div className={style.notif}>
             <Image src="/icons/bell.svg" alt="logo" layout="fill" />
           </div>
+          {avatar()}
           <div className={style.profile}></div>
         </div>
       </nav>
