@@ -11,37 +11,37 @@ import style from "../../styles/Auth.module.css";
 type Props = {};
 
 const ForgotPassword: React.FC<Props> = (props) => {
-  const [state, dispatch] = useReducer(ForgotPasswordReducer, {
-    isSubmitted: false,
-    sending: false,
-    inputs: {
-      email: "",
-    },
-  });
+  // const [state, dispatch] = useReducer(ForgotPasswordReducer, {
+  //   isSubmitted: false,
+  //   sending: false,
+  //   inputs: {
+  //     email: "",
+  //   },
+  // });
 
-  const { isSubmitted, inputs, sending } = state;
-  const { email } = inputs;
-  const forgotPassword = () => {
-    dispatch({ name: "SET_IS_SUBMITTED" });
+  // const { isSubmitted, inputs, sending } = state;
+  // const { email } = inputs;
+  // const forgotPassword = () => {
+  //   dispatch({ name: "SET_IS_SUBMITTED" });
 
-    if (!email) return;
+  //   if (!email) return;
 
-    authService
-      .forgotPassword(inputs)
-      .then((resp) => {
-        dispatch({ name: "SET_SENDING", payload: true });
-        console.log(resp);
-        Router.push("/auth/resend-email");
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
-  };
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    forgotPassword();
-  };
+  //   authService
+  //     .forgotPassword(inputs)
+  //     .then((resp) => {
+  //       dispatch({ name: "SET_SENDING", payload: true });
+  //       console.log(resp);
+  //       Router.push("/auth/resend-email");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  //     .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
+  // };
+  // const handleSubmit = (e: FormEvent) => {
+  //   e.preventDefault();
+  //   forgotPassword();
+  // };
   return (
     <Guest>
       <div className={style.forgotPassword}>
@@ -56,29 +56,30 @@ const ForgotPassword: React.FC<Props> = (props) => {
             </p>
           </div>
           <form
-            onSubmit={(e) => handleSubmit(e)}
+            // onSubmit={(e) => handleSubmit(e)}
             className={style.forgotPasswordForm}
           >
             <Input
-              onChange={(event) =>
-                dispatch({
-                  name: "SET_INPUTS",
-                  payload: {
-                    email: (event.target as HTMLInputElement).value,
-                  },
-                })
-              }
+              // onChange={(event) =>
+              //   dispatch({
+              //     name: "SET_INPUTS",
+              //     payload: {
+              //       email: (event.target as HTMLInputElement).value,
+              //     },
+              //   })
+              // }
+              onChange={(event) => null}
               type="email"
               name="email"
               placeholder="Your Email"
-              value={state.inputs.email}
+              value={null}
               required={false}
             />
             <ErrorMsg
               name="Email"
-              value={email}
-              isEmpty={!email}
-              isSubmitted={isSubmitted}
+              value={"strig"}
+              isEmpty={!null}
+              isSubmitted={false}
             />
             <Button color="btnPrimary" size="btnBig" text="Send me an email" />
           </form>
