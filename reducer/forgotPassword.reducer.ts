@@ -25,6 +25,7 @@ export const reducer: Reducer<ForgotPasswordState, ForgotPasswordAction> = (
       break;
     case "SET_IS_SUBMITTED":
       return { ...state, isSubmitted: true };
+      break;
     case "SET_INPUTS":
       return {
         ...state,
@@ -33,6 +34,7 @@ export const reducer: Reducer<ForgotPasswordState, ForgotPasswordAction> = (
           ...action.payload,
         },
       };
+      break;
     default:
       return state;
       break;
