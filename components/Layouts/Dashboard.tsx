@@ -3,25 +3,13 @@ import Link from "next/link";
 import React from "react";
 import { userService } from "../../services";
 import style from "../../styles/Dashboard.module.css";
+import Notification from "../Navigations/Notification";
 
 type Props = {};
 
 const Dashboard: React.FC<Props> = (props) => {
-  const avatar = () => {
-    userService.avatar().then((response) => {
-      console.log(response);
-      return (
-        <div className={style.avatar}>
-          <Image
-            src={response.data.avatar}
-            alt="avatar"
-            width={150}
-            height={150}
-          />
-        </div>
-      );
-    });
-  };
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+
   return (
     <>
       <nav className={style.nav}>
@@ -35,9 +23,14 @@ const Dashboard: React.FC<Props> = (props) => {
         </div>
         <div className={style.end}>
           <div className={style.notif}>
-            <Image src="/icons/bell.svg" alt="logo" layout="fill" />
+            <Image
+              src="/icons/bell.svg"
+              alt="logo"
+              layout="fill"
+              onClick={() => setIsOpen(!isOpen)}
+            />
+            <Notification visible={isOpen} />
           </div>
-          {avatar()}
           <div className={style.profile}></div>
         </div>
       </nav>

@@ -1,7 +1,10 @@
 import React from "react";
 import style from "../../styles/Dashboard.module.css";
 
-type Props = {};
+type Props = {
+  name: string;
+  address: string;
+};
 
 const StoreCard: React.FC<Props> = (props) => {
   return (
@@ -10,11 +13,8 @@ const StoreCard: React.FC<Props> = (props) => {
         <img src="/icons/titik3.svg" alt="" />
       </div>
       <img src="/icons/home.svg" className={style.cardIcon}></img>
-      <h1 className={style.cardTitle}>Inposery Store 2</h1>
-      <p className={style.cardSubitle}>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque,
-        nostrum!
-      </p>
+      <h1 className={style.cardTitle}>{props.name}</h1>
+      <p className={style.cardSubitle}>{props.address}</p>
       <div className={style.cardProgress}></div>
     </div>
   );

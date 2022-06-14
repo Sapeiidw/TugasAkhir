@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import {
   Button,
   Modal,
@@ -7,14 +7,38 @@ import {
   Input,
   StoreCard,
   PlanCard,
+  ModalEmpty,
 } from "../../components";
 import useModal from "../../hooks/useModal";
+import { stores } from "../../services/store.service";
 import style from "../../styles/Dashboard.module.css";
 
-type Props = {};
+type Props = {
+  // toko?: any;
+};
 
 const Index: React.FC<Props> = (props) => {
-  const toko = 0;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log("we are running on the client");
+      console.log(localStorage.getItem("TOKEN"));
+      stores()
+        .then((res) => {
+          setToko(res.data.data);
+          console.log(toko);
+        })
+        .catch((err) => {
+          setError(err);
+          console.log(err.message);
+        });
+    } else {
+      console.log("we are running on the server");
+    }
+  }, []);
+  // console.log(props.toko);
+  // const toko = 7;
+  const [toko, setToko] = useState([]);
+  const [error, setError] = useState();
   const bayar = true;
   const { open, toggler } = useModal();
   const hanldeSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -44,12 +68,19 @@ const Index: React.FC<Props> = (props) => {
           size="big"
         />
       </header>
+
       {toko ? (
         <div className={style.mainContent}>
+          {toko.map((key) => (
+            <Link href={`toko/${key.id}`}>
+              <a>
+                <StoreCard key={key.id} name={key.name} address={key.address} />
+              </a>
+            </Link>
+          ))}
+          {/* <StoreCard />
           <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
+          <StoreCard /> */}
         </div>
       ) : (
         <div className={style.emptyStore}>
@@ -57,12 +88,13 @@ const Index: React.FC<Props> = (props) => {
           <h2>Kamu belum memiliki toko.</h2>
         </div>
       )}
-      <Modal
+      <ModalEmpty
         visible={showModal}
         title="Create Toko"
         onOK={() => null}
         onCancel={() => setShowModal(false)}
-        onBack={() => null}
+        footer={null}
+        // onBack={() => null}
       >
         {bayar ? (
           <form className="tokoForm" onSubmit={hanldeSubmit}>
@@ -94,6 +126,14 @@ const Index: React.FC<Props> = (props) => {
               label="Alamat Toko"
               onChange={() => null}
             />
+            <Input
+              name="photo"
+              placeholder="Logo Toko Anda"
+              type="file"
+              label="Logo Toko"
+              onChange={() => null}
+            />
+
             <div className="formFooter">
               <Button color="btnPrimary" size="btnBig" text="Submit" />
               <Button color="btnInverse" text="Batal" size="btnBig" />
@@ -113,9 +153,17 @@ const Index: React.FC<Props> = (props) => {
             </Link>
           </>
         )}
-      </Modal>
+      </ModalEmpty>
     </Dashboard>
   );
 };
 
+// export const getStaticProps = async () => {
+//   const toko = await stores().then((res) => res.data);
+//   return {
+//     props: {
+//       toko,
+//     },
+//   };
+// };
 export default Index;

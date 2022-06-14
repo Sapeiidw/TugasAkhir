@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "proxy": "https://api-dev.inposery.com",
   "dependencies": {
     "axios": "^0.27.2",
     "framer-motion": "^6.2.8",

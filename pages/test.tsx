@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
+import { Navigation, Notification } from "../components";
 import Modal from "../components/Modals/Modal";
 import { authService, userService } from "../services";
 
@@ -77,7 +78,11 @@ const Test: React.FC<Props> = (props) => {
   //     .then((res) => {
   //       console.log(res);
   //     });
-
+  // const avatar = axios.get("http://api-dev.inposery.com/api/v1/users/avatar",{
+  //   headers: {
+  //     //         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXBlaWlkd0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOCR5Q0Y2dU0wUlEuNi52c3FZdTY2dGwud2JxSnRjMlJyNXI2L3NmR2FBZUhKaVEyNU1RUWJlNiIsInJvbGUiOiJTdXBlckFkbWluIiwiaWF0IjoxNjUzOTg2NTU1LCJleHAiOjE2NTQwNzI5NTV9.LOVI_89uMNtp-9g9rB9lcN4Zwa95jZxHnu9OeHZc1Vc`,
+  //     //       },
+  // }).then((res) => {console.log(res)});}))
   return (
     <>
       {/* <Modal
@@ -93,6 +98,8 @@ const Test: React.FC<Props> = (props) => {
       {/* {avatar()} */}
       <h1>Nama</h1>
       <h1>Nama</h1>
+
+      {/* <Notification /> */}
     </>
   );
 };

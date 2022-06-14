@@ -125,7 +125,7 @@
   width: 32px;
   height: 32px;
   border-radius: 999px;
-  background: var(--primer-blue);
+  background: var(--primary);
   position: absolute;
   left: -50px;
 }
@@ -153,7 +153,7 @@
   content: "";
   width: 100%;
   height: 5px;
-  background-color: var(--primer-blue);
+  background-color: var(--primary);
   position: absolute;
   bottom: 3px;
   z-index: 1;
@@ -164,7 +164,7 @@
 .faqLi {
   width: 100%;
   list-style-type: none;
-  border-bottom: 4px solid var(--light-gray);
+  border-bottom: 4px solid var(--grey);
   padding: 24px 0;
 }
 .faqQuestion {
@@ -201,7 +201,7 @@
 .faqIconActive span {
   transition: ease-in-out 0.25s all;
   position: absolute;
-  background-color: var(--primer-blue);
+  background-color: var(--primary);
   height: 3px;
   width: 100%;
 }
@@ -211,7 +211,7 @@
 .faqAnswer {
   transition: ease-in-out 0.15s all;
   overflow: hidden;
-  color: var(--light-gray);
+  color: var(--grey);
   max-height: 0px;
 }
 .faqAnswerOpen {
@@ -308,7 +308,7 @@
 }
 /* mobile */
 .mobile {
-  background-color: var(--primer-blue);
+  background-color: var(--primary);
   padding: 60px 0;
   position: relative;
   overflow: hidden;

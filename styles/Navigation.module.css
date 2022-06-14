@@ -21,6 +21,6 @@
     letter-spacing: -1px;
 }
 .navItem:hover,.navItem:active {
-    color: var(--primer-blue);
+    color: var(--primary);
     text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }

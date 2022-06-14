@@ -3,17 +3,26 @@
 @import 'Reset.module.css';
 
 :root {
-  --dark-blue: #011c7b;
-  --primer-blue: #5171e1;
+  /* --blue-dark: #011c7b;
+  --primary: #5171e1;
   --primer-light-blue: #c7d1f5;
   --black: #1e2833;
-  --error: #d51a52;
-  --attention: #ffe000;
-  --approval: #00a99d;
   --link: #5e4dcd;
-  --light-gray: #979797;
+  --grey: #979797;
   --lighter-gray: #f2f6fb;
+   */
+  --approval: #00A99D;
+  --attention: #FFE000;
+  --error: #D51A52;
+  --link: #5E4DCD;
+  --primary: #5171E1;
+  --black-primary: #1E2833;
+  --blue-soft: #F5F7F9;
+  --grey: #C4C4C4;
   --white: #ffffff;
+
+  --blue-dark: #011C7B;
+
 }
 * {
   box-sizing: border-box;
@@ -35,7 +44,16 @@ body {
   overflow-x: hidden;
 }
 a {
-  color: var(--primer-blue);
+  color: var(--primary);
+  cursor: pointer;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
 .flex-row-center {
   display: flex;
@@ -47,6 +65,15 @@ a {
 }
 .justify-stretch {
   justify-content: stretch;
+}
+.gap-20 {
+  gap: 20px;
+}
+.p-2 {
+  padding: 0.5rem;
+}
+.x-auto {
+  overflow-x: auto;
 }
 .container {
   max-width: 1200px;
@@ -71,21 +98,25 @@ a {
 .guestLogo {
   position: absolute;
   margin: 20px;
+  height: 30px;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 .text-blue-primer {
-  color: var(--primer-blue);
+  color: var(--primary);
 }
-
+.text-danger {
+  color: var(--error);
+}
 .btn-link {
   color: var(--white);
-  background-color: var(--primer-blue);
-  border: 1px solid var(--primer-blue);
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
   box-shadow: 2px 2px 2px 0px #5171e152;
 }
 .btn-link:hover {
-  color: var(--light-gray);
+  color: var(--grey);
   background-color: var(--white);
   box-shadow: 2px 2px 2px 0px #5171e152;
 }
@@ -136,7 +167,7 @@ a {
   height: 75px;
   font-size: 16px;
   border-radius: 50%;
-  background-color: var(--primer-blue);
+  background-color: var(--primary);
   color: var(--white);
   border: none;
 }
@@ -152,6 +183,27 @@ a {
   justify-content: space-around;
   align-items: center;
   gap: 20px;
+}
+.modalPlanText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding-top: 10px;
+}
+.modalPembayaran {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 10px;
+}
+.modalKonfirmasiPembayaran {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
 }
 
 .tokoForm {
@@ -171,12 +223,35 @@ a {
   justify-content: flex-end;
   gap: 20px;
 }
-
+.circle {
+  border-radius: 9999px;
+  width: 125px;
+  height: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+.bg-success {
+  background: var(--approval);
+}
+.box{
+  padding: 10px;
+}
+.bg-gray {
+  background-color: var(--lighter-gray);
+}
+.rounded {
+  border-radius: 8px;
+}
+.text-justify {
+  text-align: justify;
+}
 table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  border: 1px solid var(--light-gray);
+  border: 1px solid var(--grey);
 }
 thead {
   background-color:var(--lighter-gray);
@@ -185,9 +260,13 @@ tr {
   background-color: white;
 }
 td,th {
-  text-align: center;
-  width: max-content;
+  width: fit-content;
   padding: 8px;
+  text-align: left;
+}
+
+tr:nth-child(even){
+  background-color: var(--lighter-gray);
 }
 
 select {

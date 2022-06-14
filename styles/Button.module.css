@@ -14,29 +14,30 @@
 
 /* color */
 .btnPrimary {
-  background-color: var(--primer-blue);
+  background-color: var(--primary);
   color: var(--white);
-  border: 1px solid var(--primer-blue);
+  border: 1px solid var(--primary);
   /* box-shadow: 2px 2px 8px 2px #00000040; */
 }
 
 .btnInverse {
   background-color: var(--white);
   color: var(--black);
-  border: 1px solid var(--primer-blue);
+  border: 1px solid var(--primary);
   /* box-shadow: 2px 2px 8px 2px #00000040; */
 }
 
 /* hover */
 .btnPrimary:hover {
-  background-color: var(--dark-blue);
+  background-color: var(--blue-dark);
 }
 .btnInverse:hover {
   background-color: var(--lighter-gray);
 }
 /* size */
 .btnSmall {
-  font-size: small;
+  font-size: 12px;
+  padding: 8px 12px;
 }
 .btnMedium {
   font-size: medium;

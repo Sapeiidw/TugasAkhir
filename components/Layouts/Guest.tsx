@@ -1,14 +1,17 @@
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 const Guest: React.FC<Props> = (props) => {
   return (
     <>
-    <img src="/icons/InPOSery.svg" alt="guestLogo" className='guestLogo'/>
-    {props.children}
+      <Link href={"/"}>
+        <img src="/icons/InPOSery.svg" alt="guestLogo" className="guestLogo" />
+      </Link>
+      {props.children}
     </>
-  )
-}
+  );
+};
 
-export default Guest
+export default Guest;

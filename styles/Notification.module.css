@@ -1,0 +1,49 @@
+.notificationBox {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 10px #0002;
+    width: fit-content;
+    padding: 30px;
+    border-radius: 10px;
+    list-style: none;
+    position: absolute;
+    top: 130%;
+    right: 0;
+    width: max-content;
+}
+
+.notificationItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notificationText {
+    color: #555;
+    font-weight: 600;
+    text-decoration: none;
+}
+.notificationText:hover {
+    color: #000;
+}
+
+.notificationDate {
+    align-self: flex-end;
+    color: #777;
+}
+
+.circle {
+    background: var(--primary);
+    border-radius: 999px;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 10;
+}

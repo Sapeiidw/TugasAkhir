@@ -43,17 +43,17 @@ const Signin: React.FC<Props> = (props) => {
         dispatch({ name: "SET_SENDING", payload: true });
         storageService.setToken(resp.data.data.token);
         // window.location.replace("/dashboard");
-        Router.push("/dashboard");
+        Router.push("/toko");
       })
       .catch((error) => {
-        console.log("error", error.response.data.message);
-        dispatch({
-          name: "SET_ERROR",
-          payload: {
-            statusCode: error.response.data.statusCode,
-            message: error.response.data.message,
-          },
-        });
+        console.log("error", error);
+        // dispatch({
+        //   name: "SET_ERROR",
+        //   payload: {
+        //     statusCode: error,
+        //     message: error,
+        //   },
+        // });
       })
       .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
   };
@@ -64,7 +64,7 @@ const Signin: React.FC<Props> = (props) => {
   };
 
   const google = () => {
-    authService.google().then((resp) => Router.push("/dashboard"));
+    authService.google().then((resp) => Router.push("/toko"));
   };
   return (
     <Guest>
@@ -162,7 +162,7 @@ const Signin: React.FC<Props> = (props) => {
               text="Sign Up With Google"
               icon="/icons/google.svg"
             />
-            <Link href={"http://localhost:4000/api/v1/auth/google"}>
+            <Link href={"http://api-dev.inposery.com/api/v1/auth/google"}>
               <a target="_blank">google</a>
             </Link>
           </div>
