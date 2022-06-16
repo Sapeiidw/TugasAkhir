@@ -1,13 +1,11 @@
 export interface User {
-  data: {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-    phone: number;
-    verifed: boolean;
-    role: string;
-    token: string;
-    profilePhoto: null;
-  };
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  verifed: boolean;
+  role: string;
+  token?: any;
+  profilePhoto?: any;
 }

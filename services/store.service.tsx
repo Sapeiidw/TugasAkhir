@@ -1,7 +1,14 @@
 import { AxiosResponse } from "axios";
+import { StoreForm, GetStoreResponse, PostStoreResponse } from "../types";
 import api from "./api.service";
 
-export const stores = async (): Promise<AxiosResponse<any>> => {
+export const storesCreate = async (
+  data: StoreForm
+): Promise<AxiosResponse<PostStoreResponse>> => {
+  return await api.post("stores", data);
+};
+
+export const stores = async (): Promise<AxiosResponse<GetStoreResponse>> => {
   return await api.get("stores");
 };
 
@@ -9,6 +16,18 @@ export const store = async (id: any): Promise<AxiosResponse<any>> => {
   return await api.get(`stores/${id}`);
 };
 
+export const storeDestroy = async (id: any): Promise<AxiosResponse<any>> => {
+  return await api.delete(`stores/${id}`);
+};
+
 export const products = async (id: any): Promise<AxiosResponse<any>> => {
   return await api.get(`products/store/${id}`);
+};
+
+export const product = async (id: any): Promise<AxiosResponse<any>> => {
+  return await api.get(`products/${id}`);
+};
+
+export const productsDestroy = async (id: any): Promise<AxiosResponse<any>> => {
+  return await api.delete(`products/${id}`);
 };

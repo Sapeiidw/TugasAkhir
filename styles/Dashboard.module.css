@@ -72,7 +72,12 @@
     height: 80px;
 }
 .sidebarItems:hover {
-    background-color: var(--primer-light-blue);
+    background-color: var(--primary);
+    color: var(--white);
+}
+.active {
+    background: var(--primary);
+    color: var(--white)
 }
 .header {
     display: flex;
@@ -92,7 +97,7 @@
     height: 400px;
 }
 .main {
-    background-color: var(--primer-light-blue);
+    background-color: var(--blue-soft);
     margin-top: 75px;
     margin-left: 80px;
     padding: 20px;
@@ -114,6 +119,26 @@
     position: absolute;
     top: 20px;
     right: 20px;
+    cursor: pointer;
+}
+.cardOption:hover .cardOptionItem{
+    display: block;
+}
+.cardOptionItem {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    width: max-content;
+    z-index: 100;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 10px #1e28332b;
+}
+.cardOptionItem button {
+    background: none;
+    border: none;
+    color: var(--black);
 }
 .cardIcon {
     margin: 10px auto

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import React, { FormEvent, useEffect, useState } from "react";
+import Router from "next/router";
+import React, { FormEvent, useEffect, useReducer, useState } from "react";
 import {
   Button,
   Modal,
@@ -9,15 +10,64 @@ import {
   PlanCard,
   ModalEmpty,
 } from "../../components";
+import ErrorMsg from "../../components/Forms/ErrorMsg";
 import useModal from "../../hooks/useModal";
-import { stores } from "../../services/store.service";
+import { StoreReducer } from "../../reducer";
+import { stores, storesCreate } from "../../services/store.service";
 import style from "../../styles/Dashboard.module.css";
+import { Store } from "../../types";
 
-type Props = {
-  // toko?: any;
-};
+type Props = {};
 
 const Index: React.FC<Props> = (props) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [state, dispatch] = useReducer(StoreReducer, {
+    isSubmitted: false,
+    sending: false,
+    inputs: {
+      name: "",
+      phone: "",
+      address: "",
+    },
+    error: {
+      statusCode: 0,
+      message: "",
+    },
+  });
+  const { isSubmitted, inputs, sending } = state;
+  const { name, phone, address } = inputs;
+  const store = () => {
+    dispatch({ name: "SET_IS_SUBMITTED" });
+
+    if (!name && !phone && !address) return;
+
+    storesCreate(inputs)
+      .then((resp) => {
+        dispatch({ name: "SET_SENDING", payload: true });
+        console.log(resp);
+        Router.reload();
+      })
+      .catch((error) => {
+        console.log("error", error);
+        dispatch({
+          name: "SET_ERROR",
+          payload: {
+            statusCode: error,
+            message: error,
+          },
+        });
+      })
+      .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
+  };
+  const [toko, setToko] = useState<Store[]>([]);
+  const [error, setError] = useState();
+  const bayar = true;
+  console.log(error);
+  const hanldeSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    store();
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       console.log("we are running on the client");
@@ -35,19 +85,7 @@ const Index: React.FC<Props> = (props) => {
       console.log("we are running on the server");
     }
   }, []);
-  // console.log(props.toko);
-  // const toko = 7;
-  const [toko, setToko] = useState([]);
-  const [error, setError] = useState();
-  const bayar = true;
-  const { open, toggler } = useModal();
-  const hanldeSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault;
-    return null;
-  };
 
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [deleting, setDeleting] = useState<boolean>(false);
   return (
     <Dashboard>
       <header className={style.header}>
@@ -69,18 +107,17 @@ const Index: React.FC<Props> = (props) => {
         />
       </header>
 
-      {toko ? (
+      {toko[0] != null ? (
         <div className={style.mainContent}>
           {toko.map((key) => (
-            <Link href={`toko/${key.id}`}>
-              <a>
-                <StoreCard key={key.id} name={key.name} address={key.address} />
-              </a>
-            </Link>
+            <StoreCard
+              key={key.id}
+              link={`toko/${key.id}`}
+              id={key.id}
+              name={key.name}
+              address={key.address}
+            />
           ))}
-          {/* <StoreCard />
-          <StoreCard />
-          <StoreCard /> */}
         </div>
       ) : (
         <div className={style.emptyStore}>
@@ -97,7 +134,7 @@ const Index: React.FC<Props> = (props) => {
         // onBack={() => null}
       >
         {bayar ? (
-          <form className="tokoForm" onSubmit={hanldeSubmit}>
+          <form className="tokoForm" onSubmit={(e) => hanldeSubmit(e)}>
             <div className="formHeader">
               <h1>Buat toko anda</h1>
               <p>
@@ -110,21 +147,62 @@ const Index: React.FC<Props> = (props) => {
               placeholder="Nama Toko Anda"
               type="text"
               label="Nama Toko"
-              onChange={() => null}
+              onChange={(event) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: {
+                    name: (event.target as HTMLInputElement).value,
+                  },
+                })
+              }
+            />
+            <ErrorMsg
+              isSubmitted={isSubmitted}
+              value={name}
+              isEmpty={!name}
+              name="Name"
+              min={4}
             />
             <Input
-              name="notelp"
+              name="phone"
               placeholder="No Telp Toko Anda"
               type="text"
               label="No Telpon Toko"
-              onChange={() => null}
+              onChange={(event) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: {
+                    phone: (event.target as HTMLInputElement).value,
+                  },
+                })
+              }
+            />
+            <ErrorMsg
+              isSubmitted={isSubmitted}
+              value={phone}
+              isEmpty={!phone}
+              name="No telp"
+              min={12}
             />
             <Input
               name="alamat"
               placeholder="Alamat Toko Anda"
               type="text"
               label="Alamat Toko"
-              onChange={() => null}
+              onChange={(event) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: {
+                    address: (event.target as HTMLInputElement).value,
+                  },
+                })
+              }
+            />
+            <ErrorMsg
+              isSubmitted={isSubmitted}
+              value={address}
+              isEmpty={!address}
+              name="Address"
             />
             <Input
               name="photo"
@@ -158,12 +236,4 @@ const Index: React.FC<Props> = (props) => {
   );
 };
 
-// export const getStaticProps = async () => {
-//   const toko = await stores().then((res) => res.data);
-//   return {
-//     props: {
-//       toko,
-//     },
-//   };
-// };
 export default Index;

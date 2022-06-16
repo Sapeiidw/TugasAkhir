@@ -3,11 +3,16 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Notification from "../Navigations/Notification";
 import style from "../../styles/Dashboard.module.css";
+import { useRouter } from "next/router";
 
 type Props = {};
 
 const Toko: React.FC<Props> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const router = useRouter();
+  console.log(router.pathname);
+  console.log(router.query);
+  console.log(router.asPath);
   return (
     <>
       <nav className={style.nav}>
@@ -34,38 +39,63 @@ const Toko: React.FC<Props> = (props) => {
       </nav>
       <div className={style.sidebar}>
         <div className={style.sidebarTop}>
-          <Link href="/">
-            <a className={style.sidebarItems}>
+          <Link href={`/toko/${router.query.id}`}>
+            <a
+              className={`${
+                router.pathname == "/toko/[id]" ? style.active : ""
+              } ${style.sidebarItems}`}
+            >
               <img src="/icons/dashboard.svg" alt="" />
               dashboard
             </a>
           </Link>
-          <Link href="/">
-            <a className={style.sidebarItems}>
+          <Link href={`/toko/${router.query.id}/inventory`}>
+            <a
+              className={`${
+                router.pathname == `/toko/[id]/inventory` ? style.active : ""
+              } ${style.sidebarItems}`}
+            >
               <img src="/icons/inventory.svg" alt="" />
               inventory
             </a>
           </Link>
           <Link href="/">
-            <a className={style.sidebarItems}>
+            <a
+              className={`${router.pathname == "/" ? style.active : ""} ${
+                style.sidebarItems
+              }`}
+            >
               <img src="/icons/transaksi.svg" alt="" />
               transaksi
             </a>
           </Link>
           <Link href="/">
-            <a className={style.sidebarItems}>
+            <a
+              className={`${router.pathname == "/" ? "active" : ""} ${
+                style.sidebarItems
+              }`}
+            >
               <img src="/icons/laporan.svg" alt="" />
               laporan
             </a>
           </Link>
           <Link href="/">
-            <a className={style.sidebarItems}>
+            <a
+              className={`${router.pathname == "/" ? "active" : ""} ${
+                style.sidebarItems
+              }`}
+            >
               <img src="/icons/manajemen.svg" alt="" />
               manajemen
             </a>
           </Link>
+
           <Link href="/">
-            <a className={style.sidebarItems}>
+            <a
+              className={`${router.pathname == "/" ? "active" : ""} ${
+                style.sidebarItems
+              }`}
+            >
               <img src="/icons/pengaturan.svg" alt="" />
               pengaturan
             </a>
@@ -73,7 +103,11 @@ const Toko: React.FC<Props> = (props) => {
         </div>
         <div className={style.sidebarBottom}>
           <Link href="/">
-            <a className={style.sidebarItems}>
+            <a
+              className={`${router.pathname == "/" ? "active" : ""} ${
+                style.sidebarItems
+              }`}
+            >
               <img src="/icons/questionCircle.svg" alt="" />
               F.A.Q
             </a>

@@ -2,8 +2,8 @@ import axios, { AxiosRequestConfig } from "axios";
 import { storageService } from ".";
 
 const main = axios.create({
-  baseURL: "http://localhost:4000/api/v1/",
-  // baseURL: "https://api-dev.inposery.com/api/v1/",
+  // baseURL: "http://localhost:4000/api/v1/",
+  baseURL: "https://api-dev.inposery.com/api/v1/",
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "application/json",
@@ -16,6 +16,9 @@ main.interceptors.request.use(
     const userToken = storageService.getToken() || "";
     config.headers = {
       Authorization: userToken,
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
     };
     return config;
   },
