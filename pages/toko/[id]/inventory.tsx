@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, SyntheticEvent, useEffect, useState } from "react";
-import { Toko } from "../../../components";
+import { Table, Toko } from "../../../components";
 import {
   store,
   products,
   productsDestroy,
 } from "../../../services/store.service";
 import style from "../../../styles/Inventory.module.css";
-import { Product, Store } from "../../../types";
+import { Product, Store, TableColumn } from "../../../types";
 
 type Props = {};
 
@@ -38,11 +38,13 @@ const Inventory: React.FC<Props> = (props) => {
         console.log(err);
       });
   }, [router.isReady]);
+
   const handleDelete = async (e: SyntheticEvent, id: any, index: number) => {
     setProduks(produk.filter((v, i) => i !== index));
     setProduk(produk.filter((v, i) => i !== index));
     productsDestroy(id);
   };
+
   const hanldeSearch = (e: SyntheticEvent) => {
     const search = (e.target as HTMLInputElement).value;
     if (search == "") {
@@ -54,13 +56,51 @@ const Inventory: React.FC<Props> = (props) => {
     );
     setProduk(result);
   };
+
+  const productColumn: TableColumn<Product>[] = [
+    {
+      key: "id",
+      title: "NO",
+      dataType: "numbering",
+    },
+    {
+      key: "id",
+      title: "ID",
+    },
+    {
+      key: "name",
+      title: "Name",
+    },
+    {
+      key: "category",
+      title: "Category",
+      render: (value) => `${value.category.name}`,
+    },
+    {
+      key: "unit",
+      title: "Stock",
+    },
+    {
+      key: "price",
+      title: "Modal",
+      render: (value) => `${value.price.toLocaleString()}`,
+    },
+    {
+      key: "groceryPrice",
+      title: "Modal",
+      render: (value) => `${value.groceryPrice.toLocaleString()}`,
+    },
+    {
+      key: "description",
+      title: "Deskripsi",
+    },
+  ];
   return (
     <Toko>
       <header>
         <div className={`.flex-row ${style.inventoryToko}`}>
           <img src="/images/avatar.png" alt="avatar" />
           <div className="flex-col">
-            {JSON.stringify(toko)}
             <h1>{toko?.name}</h1>
             <p>{toko?.address}</p>
           </div>
@@ -95,7 +135,8 @@ const Inventory: React.FC<Props> = (props) => {
           <button>Tambah Produk</button>
         </div>
         <div className="x-auto">
-          <table>
+          <Table columns={productColumn} data={produk} />
+          {/* <table>
             <thead>
               <tr>
                 <th>Id Barang</th>
@@ -129,7 +170,7 @@ const Inventory: React.FC<Props> = (props) => {
                 ))}
               </tbody>
             )}
-          </table>
+          </table> */}
         </div>
         {!produk && (
           <div className={style.emptyInventory}>

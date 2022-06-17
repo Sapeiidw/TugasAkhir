@@ -6,3 +6,6 @@ export * from "./User/User";
 export * from "./Store/Store";
 export * from "./Products/Product";
 export * from "./Category/Category";
+export * from "./Subscribe/Subscribe";
+
+export * from "./Component/Table";

@@ -31,11 +31,7 @@ export const google = async (): Promise<AxiosResponse<any>> => {
 };
 
 export const profile = async (): Promise<AxiosResponse<Profile>> => {
-  return await api.get("auth/user", {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-  });
+  return await api.get("auth/user");
 };
 
 export const forgotPassword = async (
