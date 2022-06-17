@@ -3,14 +3,6 @@
 @import 'Reset.module.css';
 
 :root {
-  /* --blue-dark: #011c7b;
-  --primary: #5171e1;
-  --primer-light-blue: #c7d1f5;
-  --black: #1e2833;
-  --link: #5e4dcd;
-  --grey: #979797;
-  --lighter-gray: #f2f6fb;
-   */
   --approval: #00A99D;
   --attention: #FFE000;
   --error: #D51A52;
