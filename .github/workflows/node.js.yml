@@ -33,5 +33,5 @@ jobs:
           password: "Inposery2022"
           port: 22
           source: ".next"
-          target: "/var/www/frontend-tim-d-batch-2/"
+          target: "/var/www/frontend-tim-d-batch-2/.next"
           strip_components: 1
