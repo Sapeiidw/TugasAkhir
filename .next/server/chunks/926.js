@@ -11,25 +11,18 @@ exports.modules = {
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2167);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9234);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9575);
 
 
 const main = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
     // baseURL: "http://localhost:4000/api/v1/",
-    baseURL: "https://api-dev.inposery.com/api/v1/",
-    headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json"
-    }
+    baseURL: "https://api-dev.inposery.com/api/v1/"
 });
 main.interceptors.request.use(function(config) {
     // Do something before request is sent
     const userToken = ___WEBPACK_IMPORTED_MODULE_1__/* .storageService.getToken */ .Hw.getToken() || "";
     config.headers = {
-        Authorization: userToken,
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
+        Authorization: userToken
     };
     return config;
 }, function(error) {
@@ -41,7 +34,7 @@ main.interceptors.request.use(function(config) {
 
 /***/ }),
 
-/***/ 9234:
+/***/ 9575:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -51,7 +44,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Hw": () => (/* reexport */ storage_service_namespaceObject)
 });
 
-// UNUSED EXPORTS: Login, userService
+// UNUSED EXPORTS: subscribeService, userService
 
 // NAMESPACE OBJECT: ./services/auth.service.tsx
 var auth_service_namespaceObject = {};
@@ -92,11 +85,7 @@ const google = async ()=>{
     });
 };
 const profile = async ()=>{
-    return await api_service/* default.get */.Z.get("auth/user", {
-        headers: {
-            "Access-Control-Allow-Origin": "*"
-        }
-    });
+    return await api_service/* default.get */.Z.get("auth/user");
 };
 const forgotPassword = async (data)=>{
     return await api_service/* default.post */.Z.post("auth/forgot-password", data);
@@ -125,6 +114,18 @@ const removeToken = ()=>localStorage.removeItem("TOKEN")
 ;
 const decodeToken = (token)=>{
     external_jwt_decode_default()(token);
+};
+
+;// CONCATENATED MODULE: ./services/subscribe.service.tsx
+
+const GetSubscribePlans = async ()=>{
+    return await api.get("/subscribe-orders/subscribe-plans");
+};
+const GetSubscribeHistory = async ()=>{
+    return await api.get("/subscribe-orders/subscribe-history");
+};
+const GetSubscribeHistoryId = async (id)=>{
+    return await api.get(`/subscribe-orders/subscribe-history/${id}`);
 };
 
 ;// CONCATENATED MODULE: ./services/index.tsx

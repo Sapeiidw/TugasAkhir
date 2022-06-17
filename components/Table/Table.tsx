@@ -59,6 +59,7 @@ const Table: React.FC<TableProps> = (props) => {
                   .fill(0)
                   .map((d, index) => (
                     <button
+                      key={index}
                       onClick={() => setSelectedPage(index)}
                       style={{
                         color: selectedPage === index ? "red" : undefined,

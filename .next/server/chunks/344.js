@@ -294,6 +294,7 @@ __webpack_require__.d(__webpack_exports__, {
   "Ak": () => (/* reexport */ Cards_ReviewCard),
   "r7": () => (/* reexport */ Ratings_StarIcon),
   "p6": () => (/* reexport */ Cards_StoreCard),
+  "iA": () => (/* reexport */ Table/* default */.Z),
   "VQ": () => (/* reexport */ Layouts_Toko)
 });
 
@@ -857,6 +858,8 @@ const Input = (props)=>{
 };
 /* harmony default export */ const Forms_Input = (Input);
 
+// EXTERNAL MODULE: ./components/Table/Table.tsx
+var Table = __webpack_require__(4952);
 ;// CONCATENATED MODULE: ./components/Layouts/Layout.tsx
 
 
@@ -1375,6 +1378,7 @@ const Footer = (props)=>{
 /* harmony default export */ const Footers_Footer = (Footer);
 
 ;// CONCATENATED MODULE: ./components/index.tsx
+
 
 
 

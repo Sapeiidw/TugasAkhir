@@ -15,8 +15,8 @@
   "/toko/[id]/inventory": "pages/toko/[id]/inventory.html",
   "/toko/[id]/produk/[pid]": "pages/toko/[id]/produk/[pid].html",
   "/toko": "pages/toko.html",
-  "/toko/inventory": "pages/toko/inventory.html",
   "/toko/riwayat-transaksi": "pages/toko/riwayat-transaksi.html",
+  "/toko/table": "pages/toko/table.html",
   "/toko/test": "pages/toko/test.html",
   "/_error": "pages/_error.js"
 }
