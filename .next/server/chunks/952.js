@@ -105,8 +105,8 @@ const Table = (props)=>{
                                 id: "perpage",
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("option", {
-                                        value: "10",
-                                        children: 10
+                                        value: "2",
+                                        children: 2
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("option", {
                                         value: "20",
