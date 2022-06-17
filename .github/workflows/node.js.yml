@@ -33,4 +33,4 @@ jobs:
           password: Inposery2022
           port: 22
           source: "./next"
-          target: "/var/www/"
+          target: "/var/www/frontend-tim-d-batch-2/"
