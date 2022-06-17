@@ -30,8 +30,7 @@ jobs:
         with:
           host: "103.183.75.5"
           username: "inposery"
+          password: "Inposery2022"
           port: 22
-          key: "~/.ssh/id_rsa"
-          passphrase: ""
           source: "./next"
           target: "/var/www/frontend-tim-d-batch-2/"
