@@ -34,4 +34,3 @@ jobs:
           port: 22
           source: "./next"
           target: "/var/www/frontend-tim-d-batch-2/"
-          script: pwd
