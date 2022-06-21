@@ -46,14 +46,13 @@ const Signin: React.FC<Props> = (props) => {
         Router.push("/toko");
       })
       .catch((error) => {
-        console.log("error", error);
-        // dispatch({
-        //   name: "SET_ERROR",
-        //   payload: {
-        //     statusCode: error,
-        //     message: error,
-        //   },
-        // });
+        dispatch({
+          name: "SET_ERROR",
+          payload: {
+            statusCode: error.response.data.statusCode,
+            message: error.response.data.message,
+          },
+        });
       })
       .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
   };
@@ -144,24 +143,25 @@ const Signin: React.FC<Props> = (props) => {
               <Link href="/auth/forgot-password">
                 <a className={style.forgotPasswordLink}>Forgot Password?</a>
               </Link>
+
+              <Button
+                color="btnPrimary"
+                size="btnBig"
+                text="Login"
+                disabled={sending}
+                onClick={(e) => handleSubmit(e)}
+              />
+              <div className={style.stroke}>
+                <span>Or</span>
+              </div>
+              <Button
+                onClick={() => google()}
+                color="btnInverse"
+                size="btnMedium"
+                text="Sign Up With Google"
+                icon="/icons/google.svg"
+              />
             </form>
-            <Button
-              color="btnPrimary"
-              size="btnBig"
-              text="Login"
-              disabled={sending}
-              onClick={(e) => handleSubmit(e)}
-            />
-            <div className={style.stroke}>
-              <span>Or</span>
-            </div>
-            <Button
-              onClick={() => google()}
-              color="btnInverse"
-              size="btnMedium"
-              text="Sign Up With Google"
-              icon="/icons/google.svg"
-            />
             <Link href={"http://api-dev.inposery.com/api/v1/auth/google"}>
               <a target="_blank">google</a>
             </Link>

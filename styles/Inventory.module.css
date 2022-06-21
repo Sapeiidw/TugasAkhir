@@ -15,12 +15,12 @@
     display: flex;
     gap: 10px;
 }
-.inventoryFungsi button {
+/* .inventoryFungsi button {
     padding: 6px 12px;
     border-radius: 8px;
     border: 1px solid var(--primary);
     background: var(--primary);
-}
+} */
 .inventoryContent {
     background: var(--white);
     padding: 10px;

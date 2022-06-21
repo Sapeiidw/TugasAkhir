@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TableProps } from "../../types";
+import Button from "../Buttons/Button";
 
 const Table: React.FC<TableProps> = (props) => {
   const [perPage, setPerpage] = useState<number>(10);
@@ -51,47 +52,21 @@ const Table: React.FC<TableProps> = (props) => {
               })
             : null}
         </tbody>
-
-        <div>
+      </table>
+      <div className="p-2 flex-row-center justify-between w-full">
+        <div className="flex-row-center items-center">
           <div>
-            {localData
-              ? Array(localData.length)
-                  .fill(0)
-                  .map((d, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedPage(index)}
-                      style={{
-                        color: selectedPage === index ? "red" : undefined,
-                      }}
-                    >
-                      {index + 1}
-                    </button>
-                  ))
-              : null}
-          </div>
-
-          <div>
-            {selectedPage >= 1 ? (
-              <button onClick={() => setSelectedPage((state) => state - 1)}>
-                Sebelumnya
-              </button>
-            ) : null}
-            {localData &&
-            localData[selectedPage] &&
-            selectedPage !== localData.length - 1 ? (
-              <button onClick={() => setSelectedPage((state) => state + 1)}>
-                Selanjutnya
-              </button>
-            ) : null}
-          </div>
-
-          <div>
+            <label htmlFor="perPage">Rows per page</label>
             <select
               onChange={(e) => setPerpage(Number(e.target.value))}
               value={perPage}
-              name="perpage"
-              id="perpage"
+              name="perPage"
+              id="perPage"
+              style={{
+                width: "min-content",
+                border: "1px solid transparent",
+                background: "transparent",
+              }}
             >
               <option value={"2"}>{2}</option>
               <option value={"20"}>{20}</option>
@@ -100,7 +75,40 @@ const Table: React.FC<TableProps> = (props) => {
             </select>
           </div>
         </div>
-      </table>
+        <div className="flex-row-center justify-between">
+          {selectedPage >= 1 ? (
+            <Button
+              text="Sebelumnya"
+              size="btnSmall"
+              color="btnInverse"
+              onClick={() => setSelectedPage((state) => state - 1)}
+            />
+          ) : null}
+          {localData
+            ? Array(localData.length)
+                .fill(0)
+                .map((d, index) => (
+                  <Button
+                    key={index}
+                    text={`${index + 1}`}
+                    size="btnSmall"
+                    color={index === selectedPage ? "btnPrimary" : "btnInverse"}
+                    onClick={() => setSelectedPage(index)}
+                  />
+                ))
+            : null}
+          {localData &&
+          localData[selectedPage] &&
+          selectedPage !== localData.length - 1 ? (
+            <Button
+              text="Selanjutnya"
+              size="btnSmall"
+              color="btnInverse"
+              onClick={() => setSelectedPage((state) => state + 1)}
+            />
+          ) : null}
+        </div>
+      </div>
     </>
   );
 };

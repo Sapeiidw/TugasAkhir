@@ -75,6 +75,12 @@ a {
   margin: auto;
   padding: 0 15px;
 }
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
 .mx-auto {
   margin: auto;
 }
@@ -262,7 +268,6 @@ table tr:nth-child(even) {
 }
 
 td,th {
-  border: 1px solid var(--black-primary);
   width: fit-content;
   padding: 8px;
   text-align: left;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { FormEvent, SyntheticEvent, useEffect, useState } from "react";
-import { Table, Toko } from "../../../components";
+import { Button, Table, Toko } from "../../../components";
 import {
   store,
   products,
@@ -94,6 +94,18 @@ const Inventory: React.FC<Props> = (props) => {
       key: "description",
       title: "Deskripsi",
     },
+    {
+      key: "id",
+      title: "Action",
+      render: (value, index) => (
+        <Button
+          text="Hapus"
+          size="btnSmall"
+          color="btnPrimary"
+          onClick={(e) => handleDelete(e, value.id, index)}
+        />
+      ),
+    },
   ];
   return (
     <Toko>
@@ -111,8 +123,18 @@ const Inventory: React.FC<Props> = (props) => {
             <Link href={"/"}>Inventory</Link>
           </div>
           <div className={style.inventoryFungsi}>
-            <button>+ Satuan</button>
-            <button>+ Kategori</button>
+            <Button
+              text="Satuan"
+              color="btnInverse"
+              size="btnSmall"
+              icon="/icons/Plus.svg"
+            />
+            <Button
+              text="Kategori"
+              color="btnInverse"
+              size="btnSmall"
+              icon="/icons/Plus.svg"
+            />
           </div>
         </div>
       </header>
@@ -132,7 +154,12 @@ const Inventory: React.FC<Props> = (props) => {
             placeholder="Cari produk..."
             onChange={(e) => hanldeSearch(e)}
           />
-          <button>Tambah Produk</button>
+          <Button
+            icon="/icons/Plus.svg"
+            text="Tambah Produk"
+            size="btnSmall"
+            color="btnPrimary"
+          />
         </div>
         <div className="x-auto">
           <Table columns={productColumn} data={produk} />

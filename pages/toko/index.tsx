@@ -103,7 +103,7 @@ const Index: React.FC<Props> = (props) => {
           color="btnPrimary"
           text="+ Create New Store"
           onClick={() => setShowModal(true)}
-          size="big"
+          size="btnMedium"
         />
       </header>
 
