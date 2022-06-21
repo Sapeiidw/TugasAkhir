@@ -15,3 +15,12 @@ export interface Product {
 export interface ProductResponse {
   data: Product[];
 }
+
+export interface ProductForm {
+  category: string;
+  name: string;
+  description: string;
+  unit: number;
+  groceryPrice: number;
+  price: number;
+}

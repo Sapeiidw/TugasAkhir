@@ -59,6 +59,9 @@ a {
 .justify-stretch {
   justify-content: stretch;
 }
+.gap-10 {
+  gap: 10px;
+}
 .gap-20 {
   gap: 20px;
 }
@@ -264,7 +267,10 @@ table tr {
   background-color: var(--white);
 }
 table tr:nth-child(even) {
-  background-color: var(--soft-grey);
+  background-color: var(--blue-soft);
+}
+table tr:hover {
+  background-color: var(--blue-medium);
 }
 
 td,th {

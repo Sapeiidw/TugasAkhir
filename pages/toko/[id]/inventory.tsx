@@ -1,38 +1,83 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { FormEvent, SyntheticEvent, useEffect, useState } from "react";
-import { Button, Table, Toko } from "../../../components";
+import React, {
+  FormEvent,
+  SyntheticEvent,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import {
-  store,
-  products,
-  productsDestroy,
-} from "../../../services/store.service";
+  Button,
+  Input,
+  ModalEmpty,
+  Select,
+  Table,
+  Toko,
+} from "../../../components";
+import ErrorMsg from "../../../components/Forms/ErrorMsg";
+import { ProductReducer } from "../../../reducer";
+import {
+  categoryService,
+  productService,
+  storeService,
+} from "../../../services";
 import style from "../../../styles/Inventory.module.css";
-import { Product, Store, TableColumn } from "../../../types";
+import { Category, Product, Store, TableColumn } from "../../../types";
 
 type Props = {};
 
 const Inventory: React.FC<Props> = (props) => {
+  const [modal, setModal] = useState<boolean>(false);
   const router = useRouter();
-  const id = router.query.id;
+  const storeId = router.query.id;
   const [toko, setToko] = useState<Store>();
   const [produk, setProduk] = useState<Product[]>([]);
   const [produks, setProduks] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [filter, setFilter] = useState("");
+  const [state, dispatch] = useReducer(ProductReducer, {
+    isSubmitted: false,
+    sending: false,
+    inputs: {
+      name: "",
+      description: "",
+      unit: 0,
+      groceryPrice: 0,
+      price: 0,
+      category: "",
+    },
+    error: {
+      statusCode: 0,
+      message: "",
+    },
+  });
+  const { isSubmitted, inputs, sending } = state;
+  const { name, description, unit, groceryPrice, price } = inputs;
+
   useEffect(() => {
     if (!router.isReady) return;
-    store(id)
+    storeService
+      .store(storeId)
       .then((res) => {
         setToko(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    products(id)
+    productService
+      .products(storeId)
       .then((res) => {
         setProduk(res.data.data);
         setProduks(res.data.data);
-        console.log(produk);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    categoryService
+      .categories()
+      .then((res) => {
+        setCategories(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +87,7 @@ const Inventory: React.FC<Props> = (props) => {
   const handleDelete = async (e: SyntheticEvent, id: any, index: number) => {
     setProduks(produk.filter((v, i) => i !== index));
     setProduk(produk.filter((v, i) => i !== index));
-    productsDestroy(id);
+    productService.destroyProduct(id);
   };
 
   const hanldeSearch = (e: SyntheticEvent) => {
@@ -55,6 +100,34 @@ const Inventory: React.FC<Props> = (props) => {
       val.name.toLowerCase().includes(search.toLowerCase())
     );
     setProduk(result);
+  };
+
+  const addProduct = () => {
+    dispatch({ name: "SET_IS_SUBMITTED" });
+
+    if (!name && !description && !unit && !groceryPrice && !price) return;
+
+    productService
+      .addProduct(storeId, inputs)
+      .then((resp) => {
+        dispatch({ name: "SET_SENDING", payload: true });
+        setProduk([...produk, resp.data.data]);
+      })
+      .catch((error) => {
+        dispatch({
+          name: "SET_ERROR",
+          payload: {
+            statusCode: error.response.data.statusCode,
+            message: error.response.data.message,
+          },
+        });
+      })
+      .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
+  };
+
+  const handleAddProduct = (e: FormEvent) => {
+    e.preventDefault();
+    addProduct();
   };
 
   const productColumn: TableColumn<Product>[] = [
@@ -107,8 +180,10 @@ const Inventory: React.FC<Props> = (props) => {
       ),
     },
   ];
+
   return (
     <Toko>
+      {state.error.message}
       <header>
         <div className={`.flex-row ${style.inventoryToko}`}>
           <img src="/images/avatar.png" alt="avatar" />
@@ -124,16 +199,16 @@ const Inventory: React.FC<Props> = (props) => {
           </div>
           <div className={style.inventoryFungsi}>
             <Button
-              text="Satuan"
+              text="Tambah Satuan"
               color="btnInverse"
               size="btnSmall"
-              icon="/icons/Plus.svg"
+              // icon="/icons/Plus.svg"
             />
             <Button
-              text="Kategori"
+              text="Tambah Kategori"
               color="btnInverse"
               size="btnSmall"
-              icon="/icons/Plus.svg"
+              // icon="/icons/Plus.svg"
             />
           </div>
         </div>
@@ -155,49 +230,158 @@ const Inventory: React.FC<Props> = (props) => {
             onChange={(e) => hanldeSearch(e)}
           />
           <Button
-            icon="/icons/Plus.svg"
+            // icon="/icons/Plus.svg"
             text="Tambah Produk"
             size="btnSmall"
             color="btnPrimary"
+            onClick={() => setModal(true)}
           />
         </div>
         <div className="x-auto">
           <Table columns={productColumn} data={produk} />
-          {/* <table>
-            <thead>
-              <tr>
-                <th>Id Barang</th>
-                <th>Nama</th>
-                <th>Kategori</th>
-                <th>Stok</th>
-                <th>Harga</th>
-                <th>Modal</th>
-                <th>Keterangan</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            {produk && (
-              <tbody>
-                {produk.map((item, index) => (
-                  <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.category.name}</td>
-                    <td>{item.unit.toLocaleString()}</td>
-                    <td>Rp. {item.price.toLocaleString()}</td>
-                    <td>Rp. {item.groceryPrice.toLocaleString()}</td>
-                    <td>{item.description}</td>
-                    <td className={style.action}>
-                      <button>Edit</button>
-                      <button onClick={(e) => handleDelete(e, item.id, index)}>
-                        Hapus
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            )}
-          </table> */}
+          <ModalEmpty
+            title="Tambah Produk"
+            visible={modal}
+            onOK={() => null}
+            onCancel={() => setModal(!modal)}
+            footer={<></>}
+          >
+            <form
+              onSubmit={(e) => handleAddProduct(e)}
+              className="flex flex-column gap-10"
+            >
+              <div>
+                <Input
+                  name="name"
+                  onChange={(e) =>
+                    dispatch({
+                      name: "SET_INPUTS",
+                      payload: { name: (e.target as HTMLInputElement).value },
+                    })
+                  }
+                  placeholder="Nama Produk"
+                  type="text"
+                  label="Nama Produk"
+                />
+                <ErrorMsg
+                  isSubmitted={isSubmitted}
+                  value={name}
+                  isEmpty={!name}
+                  name="Nama Produk"
+                  min={4}
+                  max={12}
+                />
+              </div>
+              <div>
+                <Select
+                  data={categories}
+                  k="name"
+                  label="Kategori"
+                  name="category"
+                  onChange={(e) =>
+                    dispatch({
+                      name: "SET_INPUTS",
+                      payload: {
+                        category: (e.target as HTMLSelectElement).value,
+                      },
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <Input
+                  name="description"
+                  onChange={(e) =>
+                    dispatch({
+                      name: "SET_INPUTS",
+                      payload: {
+                        description: (e.target as HTMLInputElement).value,
+                      },
+                    })
+                  }
+                  placeholder="Deskripsi Produk"
+                  type="text"
+                  label="Deskripsi Produk"
+                />
+                <ErrorMsg
+                  isSubmitted={isSubmitted}
+                  value={description}
+                  isEmpty={!description}
+                  name="Deskripsi"
+                  min={4}
+                  max={12}
+                />
+              </div>
+              <div>
+                <Input
+                  name="groceryPrice"
+                  onChange={(e) =>
+                    dispatch({
+                      name: "SET_INPUTS",
+                      payload: {
+                        groceryPrice: (e.target as HTMLInputElement)
+                          .valueAsNumber,
+                      },
+                    })
+                  }
+                  placeholder="Harga Modal"
+                  type="number"
+                  label="Harga Modal"
+                />
+                <ErrorMsg
+                  isSubmitted={isSubmitted}
+                  value={groceryPrice.toLocaleString()}
+                  isEmpty={!groceryPrice}
+                  name="Harga Modal"
+                  min={4}
+                  max={12}
+                />
+              </div>
+
+              <div className="flex-row-center gap-10">
+                <div>
+                  <Select
+                    k=""
+                    data={[{ satuan: "Lusin", unit: "12" }]}
+                    name=""
+                    label="Satuan"
+                    onChange={() => null}
+                  />
+                </div>
+                <div>
+                  <Input
+                    name="price"
+                    onChange={(e) =>
+                      dispatch({
+                        name: "SET_INPUTS",
+                        payload: {
+                          price: (e.target as HTMLInputElement).valueAsNumber,
+                        },
+                      })
+                    }
+                    placeholder="Harga Jual"
+                    type="number"
+                    label="Harga Jual"
+                  />
+                  <ErrorMsg
+                    isSubmitted={isSubmitted}
+                    value={price.toLocaleString()}
+                    isEmpty={!price}
+                    name="Harga Modal"
+                    min={4}
+                    max={12}
+                  />
+                </div>
+              </div>
+              <Button
+                type="submit"
+                text="Simpan Produk"
+                size="btnBig"
+                color="btnPrimary"
+                onClick={(e) => handleAddProduct(e)}
+              />
+            </form>
+          </ModalEmpty>
         </div>
         {!produk && (
           <div className={style.emptyInventory}>

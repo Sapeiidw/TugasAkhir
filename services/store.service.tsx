@@ -19,15 +19,3 @@ export const store = async (id: any): Promise<AxiosResponse<any>> => {
 export const storeDestroy = async (id: any): Promise<AxiosResponse<any>> => {
   return await api.delete(`stores/${id}`);
 };
-
-export const products = async (id: any): Promise<AxiosResponse<any>> => {
-  return await api.get(`products/store/${id}`);
-};
-
-export const product = async (id: any): Promise<AxiosResponse<any>> => {
-  return await api.get(`products/${id}`);
-};
-
-export const productsDestroy = async (id: any): Promise<AxiosResponse<any>> => {
-  return await api.delete(`products/${id}`);
-};

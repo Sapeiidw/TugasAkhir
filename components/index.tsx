@@ -11,6 +11,7 @@ export { default as RatingDisplay } from "./Ratings/RatingDisplay";
 export { default as StarIcon } from "./Ratings/StarIcon";
 export { default as Button } from "./Buttons/Button";
 export { default as Input } from "./Forms/Input";
+export { default as Select } from "./Forms/Select";
 export { default as Table } from "./Table/Table";
 
 export { default as Layout } from "./Layouts/Layout";

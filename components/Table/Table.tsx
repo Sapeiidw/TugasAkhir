@@ -3,7 +3,7 @@ import { TableProps } from "../../types";
 import Button from "../Buttons/Button";
 
 const Table: React.FC<TableProps> = (props) => {
-  const [perPage, setPerpage] = useState<number>(10);
+  const [perPage, setPerpage] = useState<number>(2);
   const [localData, setLocalData] = useState<any[][]>();
   const [selectedPage, setSelectedPage] = useState<number>(0);
 
@@ -75,7 +75,7 @@ const Table: React.FC<TableProps> = (props) => {
             </select>
           </div>
         </div>
-        <div className="flex-row-center justify-between">
+        <div className="flex-row-center justify-between gap-10">
           {selectedPage >= 1 ? (
             <Button
               text="Sebelumnya"
