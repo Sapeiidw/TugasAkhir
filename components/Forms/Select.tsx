@@ -15,7 +15,13 @@ const Select: React.FC<Props> = (props) => {
     <>
       <div className={style.formGroup}>
         <label htmlFor={props.name}>{props.label}</label>
-        <select name={props.name} id={props.name}>
+        <select
+          name={props.name}
+          id={props.name}
+          onChange={props.onChange}
+          defaultValue={props.data[0][props.k]}
+        >
+          {/* <option value="">{props.name}</option> */}
           {props.data.map((item, index) => {
             return (
               <option key={index} value={item[props.k]}>

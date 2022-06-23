@@ -6,7 +6,7 @@ export const addProduct = async (
   storeId: any,
   data: ProductForm
 ): Promise<AxiosResponse<any>> => {
-  return await api.post(`/products/${storeId}/${data.category}`, { data });
+  return await api.post(`/products/${storeId}`, { data });
 };
 
 export const products = async (storeId: any): Promise<AxiosResponse<any>> => {

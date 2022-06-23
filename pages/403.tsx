@@ -9,7 +9,11 @@ const Custom404 = () => {
       <div className={style.page}>
         <div className={style.wraper}>
           <div className={style.img}>
-            <Image src="/images/Humaaans 1 Character.svg" layout="fill" />
+            <Image
+              src="/images/Humaaans 1 Character.svg"
+              layout="fill"
+              alt="403"
+            />
             <div className={style.text}>403</div>
           </div>
           <div>

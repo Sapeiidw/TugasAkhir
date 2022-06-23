@@ -17,7 +17,7 @@ export interface ProductResponse {
 }
 
 export interface ProductForm {
-  category: string;
+  categoryName: any;
   name: string;
   description: string;
   unit: number;

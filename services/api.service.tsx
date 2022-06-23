@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { storageService } from ".";
+import { getToken } from "./storage.service";
 
 const main = axios.create({
   // baseURL: "http://localhost:4000/api/v1/",
@@ -9,7 +9,7 @@ const main = axios.create({
 main.interceptors.request.use(
   function (config: AxiosRequestConfig) {
     // Do something before request is sent
-    const userToken = storageService.getToken() || "";
+    const userToken = getToken() || "";
     config.headers = {
       Authorization: userToken,
     };

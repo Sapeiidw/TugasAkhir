@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { product } from "../../../../services/store.service";
+import { product } from "../../../../services/product.service";
 
 type Props = {};
 
@@ -10,6 +10,7 @@ const Single: React.FC<Props> = (props) => {
   const [produk, setProduk] = useState([]);
   useEffect(() => {
     if (!router.isReady) return;
+
     product(pid)
       .then((res) => {
         setProduk(res.data.data);

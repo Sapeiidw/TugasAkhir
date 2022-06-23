@@ -8,7 +8,8 @@ import { Button, Input, Modal } from "../../components";
 import ErrorMsg from "../../components/Forms/ErrorMsg";
 import Guest from "../../components/Layouts/Guest";
 import { LoginReducer } from "../../reducer";
-import { authService, storageService } from "../../services";
+import { google, login } from "../../services/auth.service";
+import { setToken } from "../../services/storage.service";
 
 import style from "../../styles/Auth.module.css";
 
@@ -32,16 +33,18 @@ const Signin: React.FC<Props> = (props) => {
   const { isSubmitted, inputs, sending } = state;
   const { email, password } = inputs;
 
-  const login = () => {
+  const handleLogin = () => {};
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
     dispatch({ name: "SET_IS_SUBMITTED" });
 
     if (!email && !password) return;
 
-    authService
-      .login(inputs)
+    login(inputs)
       .then((resp) => {
         dispatch({ name: "SET_SENDING", payload: true });
-        storageService.setToken(resp.data.data.token);
+        setToken(resp.data.data.token);
         // window.location.replace("/dashboard");
         Router.push("/toko");
       })
@@ -57,13 +60,8 @@ const Signin: React.FC<Props> = (props) => {
       .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    login();
-  };
-
-  const google = () => {
-    authService.google().then((resp) => Router.push("/toko"));
+  const handleLoginWithGoogle = () => {
+    google().then((resp) => Router.push("/toko"));
   };
   return (
     <Guest>
@@ -76,7 +74,11 @@ const Signin: React.FC<Props> = (props) => {
             </p>
           </div>
           <div className={style.img}>
-            <Image src="/images/signIlustration1.svg" layout="fill" />
+            <Image
+              src="/images/signIlustration1.svg"
+              layout="fill"
+              alt="signin Ilustration"
+            />
           </div>
         </div>
         <div className={style.signForm}>
@@ -148,6 +150,7 @@ const Signin: React.FC<Props> = (props) => {
                 color="btnPrimary"
                 size="btnBig"
                 text="Login"
+                type="submit"
                 disabled={sending}
                 onClick={(e) => handleSubmit(e)}
               />
@@ -155,7 +158,7 @@ const Signin: React.FC<Props> = (props) => {
                 <span>Or</span>
               </div>
               <Button
-                onClick={() => google()}
+                onClick={() => handleLoginWithGoogle()}
                 color="btnInverse"
                 size="btnMedium"
                 text="Sign Up With Google"

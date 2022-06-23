@@ -10,9 +10,9 @@ type Props = {};
 const Toko: React.FC<Props> = (props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const router = useRouter();
-  console.log(router.pathname);
-  console.log(router.query);
-  console.log(router.asPath);
+  // console.log(router.pathname);
+  // console.log(router.query);
+  // console.log(router.asPath);
   return (
     <>
       <nav className={style.nav}>

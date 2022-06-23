@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Table from "../../components/Table/Table";
-import { products } from "../../services/store.service";
+
+import { products } from "../../services/product.service";
+
 import { Product, TableColumn } from "../../types";
 
 type Props = {};

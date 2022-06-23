@@ -4,7 +4,7 @@ import React, { FormEvent, useReducer } from "react";
 import { Button, Guest, Input } from "../../components";
 import ErrorMsg from "../../components/Forms/ErrorMsg";
 import { RegisterReducer } from "../../reducer";
-import { authService } from "../../services";
+import { register } from "../../services/auth.service";
 import style from "../../styles/Auth.module.css";
 
 type Props = {};
@@ -27,24 +27,19 @@ const Signup: React.FC<Props> = (props) => {
   const { isSubmitted, inputs } = state;
   const { name, email, password, passwordConfirm, phone } = inputs;
 
-  const register = () => {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
     dispatch({ name: "SET_IS_SUBMITTED" });
 
     if (!name && !email && !password && !phone) return;
     dispatch({ name: "SET_SENDING", payload: false });
 
-    authService
-      .register(inputs)
+    register(inputs)
       .then((resp) => {
         window.location.replace("/auth/signin");
       })
       .catch((error) => console.log("error", error))
       .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    register();
   };
 
   return (
@@ -56,7 +51,11 @@ const Signup: React.FC<Props> = (props) => {
             <p className={style.subtitle}>Gets your 14 Days Free Trial</p>
           </div>
           <div className={style.img}>
-            <Image src="/images/signIlustration.svg" layout="fill" />
+            <Image
+              src="/images/signIlustration.svg"
+              layout="fill"
+              alt="signup illustration"
+            />
           </div>
           <div className={style.footer}>
             Sistem POS dan manajemen Inventori terbaik untuk Toko anda

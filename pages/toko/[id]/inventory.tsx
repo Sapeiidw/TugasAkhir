@@ -17,11 +17,14 @@ import {
 } from "../../../components";
 import ErrorMsg from "../../../components/Forms/ErrorMsg";
 import { ProductReducer } from "../../../reducer";
+import { categories } from "../../../services/category.service";
 import {
-  categoryService,
-  productService,
-  storeService,
-} from "../../../services";
+  addProduct,
+  destroyProduct,
+  products,
+} from "../../../services/product.service";
+import { store } from "../../../services/store.service";
+
 import style from "../../../styles/Inventory.module.css";
 import { Category, Product, Store, TableColumn } from "../../../types";
 
@@ -34,18 +37,18 @@ const Inventory: React.FC<Props> = (props) => {
   const [toko, setToko] = useState<Store>();
   const [produk, setProduk] = useState<Product[]>([]);
   const [produks, setProduks] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [kategori, setKategori] = useState<Category[]>([]);
   const [filter, setFilter] = useState("");
   const [state, dispatch] = useReducer(ProductReducer, {
     isSubmitted: false,
     sending: false,
     inputs: {
+      categoryName: "",
       name: "",
       description: "",
       unit: 0,
       groceryPrice: 0,
       price: 0,
-      category: "",
     },
     error: {
       statusCode: 0,
@@ -53,20 +56,19 @@ const Inventory: React.FC<Props> = (props) => {
     },
   });
   const { isSubmitted, inputs, sending } = state;
-  const { name, description, unit, groceryPrice, price } = inputs;
+  const { name, description, unit, groceryPrice, price, categoryName } = inputs;
 
   useEffect(() => {
     if (!router.isReady) return;
-    storeService
-      .store(storeId)
+    store(storeId)
       .then((res) => {
         setToko(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    productService
-      .products(storeId)
+
+    products(storeId)
       .then((res) => {
         setProduk(res.data.data);
         setProduks(res.data.data);
@@ -74,10 +76,10 @@ const Inventory: React.FC<Props> = (props) => {
       .catch((err) => {
         console.log(err);
       });
-    categoryService
-      .categories()
+
+    categories()
       .then((res) => {
-        setCategories(res.data.data);
+        setKategori(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -87,7 +89,7 @@ const Inventory: React.FC<Props> = (props) => {
   const handleDelete = async (e: SyntheticEvent, id: any, index: number) => {
     setProduks(produk.filter((v, i) => i !== index));
     setProduk(produk.filter((v, i) => i !== index));
-    productService.destroyProduct(id);
+    destroyProduct(id);
   };
 
   const hanldeSearch = (e: SyntheticEvent) => {
@@ -102,13 +104,21 @@ const Inventory: React.FC<Props> = (props) => {
     setProduk(result);
   };
 
-  const addProduct = () => {
+  const handleAddProduct = (e: FormEvent) => {
+    e.preventDefault();
     dispatch({ name: "SET_IS_SUBMITTED" });
 
-    if (!name && !description && !unit && !groceryPrice && !price) return;
+    if (
+      !name &&
+      !description &&
+      !unit &&
+      !groceryPrice &&
+      !price &&
+      !categoryName
+    )
+      return;
 
-    productService
-      .addProduct(storeId, inputs)
+    addProduct(storeId, inputs)
       .then((resp) => {
         dispatch({ name: "SET_SENDING", payload: true });
         setProduk([...produk, resp.data.data]);
@@ -123,11 +133,6 @@ const Inventory: React.FC<Props> = (props) => {
         });
       })
       .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
-  };
-
-  const handleAddProduct = (e: FormEvent) => {
-    e.preventDefault();
-    addProduct();
   };
 
   const productColumn: TableColumn<Product>[] = [
@@ -237,159 +242,165 @@ const Inventory: React.FC<Props> = (props) => {
             onClick={() => setModal(true)}
           />
         </div>
-        <div className="x-auto">
-          <Table columns={productColumn} data={produk} />
-          <ModalEmpty
-            title="Tambah Produk"
-            visible={modal}
-            onOK={() => null}
-            onCancel={() => setModal(!modal)}
-            footer={<></>}
-          >
-            <form
-              onSubmit={(e) => handleAddProduct(e)}
-              className="flex flex-column gap-10"
-            >
-              <div>
-                <Input
-                  name="name"
-                  onChange={(e) =>
-                    dispatch({
-                      name: "SET_INPUTS",
-                      payload: { name: (e.target as HTMLInputElement).value },
-                    })
-                  }
-                  placeholder="Nama Produk"
-                  type="text"
-                  label="Nama Produk"
-                />
-                <ErrorMsg
-                  isSubmitted={isSubmitted}
-                  value={name}
-                  isEmpty={!name}
-                  name="Nama Produk"
-                  min={4}
-                  max={12}
-                />
-              </div>
-              <div>
-                <Select
-                  data={categories}
-                  k="name"
-                  label="Kategori"
-                  name="category"
-                  onChange={(e) =>
-                    dispatch({
-                      name: "SET_INPUTS",
-                      payload: {
-                        category: (e.target as HTMLSelectElement).value,
-                      },
-                    })
-                  }
-                />
-              </div>
-              <div>
-                <Input
-                  name="description"
-                  onChange={(e) =>
-                    dispatch({
-                      name: "SET_INPUTS",
-                      payload: {
-                        description: (e.target as HTMLInputElement).value,
-                      },
-                    })
-                  }
-                  placeholder="Deskripsi Produk"
-                  type="text"
-                  label="Deskripsi Produk"
-                />
-                <ErrorMsg
-                  isSubmitted={isSubmitted}
-                  value={description}
-                  isEmpty={!description}
-                  name="Deskripsi"
-                  min={4}
-                  max={12}
-                />
-              </div>
-              <div>
-                <Input
-                  name="groceryPrice"
-                  onChange={(e) =>
-                    dispatch({
-                      name: "SET_INPUTS",
-                      payload: {
-                        groceryPrice: (e.target as HTMLInputElement)
-                          .valueAsNumber,
-                      },
-                    })
-                  }
-                  placeholder="Harga Modal"
-                  type="number"
-                  label="Harga Modal"
-                />
-                <ErrorMsg
-                  isSubmitted={isSubmitted}
-                  value={groceryPrice.toLocaleString()}
-                  isEmpty={!groceryPrice}
-                  name="Harga Modal"
-                  min={4}
-                  max={12}
-                />
-              </div>
-
-              <div className="flex-row-center gap-10">
-                <div>
-                  <Select
-                    k=""
-                    data={[{ satuan: "Lusin", unit: "12" }]}
-                    name=""
-                    label="Satuan"
-                    onChange={() => null}
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="price"
-                    onChange={(e) =>
-                      dispatch({
-                        name: "SET_INPUTS",
-                        payload: {
-                          price: (e.target as HTMLInputElement).valueAsNumber,
-                        },
-                      })
-                    }
-                    placeholder="Harga Jual"
-                    type="number"
-                    label="Harga Jual"
-                  />
-                  <ErrorMsg
-                    isSubmitted={isSubmitted}
-                    value={price.toLocaleString()}
-                    isEmpty={!price}
-                    name="Harga Modal"
-                    min={4}
-                    max={12}
-                  />
-                </div>
-              </div>
-              <Button
-                type="submit"
-                text="Simpan Produk"
-                size="btnBig"
-                color="btnPrimary"
-                onClick={(e) => handleAddProduct(e)}
-              />
-            </form>
-          </ModalEmpty>
-        </div>
-        {!produk && (
+        {produk[0] ? (
+          <div className="x-auto">
+            <Table columns={productColumn} data={produk} />
+          </div>
+        ) : (
           <div className={style.emptyInventory}>
             <img src="/images/produkKosong.svg" alt="" />
             <h4 className="text-primary">Belum ada produk</h4>
           </div>
         )}
       </div>
+      <ModalEmpty
+        title="Tambah Produk"
+        visible={modal}
+        onOK={() => null}
+        onCancel={() => setModal(!modal)}
+        footer={<></>}
+      >
+        <form
+          onSubmit={(e) => handleAddProduct(e)}
+          className="flex flex-column gap-10"
+        >
+          <div>
+            <Input
+              name="name"
+              onChange={(e) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: { name: (e.target as HTMLInputElement).value },
+                })
+              }
+              placeholder="Nama Produk"
+              type="text"
+              label="Nama Produk"
+            />
+            <ErrorMsg
+              isSubmitted={isSubmitted}
+              value={name}
+              isEmpty={!name}
+              name="Nama Produk"
+              min={4}
+              max={12}
+            />
+          </div>
+          <div>
+            <Select
+              data={kategori}
+              k="name"
+              label="Kategori"
+              name="categoryName"
+              onChange={(e) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: {
+                    categoryName: (e.target as HTMLSelectElement).value,
+                  },
+                })
+              }
+            />
+            <ErrorMsg
+              isSubmitted={isSubmitted}
+              value={categoryName}
+              isEmpty={!categoryName}
+              name="Category"
+            />
+          </div>
+          <div>
+            <Input
+              name="description"
+              onChange={(e) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: {
+                    description: (e.target as HTMLInputElement).value,
+                  },
+                })
+              }
+              placeholder="Deskripsi Produk"
+              type="text"
+              label="Deskripsi Produk"
+            />
+            <ErrorMsg
+              isSubmitted={isSubmitted}
+              value={description}
+              isEmpty={!description}
+              name="Deskripsi"
+              min={4}
+              max={12}
+            />
+          </div>
+          <div>
+            <Input
+              name="groceryPrice"
+              onChange={(e) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: {
+                    groceryPrice: (e.target as HTMLInputElement).valueAsNumber,
+                  },
+                })
+              }
+              placeholder="Harga Modal"
+              type="number"
+              label="Harga Modal"
+            />
+            <ErrorMsg
+              isSubmitted={isSubmitted}
+              value={groceryPrice.toLocaleString()}
+              isEmpty={!groceryPrice}
+              name="Harga Modal"
+              min={4}
+              max={12}
+            />
+          </div>
+
+          <div className="flex-row-center gap-10">
+            <div>
+              <Select
+                k=""
+                data={[{ satuan: "Lusin", unit: "12" }]}
+                name=""
+                label="Satuan"
+                onChange={() => null}
+              />
+            </div>
+            <div>
+              <Input
+                name="price"
+                onChange={(e) =>
+                  dispatch({
+                    name: "SET_INPUTS",
+                    payload: {
+                      price: (e.target as HTMLInputElement).valueAsNumber,
+                    },
+                  })
+                }
+                placeholder="Harga Jual"
+                type="number"
+                label="Harga Jual"
+              />
+              <ErrorMsg
+                isSubmitted={isSubmitted}
+                value={price.toLocaleString()}
+                isEmpty={!price}
+                name="Harga Modal"
+                min={4}
+                max={12}
+              />
+            </div>
+          </div>
+          <Button
+            type="submit"
+            text="Simpan Produk"
+            size="btnBig"
+            color="btnPrimary"
+            onClick={(e) => handleAddProduct(e)}
+          />
+        </form>
+      </ModalEmpty>
     </Toko>
   );
 };

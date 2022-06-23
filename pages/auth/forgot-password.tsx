@@ -5,49 +5,22 @@ import React, { FormEvent, useReducer } from "react";
 import { Button, Guest, Input } from "../../components";
 import ErrorMsg from "../../components/Forms/ErrorMsg";
 import { ForgotPasswordReducer } from "../../reducer";
-import { authService } from "../../services";
+
 import style from "../../styles/Auth.module.css";
 
 type Props = {};
 
 const ForgotPassword: React.FC<Props> = (props) => {
-  // const [state, dispatch] = useReducer(ForgotPasswordReducer, {
-  //   isSubmitted: false,
-  //   sending: false,
-  //   inputs: {
-  //     email: "",
-  //   },
-  // });
-
-  // const { isSubmitted, inputs, sending } = state;
-  // const { email } = inputs;
-  // const forgotPassword = () => {
-  //   dispatch({ name: "SET_IS_SUBMITTED" });
-
-  //   if (!email) return;
-
-  //   authService
-  //     .forgotPassword(inputs)
-  //     .then((resp) => {
-  //       dispatch({ name: "SET_SENDING", payload: true });
-  //       console.log(resp);
-  //       Router.push("/auth/resend-email");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //     .finally(() => dispatch({ name: "SET_SENDING", payload: false }));
-  // };
-  // const handleSubmit = (e: FormEvent) => {
-  //   e.preventDefault();
-  //   forgotPassword();
-  // };
   return (
     <Guest>
       <div className={style.forgotPassword}>
         <div className={style.forgotPasswordWrapper}>
           <div className={style.img}>
-            <Image src="/images/Currency Crush Security.svg" layout="fill" />
+            <Image
+              src="/images/Currency Crush Security.svg"
+              layout="fill"
+              alt="curency crush security"
+            />
           </div>
           <div className={style.forgotPasswordText}>
             <h1 className={style.forgotPasswordTitle}>Forgot your password?</h1>
@@ -60,14 +33,6 @@ const ForgotPassword: React.FC<Props> = (props) => {
             className={style.forgotPasswordForm}
           >
             <Input
-              // onChange={(event) =>
-              //   dispatch({
-              //     name: "SET_INPUTS",
-              //     payload: {
-              //       email: (event.target as HTMLInputElement).value,
-              //     },
-              //   })
-              // }
               onChange={(event) => null}
               type="email"
               name="email"
