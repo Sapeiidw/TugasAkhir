@@ -8,14 +8,12 @@ const Table: React.FC<TableProps> = (props) => {
   const [selectedPage, setSelectedPage] = useState<number>(0);
 
   const initTable = () => {
-    console.log("initTable data", props.data);
     const initData = [...props.data];
     const results = [];
     const chunk_size = perPage;
     while (initData.length > 0) {
       results.push(initData.splice(0, chunk_size));
     }
-
     setLocalData(results);
   };
 
@@ -23,7 +21,6 @@ const Table: React.FC<TableProps> = (props) => {
   useEffect(() => {
     initTable();
   }, [props.data, perPage]);
-  console.log(props.data, "data dari props");
   return (
     <>
       <table>

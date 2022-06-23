@@ -6,7 +6,7 @@ export const addProduct = async (
   storeId: any,
   data: ProductForm
 ): Promise<AxiosResponse<any>> => {
-  return await api.post(`/products/${storeId}`, { data });
+  return await api.post(`/products/${storeId}`, data);
 };
 
 export const products = async (storeId: any): Promise<AxiosResponse<any>> => {
@@ -17,6 +17,9 @@ export const product = async (id: any): Promise<AxiosResponse<any>> => {
   return await api.get(`products/${id}`);
 };
 
-export const destroyProduct = async (id: any): Promise<AxiosResponse<any>> => {
-  return await api.delete(`products/${id}`);
+export const destroyProduct = async (
+  id: any,
+  storeId: any
+): Promise<AxiosResponse<any>> => {
+  return await api.delete(`products/${id}/${storeId}`);
 };

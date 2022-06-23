@@ -1,6 +1,6 @@
 import React, { SyntheticEvent } from "react";
 import useForm from "../../hooks/useForm";
-import style from "../../styles/Auth.module.css";
+import style from "./Form.module.css";
 
 type Props = {
   type: string;

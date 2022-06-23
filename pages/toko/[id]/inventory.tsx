@@ -55,7 +55,7 @@ const Inventory: React.FC<Props> = (props) => {
       message: "",
     },
   });
-  const { isSubmitted, inputs, sending } = state;
+  const { isSubmitted, inputs, sending, error } = state;
   const { name, description, unit, groceryPrice, price, categoryName } = inputs;
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const Inventory: React.FC<Props> = (props) => {
   const handleDelete = async (e: SyntheticEvent, id: any, index: number) => {
     setProduks(produk.filter((v, i) => i !== index));
     setProduk(produk.filter((v, i) => i !== index));
-    destroyProduct(id);
+    destroyProduct(id, storeId);
   };
 
   const hanldeSearch = (e: SyntheticEvent) => {
@@ -260,6 +260,7 @@ const Inventory: React.FC<Props> = (props) => {
         onCancel={() => setModal(!modal)}
         footer={<></>}
       >
+        {error.message}
         <form
           onSubmit={(e) => handleAddProduct(e)}
           className="flex flex-column gap-10"

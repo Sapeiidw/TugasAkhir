@@ -1,5 +1,6 @@
+import Image from "next/image";
 import React from "react";
-import style from "../../styles/Auth.module.css";
+import style from "./Form.module.css";
 
 type Props = {
   k: string;
@@ -29,6 +30,12 @@ const Select: React.FC<Props> = (props) => {
               </option>
             );
           })}
+          <Image
+            src={"/icons/arrow_down.svg"}
+            width={24}
+            height={24}
+            layout={"fixed"}
+          />
         </select>
       </div>
     </>

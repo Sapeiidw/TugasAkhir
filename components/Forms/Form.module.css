@@ -1,0 +1,43 @@
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.formGroup label {
+  font-size: 18px;
+  font-weight: 600;
+}
+.formGroup input,
+.formGroup select {
+  display: block;
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  padding: 18px 20px;
+  color: var(--light-black);
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+}
+.formGroup::placeholder {
+  color: var(--grey);
+}
+.formGroup input:focus {
+  outline: 2px solid var(--primary);
+}
+
+.formGroup select {
+  position: relative;
+  appearance: none;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+}
+.formGroup select img {
+  position: absolute;
+  right: 10px;
+  z-index: 100;
+}
