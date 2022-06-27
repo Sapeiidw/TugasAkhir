@@ -10,8 +10,10 @@ export { default as RatingIcon } from "./Ratings/RatingIcon";
 export { default as RatingDisplay } from "./Ratings/RatingDisplay";
 export { default as StarIcon } from "./Ratings/StarIcon";
 export { default as Button } from "./Buttons/Button";
+export { default as ButtonLink } from "./Buttons/ButtonLink";
 export { default as Input } from "./Forms/Input";
 export { default as Select } from "./Forms/Select";
+export { default as Form } from "./Forms/Form";
 export { default as Table } from "./Table/Table";
 
 export { default as Layout } from "./Layouts/Layout";

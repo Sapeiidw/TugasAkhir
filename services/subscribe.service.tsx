@@ -19,3 +19,9 @@ export const GetSubscribeHistoryId = async (
 ): Promise<AxiosResponse<SubscribeHistoryResponse>> => {
   return await api.get(`/subscribe-orders/subscribe-history/${id}`);
 };
+
+export const PostSubscribePlanId = async (
+  planId: number
+): Promise<AxiosResponse<any>> => {
+  return await api.post(`/subscribe-orders/${planId}`);
+};

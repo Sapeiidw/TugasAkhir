@@ -5,6 +5,7 @@ export * from "./Auth/ForgotPassword";
 export * from "./User/User";
 export * from "./Store/Store";
 export * from "./Products/Product";
+export * from "./Inventory/Inventory";
 export * from "./Category/Category";
 export * from "./Subscribe/Subscribe";
 

@@ -19,6 +19,13 @@
   /* box-shadow: 2px 2px 8px 2px #00000040; */
 }
 
+.btnDanger {
+  background-color: var(--error);
+  color: var(--white);
+  border: 1px solid var(--error);
+  /* box-shadow: 2px 2px 8px 2px #00000040; */
+}
+
 .btnInverse {
   background-color: var(--white);
   color: var(--primary);
@@ -29,6 +36,12 @@
 /* hover */
 .btnPrimary:hover {
   background-color: var(--blue-dark);
+}
+.btnDanger:hover {
+  background-color: var(--error-dark);
+  color: var(--white);
+  border: 1px solid var(--error);
+  /* box-shadow: 2px 2px 8px 2px #00000040; */
 }
 .btnInverse:hover {
   background-color: var(--lighter-gray);

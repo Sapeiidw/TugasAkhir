@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import React, { FormEvent, useReducer } from "react";
 import { Button, Guest, Input } from "../../components";
 import ErrorMsg from "../../components/Forms/ErrorMsg";
@@ -36,7 +37,7 @@ const Signup: React.FC<Props> = (props) => {
 
     register(inputs)
       .then((resp) => {
-        window.location.replace("/auth/signin");
+        Router.push("/auth/signin");
       })
       .catch((error) => console.log("error", error))
       .finally(() => dispatch({ name: "SET_SENDING", payload: false }));

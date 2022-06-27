@@ -59,6 +59,16 @@ const Toko: React.FC<Props> = (props) => {
               inventory
             </a>
           </Link>
+          <Link href={`/toko/${router.query.id}/produk`}>
+            <a
+              className={`${
+                router.pathname == `/toko/[id]/produk` ? style.active : ""
+              } ${style.sidebarItems}`}
+            >
+              <img src="/icons/inventory.svg" alt="" />
+              produk
+            </a>
+          </Link>
           <Link href="/">
             <a
               className={`${router.pathname == "/" ? style.active : ""} ${

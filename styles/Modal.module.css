@@ -1,128 +1,169 @@
 .modalContainer {
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modalCentered {
-    display: flex;
-    justify-content: center;
-    margin: 2% 0;
+  display: flex;
+  justify-content: center;
+  margin: 2% 0;
 }
 
 .modal {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    flex-direction: column;
-    gap: 20px;
-    position: relative;
-    min-width: 500px;
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  min-width: 500px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
 }
 
 .modalHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding: 10px; */
-    /* border-bottom: 1px solid #ccc; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 10px; */
+  /* border-bottom: 1px solid #ccc; */
 }
 .modalClose {
-    cursor: pointer;
-    font-size: 1.5em;
-    color: #fff;
-    background: var(--primary);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: -25px;
-    top: -25px;
-    border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -25px;
+  top: -25px;
+  border: none;
 }
 
 .modalBackButton {
-    width: 25px;
-    height: 50px;
-    position: relative;
-    background: transparent;
-    border: 1px solid transparent;
+  width: 25px;
+  height: 50px;
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
 }
 .modalBackButtton span {
-    position: absolute;
-    display: block;
-    height: 2px;
-    border-radius: 100px;
-    color: #000;
+  position: absolute;
+  display: block;
+  height: 2px;
+  border-radius: 100px;
+  color: #000;
 }
 
 .modalTitle {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-transform: capitalize;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 .modalActionClose {
-    color: black;
-    font: bold;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  color: black;
+  font: bold;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 .modalActionClose span {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 2px;
-    border-radius: 100px;
-    background: #000;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 100px;
+  background: #000;
 }
 .modalActionClose span:nth-child(1) {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .modalActionClose span:nth-child(2) {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .modal-btn-x {
-
 }
 
 .modalBody {
-    /* padding: 30px;  */
+  /* padding: 30px;  */
 }
 
 .modalFooter {
-    /* padding: 20px; */
-    /* border-top: 1px solid #ccc; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  /* padding: 20px; */
+  /* border-top: 1px solid #ccc; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .modal-btn-close {
-
 }
 
 .modal-btn-action {
+}
 
+.alertContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: #00000033;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.alert {
+  padding: 20px;
+  border-radius: 8px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  min-width: 300px;
+}
+
+.alert .circle {
+  display: block;
+  width: 150px;
+  height: 150px;
+  background: var(--approval);
+  border-radius: 999px;
+}
+.alert .text {
+  text-align: center;
+}
+.alert h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.alert p {
+  color: var(--dark-grey);
 }

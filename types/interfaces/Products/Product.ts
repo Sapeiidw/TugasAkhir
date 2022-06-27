@@ -5,7 +5,7 @@ export interface Product {
   name: string;
   description: string;
   profilePhoto?: any;
-  unit: number;
+  unit: string;
   groceryPrice: number;
   price: number;
   store: Store;
@@ -20,7 +20,7 @@ export interface ProductForm {
   categoryName: any;
   name: string;
   description: string;
-  unit: number;
+  unit: string;
   groceryPrice: number;
   price: number;
 }

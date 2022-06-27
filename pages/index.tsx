@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   Card,
   Dropdown,
@@ -10,9 +11,22 @@ import {
   Ratings,
   ReviewCard,
 } from "../components";
+import { GetSubscribePlans } from "../services/subscribe.service";
 import style from "../styles/LandingPage.module.css";
+import { SubscribePlan } from "../types";
 
 const Home: NextPage = () => {
+  const [plans, setPlans] = useState<SubscribePlan[]>([]);
+  useEffect(() => {
+    GetSubscribePlans()
+      .then((res) => {
+        setPlans(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <Head>
@@ -158,9 +172,16 @@ const Home: NextPage = () => {
             <h1 className={style.plansTitle}>15 - days free trial.</h1>
             <p className={style.plansSubtitle}>Try Our POS System for free</p>
             <div className={style.plansWraper}>
-              <PlanCard />
-              <PlanCard recomend={true} />
-              <PlanCard />
+              {plans.map((data: any, index: number) => {
+                return (
+                  <PlanCard
+                    key={data.id}
+                    recomend={index == 1 && true}
+                    data={data}
+                    onClick={() => null}
+                  />
+                );
+              })}
             </div>
           </div>
         </section>

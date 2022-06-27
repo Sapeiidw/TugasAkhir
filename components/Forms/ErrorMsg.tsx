@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {
   name: string;
-  value: string;
+  value: string | number;
   isSubmitted?: boolean;
   isEmpty?: boolean;
   isEqual?: boolean;

@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import { Navigation, Notification } from "../components";
+import Alert from "../components/Modals/Alert";
 import Modal from "../components/Modals/Modal";
-import { authService, userService } from "../services";
+import { productAvatar } from "../services/product.service";
 
 type Props = {};
 
@@ -83,6 +84,20 @@ const Test: React.FC<Props> = (props) => {
   //     //         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYXBlaWlkd0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQwOCR5Q0Y2dU0wUlEuNi52c3FZdTY2dGwud2JxSnRjMlJyNXI2L3NmR2FBZUhKaVEyNU1RUWJlNiIsInJvbGUiOiJTdXBlckFkbWluIiwiaWF0IjoxNjUzOTg2NTU1LCJleHAiOjE2NTQwNzI5NTV9.LOVI_89uMNtp-9g9rB9lcN4Zwa95jZxHnu9OeHZc1Vc`,
   //     //       },
   // }).then((res) => {console.log(res)});}))
+  const [open, setOpen] = useState(false);
+  const handleDelete = (id: number) => {
+    setOpen(true);
+
+    <Alert
+      visible={open}
+      onCancel={() => setOpen(!open)}
+      onOK={() => console.log(id)}
+      title={"Success"}
+      message="Data berhasil dihapus"
+    />;
+  };
+  const [avatar, setAvatar] = useState();
+  const [image, setImage] = useState();
   return (
     <>
       {/* <Modal
@@ -96,9 +111,14 @@ const Test: React.FC<Props> = (props) => {
         cancelButtonProps={{ disabled: deleting }}
       /> */}
       {/* {avatar()} */}
-      <h1>Nama</h1>
-      <h1>Nama</h1>
-
+      <button onClick={() => handleDelete(1)}>Nama</button>
+      <button onClick={() => handleDelete(2)}>Nama</button>
+      <button
+        onClick={() => productAvatar(47).then((res) => setAvatar(res.data))}
+      >
+        avatar
+      </button>
+      <img src={avatar} alt="" />
       {/* <Notification /> */}
     </>
   );

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import React, { ReactNode, SyntheticEvent } from "react";
+import { ButtonHTMLAttributes } from "react";
 import style from "../../styles/Button.module.css";
 
 type Props = {
   color: string;
-  type?: string;
+  type?: "submit" | "reset" | "button" | undefined;
   text: string;
   size: string;
   icon?: string;
@@ -16,8 +17,8 @@ type Props = {
 const Button: React.FC<Props> = (props) => {
   return (
     <button
-      disabled={props.disabled || false}
-      className={`${style.btn} ${props.type} ${props.size} ${props.color}`}
+      type={props.type}
+      className={`${style.btn}  ${props.size} ${props.color}`}
       onClick={props.onClick}
     >
       {props.icon && (

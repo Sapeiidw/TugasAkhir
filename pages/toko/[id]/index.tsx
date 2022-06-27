@@ -8,7 +8,7 @@ type Props = {};
 
 const Index: React.FC<Props> = (props) => {
   const router = useRouter();
-  const id = router.query.id;
+  const storeId = router.query.id;
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -16,7 +16,7 @@ const Index: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Toko>Dashboard</Toko>
+      <Toko>Dashboard Toko {storeId}</Toko>
     </>
   );
 };

@@ -28,6 +28,7 @@ const Input: React.FC<Props> = (props) => {
           required={props.required}
           min={props.min}
           max={props.max}
+          value={props.value}
         />
       </div>
     </>

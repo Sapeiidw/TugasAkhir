@@ -1,21 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import 'Button.module.css';
-@import 'Reset.module.css';
+@import "Button.module.css";
+@import "Reset.module.css";
 
 :root {
-  --approval: #00A99D;
-  --attention: #FFE000;
-  --error: #D51A52;
-  --link: #5E4DCD;
-  --primary: #5171E1;
-  --black-primary: #1E2833;
-  --blue-soft: #F5F7F9;
-  --grey: #C4C4C4;
+  --approval: #00a99d;
+  --attention: #ffe000;
+  --error: #d51a52;
+  --error-dark: #97153c;
+  --link: #5e4dcd;
+  --primary: #5171e1;
+  --black-primary: #1e2833;
+  --blue-soft: #f5f7f9;
+  --dark-grey: #818181;
+  --grey: #c4c4c4;
   --soft-grey: #e0e0e0;
   --white: #ffffff;
-  --blue-medium: #E1E5F0;
-  --blue-dark: #011C7B;
-
+  --blue-medium: #e1e5f0;
+  --blue-dark: #011c7b;
 }
 * {
   box-sizing: border-box;
@@ -140,9 +141,9 @@ a {
   left: 0;
   z-index: 100;
   background: #0000004f;
-  transition: all ease-in-out .5s;
+  transition: all ease-in-out 0.5s;
   backdrop-filter: blur(5px);
-} 
+}
 .modal {
   width: max-content;
   max-width: 80vw;
@@ -153,9 +154,9 @@ a {
   position: fixed;
   top: -50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   z-index: 100;
-  transition: all ease-in-out .5s;
+  transition: all ease-in-out 0.5s;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,7 +176,7 @@ a {
 }
 .modal-container .open {
   top: 50%;
-  transition: all ease-in-out .5s;
+  transition: all ease-in-out 0.5s;
 }
 .modalHeader {
   text-align: center;
@@ -237,7 +238,7 @@ a {
 .bg-success {
   background: var(--approval);
 }
-.box{
+.box {
   padding: 10px;
 }
 .bg-gray {
@@ -256,12 +257,12 @@ table {
   width: 100%;
 }
 thead {
-  background-color:var(--lighter-gray);
+  background-color: var(--lighter-gray);
 }
 
 thead tr {
-  background-color: var(--blue-medium)!important;
-  color: var(--primary)!important;
+  background-color: var(--blue-medium) !important;
+  color: var(--primary) !important;
 }
 table tr {
   background-color: var(--white);
@@ -273,7 +274,8 @@ table tr:hover {
   background-color: var(--blue-medium);
 }
 
-td,th {
+td,
+th {
   width: fit-content;
   padding: 8px;
   text-align: left;

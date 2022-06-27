@@ -8,6 +8,7 @@ type Props = {
   onOK: () => void;
   onCancel: () => void;
   footer: React.ReactNode;
+  edit?: boolean;
 };
 
 const ModalEmpty: React.FC<Props> = (props) => {

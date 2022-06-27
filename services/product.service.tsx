@@ -23,3 +23,15 @@ export const destroyProduct = async (
 ): Promise<AxiosResponse<any>> => {
   return await api.delete(`products/${id}/${storeId}`);
 };
+
+export const updateProduct = async (
+  id: any,
+  storeId: any,
+  data: ProductForm
+): Promise<AxiosResponse<any>> => {
+  return await api.put(`products/${id}/${storeId}`, data);
+};
+
+export const productAvatar = async (id: number) => {
+  return await api.get(`products/avatar/${id}`);
+};
