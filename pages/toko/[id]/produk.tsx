@@ -104,12 +104,14 @@ const Produk: React.FC<Props> = (props) => {
       });
   }, [router.isReady]);
 
-  const handleDelete = async (e: SyntheticEvent, id: number, index: number) => {
-    setProduk(produk.filter((v, i) => i !== index));
+  const handleDelete = async (e: SyntheticEvent, id: number) => {
+    const selected = produk.find((item) => item.id === id);
+    if (!selected) return;
+    setProduk(produk.filter((v, i) => i !== produk.indexOf(selected)));
     destroyProduct(id, storeId);
   };
 
-  const handleEdit = (e: SyntheticEvent, id: number, index: number) => {
+  const handleEdit = (e: SyntheticEvent, id: number) => {
     setModal({ ...modal, visible: true, edit: true });
     setSelectedProduk(id);
 
@@ -263,13 +265,13 @@ const Produk: React.FC<Props> = (props) => {
             text="Edit"
             size="btnSmall"
             color="btnPrimary"
-            onClick={(e) => handleEdit(e, value.id, index)}
+            onClick={(e) => handleEdit(e, value.id)}
           />
           <Button
             text="Hapus"
             size="btnSmall"
             color="btnDanger"
-            onClick={(e) => handleDelete(e, value.id, index)}
+            onClick={(e) => handleDelete(e, value.id)}
           />
         </div>
       ),

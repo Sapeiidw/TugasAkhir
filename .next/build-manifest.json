@@ -5,9 +5,9 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/_gbdgtioZiQYz9pKHAyrC/_buildManifest.js",
-    "static/_gbdgtioZiQYz9pKHAyrC/_ssgManifest.js",
-    "static/_gbdgtioZiQYz9pKHAyrC/_middlewareManifest.js"
+    "static/rw9TfAAqv-AgjMhz88VAM/_buildManifest.js",
+    "static/rw9TfAAqv-AgjMhz88VAM/_ssgManifest.js",
+    "static/rw9TfAAqv-AgjMhz88VAM/_middlewareManifest.js"
   ],
   "pages": {
     "/": [
@@ -181,7 +181,7 @@
       "static/css/d1762f7b5055e34a.css",
       "static/chunks/134-f061ca6716623249.js",
       "static/css/670c2dbdd34a5b6e.css",
-      "static/chunks/pages/toko/[id]/produk-7ea520cd9387f9bf.js"
+      "static/chunks/pages/toko/[id]/produk-8a99f7bd63c61c3a.js"
     ],
     "/toko/[id]/produk/[pid]": [
       "static/chunks/webpack-9b312e20a4e32339.js",
