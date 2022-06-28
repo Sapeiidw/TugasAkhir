@@ -20,6 +20,8 @@ export { default as Layout } from "./Layouts/Layout";
 export { default as Guest } from "./Layouts/Guest";
 export { default as Dashboard } from "./Layouts/Dashboard";
 export { default as Toko } from "./Layouts/Toko";
+export { default as Pos } from "./Layouts/Pos";
 export { default as Navigation } from "./Navigations/Navigation";
+export { default as NavigationToko } from "./Navigations/NavigationToko";
 export { default as Notification } from "./Navigations/Notification";
 export { default as Footer } from "./Footers/Footer";

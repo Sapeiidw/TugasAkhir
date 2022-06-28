@@ -1,0 +1,167 @@
+.main {
+  padding-top: 75px;
+  width: 100%;
+  height: 100vh;
+  background: var(--blue-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.sidebar {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sidebar .toko {
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--white);
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sidebar .tokoLogo {
+  width: 100px;
+  height: 100px;
+  background: var(--blue-dark);
+}
+.sidebar .tokoName {
+  color: var(--black-primary);
+  font-weight: 500;
+}
+.sidebar .kategori {
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--white);
+  width: 150px;
+  height: max-content;
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+.sidebar .kategori .title {
+  color: var(--black-primary);
+  font-weight: 500;
+}
+.sidebar .kategori .items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: max-content;
+  overflow-y: scroll;
+}
+.sidebar .footer {
+  width: 150px;
+}
+.content {
+  width: max-content;
+}
+
+.order {
+  width: fit-content;
+  height: 100%;
+  background: var(--white);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.order .title {
+  color: var(--black-primary);
+  font-weight: 500;
+}
+.order .items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: max-content;
+  max-height: 400px;
+  overflow-y: scroll;
+  padding-right: 20px;
+}
+.order .item {
+  background: var(--blue-soft);
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+.order .item .produkImg {
+  width: 80px;
+  height: 80px;
+  background: var(--blue-dark);
+  border-radius: 5px;
+}
+.order .item .produkDeskripsi {
+  color: var(--dark-grey);
+}
+.order .item .produkPrice {
+  font-weight: 500;
+  color: var(--primary);
+}
+.order .item .produkQty {
+  display: flex;
+  gap: 5px;
+}
+.produkQty button {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 999px;
+  border: 1px solid var(--black-primary);
+  background: var(--black-primary);
+  color: var(--white);
+}
+.produkQty input {
+  max-width: 50px;
+  appearance: none;
+  background: transparent;
+  border: 1px solid transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  padding: 0 6px;
+}
+.deleteOrder {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+  border-radius: 999px;
+  border: 1px solid var(--error);
+  background: var(--error);
+  color: var(--white);
+}
+.form {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.form .title {
+  color: var(--black-primary);
+  font-weight: 500;
+}
+.order .subTotal,
+.order .discount,
+.order .total {
+  display: flex;
+  gap: 10px;
+  background: var(--blue-soft);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
