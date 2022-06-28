@@ -1,24 +1,6 @@
 {
-  "/403": "pages/403.html",
-  "/404": "pages/404.html",
-  "/500": "pages/500.html",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/auth/change-password": "pages/auth/change-password.html",
-  "/auth/forgot-password": "pages/auth/forgot-password.html",
-  "/auth/resend-email": "pages/auth/resend-email.html",
-  "/auth/signin": "pages/auth/signin.html",
-  "/auth/signup": "pages/auth/signup.html",
-  "/": "pages/index.html",
-  "/maintenance": "pages/maintenance.html",
-  "/test": "pages/test.html",
-  "/toko/[id]": "pages/toko/[id].html",
-  "/toko/[id]/inventory": "pages/toko/[id]/inventory.html",
-  "/toko/[id]/produk": "pages/toko/[id]/produk.html",
-  "/toko/[id]/produk/[pid]": "pages/toko/[id]/produk/[pid].html",
-  "/toko": "pages/toko.html",
-  "/toko/riwayat-transaksi": "pages/toko/riwayat-transaksi.html",
-  "/toko/table": "pages/toko/table.html",
-  "/toko/test": "pages/toko/test.html",
-  "/_error": "pages/_error.js"
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.js"
 }
