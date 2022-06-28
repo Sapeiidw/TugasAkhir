@@ -19,7 +19,7 @@ const Kasir = (props: Props) => {
               {Array(100)
                 .fill("asd")
                 .map((_, idx) => (
-                  <div className="flex-row-center gap-10">
+                  <div className="flex-row-center gap-10" key={idx}>
                     <input
                       type="checkbox"
                       name="aiya"
@@ -60,7 +60,7 @@ const Kasir = (props: Props) => {
             {Array(100)
               .fill("asd")
               .map((_, idx) => (
-                <div className={style.item}>
+                <div className={style.item} key={idx}>
                   <div className={style.produkImg}></div>
                   <div className="flex-col">
                     <div className="flex-row">
