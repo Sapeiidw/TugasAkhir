@@ -33,6 +33,6 @@ jobs:
           username: inposery
           password: Inposery2022
           port: 22
-          source: .next
+          source: out
           target: /var/www/inposery
           strip_components: 1
