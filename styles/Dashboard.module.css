@@ -1,0 +1,168 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    width: 100%;
+    height: auto;
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    background-color: var(--white);
+    box-shadow: 0 0px 10px #1e28332b;
+}
+.start {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.diamonds {
+    position: relative;
+    width: 21px;
+    height: 21px;
+}
+.logo {
+    position: relative;
+    width: 95px;
+    height: 21px;
+}
+.end {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.notif {
+    position: relative;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+.profile {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    background-color: var(--grey);
+    border-radius: 50%;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 75px;
+    min-width: 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    background-color: var(--white);
+}
+.sidebarItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    text-decoration: none;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+}
+.sidebarItems:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+.active {
+    background: var(--primary);
+    color: var(--white)
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 75px;
+    margin-bottom: 25px;
+}
+.headerSearch {
+    width: 50%;
+}
+.emptyStore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+}
+.main {
+    background-color: var(--blue-soft);
+    margin-top: 75px;
+    margin-left: 80px;
+    padding: 20px;
+    min-height: 100vh;
+}
+.mainContent {
+    display: grid;
+    grid-template: auto / auto auto auto;
+    gap: 20px;
+}
+.card {
+    position: relative;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    border: 0.2px solid var(--primary);
+}
+.cardOption {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+.cardOption:hover .cardOptionItem{
+    display: block;
+}
+.cardOptionItem {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    width: max-content;
+    z-index: 100;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 10px #1e28332b;
+}
+.cardOptionItem button {
+    background: none;
+    border: none;
+    color: var(--black);
+}
+.cardIcon {
+    margin: 10px auto
+}
+.cardTitle {
+    font-size: 24px;
+    font-weight: 400px;
+}
+.cardSubtitle {
+    font-size: 14px;
+    font-weight: 400px;
+}
+.cardProgress {
+    width: 100%;
+    height: 7px;
+    background-color: var(--grey);
+    position: relative;
+}
+.cardProgress::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: green;
+}

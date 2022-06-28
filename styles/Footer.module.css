@@ -1,0 +1,18 @@
+/* footer */
+.footer {
+    background: var(--white);
+    padding: 25px;
+}
+.footerText {
+    text-align: center;
+    color: var(--blue-dark);
+    width: 100%;
+    font-size: 14px;
+}
+.footerSosmed {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    position: absolute;
+    right: 0;
+}

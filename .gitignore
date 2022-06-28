@@ -9,8 +9,8 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+# /.next/
+# /out/
 
 # production
 /build
@@ -37,6 +37,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# images
-/public/images
-/public/icons

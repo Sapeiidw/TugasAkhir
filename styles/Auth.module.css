@@ -1,0 +1,138 @@
+.banner,
+.signForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  min-height: 100vh;
+}
+.banner {
+  background-color: var(--lighter-gray);
+}
+.img {
+  position: relative;
+  width: 450px;
+  height: 400px;
+}
+.header,
+.footer {
+  max-width: 500px;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 20px;
+}
+.title {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--primary);
+}
+.subtitle {
+  font-size: 18px;
+  font-weight: 300;
+}
+.footer {
+  font-size: 24px;
+  margin: 30px;
+}
+.signForm {
+  background: var(--white);
+}
+.wrapper {
+  gap: 40px;
+  max-width: 450px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.text {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.text .title {
+  color: var(--black);
+}
+.text .subtitle a {
+  font-weight: 700;
+  color: var(--primary);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  width: 100%;
+}
+.stroke {
+  position: relative;
+  z-index: 10;
+}
+.stroke::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: var(--grey);
+  z-index: -1;
+}
+.stroke span {
+  background-color: var(--white);
+  padding: 2px 10px;
+}
+.forgotPasswordLink {
+  align-self: flex-end;
+}
+.forgotPassword {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.forgotPasswordWrapper {
+  width: 1095px;
+  min-height: 617px;
+  border-radius: 40px;
+  border: 1px solid var(--grey);
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+  padding: 20px;
+}
+.forgotPasswordWrapper .img {
+  width: 242px;
+  height: 201px;
+  position: relative;
+}
+.forgotPasswordTitle {
+  font-size: 38px;
+  font-weight: 600;
+}
+.forgotPasswordSubtitle {
+  font-size: 18px;
+  font-weight: 300;
+}
+.forgotPasswordForm {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+}
