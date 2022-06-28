@@ -14,7 +14,6 @@ type Props = {
 };
 
 const Select: React.FC<Props> = (props) => {
-  console.log(props);
   return (
     <>
       <div className={style.formGroup}>

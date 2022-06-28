@@ -12,7 +12,11 @@ export interface InventoryResponse {
   data: Inventory[];
 }
 
-export interface InventoryForm {
+export interface InventoryRequest {
   stock: number;
   description: string;
+}
+
+export interface InventoryForm extends InventoryRequest {
+  productId: any;
 }

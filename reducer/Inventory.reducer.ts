@@ -4,6 +4,7 @@ import { InventoryForm } from "../types";
 interface ErrorMessage {
   statusCode?: number;
   message?: string;
+  isValid?: boolean;
 }
 
 interface InventoryState {

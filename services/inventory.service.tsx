@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import {
-  InventoryForm,
+  InventoryRequest,
   InventoryResponse,
 } from "../types/interfaces/Inventory/Inventory";
 import api from "./api.service";
@@ -13,8 +13,8 @@ export const GetAllInventory = async (
 
 export const AddInventory = async (
   productId: number,
-  storeId: number,
-  data: InventoryForm
+  storeId: any,
+  data: InventoryRequest
 ): Promise<AxiosResponse<InventoryResponse>> => {
-  return api.post(`/inventories/${productId}/${storeId}`, { data });
+  return api.post(`/inventories/${productId}/${storeId}`, data);
 };

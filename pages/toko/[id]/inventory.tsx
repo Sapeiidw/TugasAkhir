@@ -17,7 +17,7 @@ import {
   Toko,
 } from "../../../components";
 import ErrorMsg from "../../../components/Forms/ErrorMsg";
-import { InventoryReducer, ProductReducer } from "../../../reducer";
+import { InventoryReducer } from "../../../reducer";
 import { categories } from "../../../services/category.service";
 import {
   AddInventory,
@@ -62,6 +62,7 @@ const Inventory: React.FC<Props> = (props) => {
     isSubmitted: false,
     sending: false,
     inputs: {
+      productId: 0,
       stock: 0,
       description: "",
     },
@@ -77,44 +78,13 @@ const Inventory: React.FC<Props> = (props) => {
     dispatch({
       name: "SET_INPUTS",
       payload: {
+        productId: 0,
         stock: 0,
         description: "",
       },
     });
     setModal({ ...modal, visible: false, edit: false });
   };
-
-  useEffect(() => {
-    if (!router.isReady) return;
-    store(storeId)
-      .then((res) => {
-        setToko(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    products(storeId)
-      .then((res) => {
-        setProduk(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    GetAllInventory(storeId)
-      .then((res) => {
-        setInventory(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    categories()
-      .then((res) => {
-        setKategori(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [router.isReady]);
 
   const handleDelete = async (e: SyntheticEvent, id: number, index: number) => {
     setInventory(inventory.filter((v, i) => i !== index));
@@ -138,6 +108,7 @@ const Inventory: React.FC<Props> = (props) => {
       },
     });
   };
+
   // const handleUpdateProduct = (e: FormEvent) => {
   //   e.preventDefault();
   //   if (
@@ -184,31 +155,45 @@ const Inventory: React.FC<Props> = (props) => {
     );
   }, [inventory, search]);
 
-  // const handleAddProduct = (e: FormEvent) => {
-  //   e.preventDefault();
-  //   dispatch({ name: "SET_IS_SUBMITTED" });
+  const handleAddInventory = (e: FormEvent) => {
+    e.preventDefault();
+    dispatch({ name: "SET_IS_SUBMITTED" });
 
-  //   if (!stock && !description) return;
+    if (!stock && !description)
+      dispatch({
+        name: "SET_ERROR",
+        payload: {
+          isValid: true,
+        },
+      });
 
-  //   AddInventory(productId, storeId, inputs)
-  //     .then((resp) => {
-  //       dispatch({ name: "SET_SENDING", payload: true });
-  //       setInventory([...inventory, resp.data.data]);
-  //     })
-  //     .catch((error) => {
-  //       dispatch({
-  //         name: "SET_ERROR",
-  //         payload: {
-  //           statusCode: error.response.data.statusCode,
-  //           message: error.response.data.message,
-  //         },
-  //       });
-  //     })
-  //     .finally(() => {
-  //       dispatch({ name: "SET_SENDING", payload: false });
-  //     });
-  // };
-  console.log(inventory);
+    if (error.isValid) return;
+
+    AddInventory(inputs.productId, storeId, { stock, description })
+      .then((resp) => {
+        dispatch({ name: "SET_SENDING", payload: true });
+        GetAllInventory(storeId)
+          .then((res) => {
+            setInventory(res.data.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((error) => {
+        dispatch({
+          name: "SET_ERROR",
+          payload: {
+            statusCode: error.response.data.statusCode,
+            message: error.response.data.message,
+          },
+        });
+      })
+      .finally(() => {
+        dispatch({ name: "SET_SENDING", payload: false });
+      });
+  };
+
   const inventoryColumn: TableColumn<Inventory>[] = [
     {
       key: "id",
@@ -233,31 +218,42 @@ const Inventory: React.FC<Props> = (props) => {
       key: "description",
       title: "Description",
     },
-    {
-      key: "id",
-      title: "Action",
-      render: (value, index) => (
-        <div className="flex-row-center gap-10">
-          <Button
-            text="Edit"
-            size="btnSmall"
-            color="btnPrimary"
-            onClick={(e) => handleEdit(e, value.id, index)}
-          />
-          <Button
-            text="Hapus"
-            size="btnSmall"
-            color="btnDanger"
-            onClick={(e) => handleDelete(e, value.id, index)}
-          />
-        </div>
-      ),
-    },
   ];
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    store(storeId)
+      .then((res) => {
+        setToko(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    products(storeId)
+      .then((res) => {
+        setProduk(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    GetAllInventory(storeId)
+      .then((res) => {
+        setInventory(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    categories()
+      .then((res) => {
+        setKategori(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [router.isReady]);
 
   return (
     <Toko>
-      {state.error.message}
       <header>
         <div className={`.flex-row ${style.inventoryToko}`}>
           <img src="/images/avatar.png" alt="avatar" />
@@ -335,20 +331,28 @@ const Inventory: React.FC<Props> = (props) => {
         {error.message} {modal.edit}
         <form
           onSubmit={
-            () => null
+            (e) => handleAddInventory(e)
             // modal.edit
             //   ? (e) => handleUpdateProduct(e)
-            //   : (e) => handleAddProduct(e)
+            //   : (e) => handleAddInventory(e)
           }
           className="flex flex-column gap-10"
         >
+          {state.error.message}
           <div>
             <Select
               data={produk}
               k="name"
               kValue="id"
               name="productId"
-              onChange={() => null}
+              onChange={(e) =>
+                dispatch({
+                  name: "SET_INPUTS",
+                  payload: {
+                    productId: (e.target as HTMLSelectElement).value,
+                  },
+                })
+              }
               label="Produk"
             />
           </div>
@@ -373,8 +377,6 @@ const Inventory: React.FC<Props> = (props) => {
               value={stock}
               isEmpty={!stock}
               name="Stock"
-              min={4}
-              max={12}
             />
           </div>
           <div>

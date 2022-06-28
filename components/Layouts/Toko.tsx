@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Notification from "../Navigations/Notification";
 import style from "../../styles/Dashboard.module.css";
 import { useRouter } from "next/router";
+import Navigation from "../Navigations/Navigation";
 
 type Props = {};
 
@@ -15,28 +16,7 @@ const Toko: React.FC<Props> = (props) => {
   // console.log(router.asPath);
   return (
     <>
-      <nav className={style.nav}>
-        <div className={style.start}>
-          <div className={style.diamonds}>
-            <Image src="/icons/diamonds.svg" alt="logo" layout="fill" />
-          </div>
-          <div className={style.logo}>
-            <Image src="/icons/InPOSery.svg" alt="logo" layout="fill" />
-          </div>
-        </div>
-        <div className={style.end}>
-          <div className={style.notif}>
-            <Image
-              src="/icons/bell.svg"
-              alt="logo"
-              layout="fill"
-              onClick={() => setIsOpen(!isOpen)}
-            />
-            <Notification visible={isOpen} />
-          </div>
-          <div className={style.profile}></div>
-        </div>
-      </nav>
+      <Navigation />
       <div className={style.sidebar}>
         <div className={style.sidebarTop}>
           <Link href={`/toko/${router.query.id}`}>
