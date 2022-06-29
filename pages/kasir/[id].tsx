@@ -20,9 +20,9 @@ const KasirTokoId: React.FC<Props> = (props) => {
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
 
   const indexedInventories: Inventory[] = useMemo(() => {
-    return inventories.filter((inventory) => {
-      inventory.product.name.toLowerCase().includes(search.toLowerCase());
-    });
+    return inventories.filter((val) =>
+      val.product.name.toLowerCase().includes(search.toLowerCase())
+    );
   }, [inventories, search]);
 
   const order: Inventory[] = useMemo(
@@ -40,6 +40,7 @@ const KasirTokoId: React.FC<Props> = (props) => {
   };
 
   useEffect(() => {
+    if (!router.isReady) return;
     GetAllInventory(storeId)
       .then((res) => {
         setInventories(res.data.data);
@@ -55,7 +56,7 @@ const KasirTokoId: React.FC<Props> = (props) => {
         console.log(err);
       });
   }, [router.isReady]);
-  console.log(storeId);
+  console.log({ storeId, indexedInventories });
   return (
     <Pos>
       <div className={style.main}>
