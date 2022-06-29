@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import Notification from "../Navigations/Notification";
 import style from "../../styles/Dashboard.module.css";
 import { useRouter } from "next/router";
-import Navigation from "../Navigations/Navigation";
+import NavigationToko from "../Navigations/NavigationToko";
 
 type Props = {};
 
@@ -16,7 +15,7 @@ const Toko: React.FC<Props> = (props) => {
   // console.log(router.asPath);
   return (
     <>
-      <Navigation />
+      <NavigationToko />
       <div className={style.sidebar}>
         <div className={style.sidebarTop}>
           <Link href={`/toko/${router.query.id}`}>

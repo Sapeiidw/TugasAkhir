@@ -18,7 +18,7 @@ import {
 } from "../../../components";
 import ErrorMsg from "../../../components/Forms/ErrorMsg";
 import { ProductReducer } from "../../../reducer";
-import { categories } from "../../../services/category.service";
+import { GetAllCategories } from "../../../services/category.service";
 import {
   addProduct,
   destroyProduct,
@@ -95,7 +95,7 @@ const Produk: React.FC<Props> = (props) => {
       .catch((err) => {
         console.log(err);
       });
-    categories()
+    GetAllCategories()
       .then((res) => {
         setKategori(res.data.data);
       })

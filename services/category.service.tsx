@@ -1,5 +1,5 @@
 import api from "./api.service";
 
-export const categories = async () => {
+export const GetAllCategories = async () => {
   return await api.get("categories");
 };

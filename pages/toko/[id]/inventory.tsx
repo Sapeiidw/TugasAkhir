@@ -18,7 +18,7 @@ import {
 } from "../../../components";
 import ErrorMsg from "../../../components/Forms/ErrorMsg";
 import { InventoryReducer } from "../../../reducer";
-import { categories } from "../../../services/category.service";
+import { GetAllCategories } from "../../../services/category.service";
 import {
   AddInventory,
   GetAllInventory,
@@ -243,7 +243,7 @@ const Inventory: React.FC<Props> = (props) => {
       .catch((err) => {
         console.log(err);
       });
-    categories()
+    GetAllCategories()
       .then((res) => {
         setKategori(res.data.data);
       })
