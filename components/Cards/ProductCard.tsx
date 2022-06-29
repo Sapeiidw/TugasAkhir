@@ -11,7 +11,7 @@ type Props = {
 const ProductCard: React.FC<Props> = (props) => {
   return (
     <>
-      <div className={style.produkCard} key={props.key} onClick={props.onClick}>
+      <div className={style.produkCard} onClick={props.onClick}>
         <div className={style.produkStok}>{props.data.stock}</div>
         <div className={style.produkCardImg}>
           <Image
