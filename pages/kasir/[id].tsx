@@ -214,7 +214,7 @@ const KasirTokoId: React.FC<Props> = (props) => {
       >
         <form
           onSubmit={(e) => handleCreateOrder(e)}
-          className="flex flex-column gap-10"
+          className="flex-col gap-10"
         >
           <div>
             <Input
