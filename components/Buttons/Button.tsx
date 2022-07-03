@@ -1,16 +1,17 @@
 import Image from "next/image";
 import React, { ReactNode, SyntheticEvent } from "react";
-import { ButtonHTMLAttributes } from "react";
 import style from "../../styles/Button.module.css";
 
 type Props = {
   color: string;
   type?: "submit" | "reset" | "button" | undefined;
-  text: string;
+  text: string | ReactNode;
   size: string;
   icon?: string;
   className?: string;
   disabled?: boolean;
+  close?: string | number;
+  onClose?: (e: SyntheticEvent) => void;
   onClick?: (e: SyntheticEvent) => void;
 };
 
@@ -32,6 +33,11 @@ const Button: React.FC<Props> = (props) => {
         />
       )}
       {props.text}
+      {props.close && (
+        <button className={style.btnCloseIcon} onClick={props.onClose}>
+          X
+        </button>
+      )}
     </button>
   );
 };

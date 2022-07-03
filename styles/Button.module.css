@@ -64,3 +64,15 @@
   width: 100%;
   padding: 16px 20px;
 }
+
+.btnCloseIcon {
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.btnPrimary:has(.btnCloseIcon) {
+  color: var(--white);
+}
+.btnInverse:has(.btnCloseIcon) {
+  color: var(--primary) !important;
+}

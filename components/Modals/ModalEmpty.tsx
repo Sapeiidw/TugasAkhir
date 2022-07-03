@@ -7,7 +7,7 @@ type Props = {
   title: string;
   onOK: () => void;
   onCancel: () => void;
-  footer: React.ReactNode;
+  footer?: React.ReactNode;
   edit?: boolean;
 };
 

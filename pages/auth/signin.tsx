@@ -33,8 +33,6 @@ const Signin: React.FC<Props> = (props) => {
   const { isSubmitted, inputs, sending } = state;
   const { email, password } = inputs;
 
-  const handleLogin = () => {};
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     dispatch({ name: "SET_IS_SUBMITTED" });

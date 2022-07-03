@@ -1,18 +1,39 @@
-import React, { SyntheticEvent, useState } from "react";
+import Image from "next/image";
+import React, { SyntheticEvent, useEffect, useState } from "react";
+import { AddItem2Order } from "../../services/pos.service";
 import style from "../../styles/Kasir.module.css";
 
 type Props = {
   key: number;
   data: any;
-  onClick: (E: SyntheticEvent) => void;
+  bayar: boolean;
+  orderID?: number;
+  onClick: (e: SyntheticEvent) => void;
 };
 
 const OrderProductCard = (props: Props) => {
-  const [qty, setQty] = useState(1);
+  useEffect(() => {
+    if (props.bayar) {
+      AddItem2Order(props.orderID, {
+        inventoryId: props.data.id,
+        quantity: qty,
+      })
+        .then((res) => {
+          console.log("berhasil", res.data.data);
+        })
+        .catch((err) => {
+          console.log("berhasil", err);
+        });
+    }
+  }, [props.bayar]);
+
+  const [qty, setQty] = useState(props.data.quantity || 1);
   return (
     <>
       <div className={style.item} key={props.key}>
-        <div className={style.orderImg}></div>
+        <div className={style.orderImg}>
+          <Image src={"/images/avatar.png"} layout="fill" objectFit="cover" />
+        </div>
         <div className="flex-col">
           <div className="flex-row">
             <div className="flex-col">

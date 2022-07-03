@@ -1,5 +1,12 @@
 import { useRouter } from "next/router";
-import { FormEvent, SyntheticEvent, useEffect, useMemo, useState } from "react";
+import {
+  FormEvent,
+  SyntheticEvent,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Button, ButtonLink, Input, ModalEmpty, Pos } from "../../components";
 import ProductCard from "../../components/Cards/ProductCard";
 import { GetAllInventory } from "../../services/inventory.service";
@@ -7,7 +14,15 @@ import { Category, Inventory } from "../../types";
 import style from "../../styles/Kasir.module.css";
 import OrderProductCard from "../../components/Cards/OrderProductCard";
 import { GetAllCategories } from "../../services/category.service";
-import { CreateOrder, GetAllOrders } from "../../services/pos.service";
+import {
+  AddItem2Order,
+  CreateOrder,
+  DeleteOrder,
+  DelItemInOrder,
+  GetAllOrders,
+  GetOrderIdItems,
+} from "../../services/pos.service";
+import { Item, OrderIdItems } from "../../types/interfaces/Pos/Order";
 
 type Props = {};
 
@@ -15,13 +30,13 @@ const KasirTokoId: React.FC<Props> = (props) => {
   const router = useRouter();
   const storeId = router.query.id;
   const [inventories, setInventories] = useState<Inventory[]>([]);
-  const [selectedItemId, setSelectedItemId] = useState<number[]>([]);
+  const [selectedItemId, setSelectedItemId] = useState<any[]>([]);
   const [search, setSearch] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
-
+  const [orderIdItems, setOrderIdItems] = useState<Item[]>([]);
   const [bayar, setBayar] = useState(false);
   const [orderId, setOrderId] = useState<number>(0);
   const [modal, setModal] = useState<boolean>(false);
@@ -41,18 +56,29 @@ const KasirTokoId: React.FC<Props> = (props) => {
     setSearch((e.target as HTMLInputElement).value);
   };
   const handleDelete = async (e: SyntheticEvent, id: number) => {
-    const selected = selectedItemId.find((item) => item === id);
-    if (!selected) return;
-    return setSelectedItemId(selectedItemId.filter((v, i) => v !== selected));
+    // const selected = selectedItemId.find((item) => item === id);
+    // if (!selected) return;
+    // return setSelectedItemId(selectedItemId.filter((v, i) => v !== selected));
+    setOrderIdItems(orderIdItems.filter((v, i) => v.id !== id));
   };
 
   const handleCreateOrder = (e: FormEvent) => {
     e.preventDefault();
     CreateOrder(storeId, { customerName: customerName })
       .then((res) => {
+        setOrders([...orders, res.data.data]);
         setOrderId(res.data.data.id);
-        console.log(res.data.data);
         setModal(!open);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleAddItem2Order = (orderId: number, items: any) => {
+    AddItem2Order(orderId, items)
+      .then((res) => {
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -84,7 +110,18 @@ const KasirTokoId: React.FC<Props> = (props) => {
         console.log(err);
       });
   }, [router.isReady]);
-  console.log({ storeId, indexedInventories });
+
+  useEffect(() => {
+    if (orderId === 0) return;
+    GetOrderIdItems(orderId)
+      .then((res) => {
+        setOrderIdItems(res.data.data.items);
+      })
+      .catch((err) => {});
+  }, [orderId]);
+
+  console.log(orderIdItems, "orderIdItems");
+
   return (
     <Pos>
       <div className={style.main}>
@@ -146,11 +183,16 @@ const KasirTokoId: React.FC<Props> = (props) => {
               <ProductCard
                 data={item}
                 key={item.id}
-                onClick={() => setSelectedItemId([...selectedItemId, item.id])}
+                // onClick={() => setSelectedItemId([...selectedItemId, item.id])}
+                onClick={() =>
+                  handleAddItem2Order(orderId, {
+                    inventoryId: item.id,
+                    quantity: 1,
+                  })
+                }
               />
             ))}
           </div>
-          {selectedItemId}
         </div>
         <div className={style.orderContainer}>
           <div className="flex-row-center justify-between">
@@ -162,30 +204,37 @@ const KasirTokoId: React.FC<Props> = (props) => {
               onClick={() => setModal(!modal)}
             />
           </div>
-          <div className="flex-row-center gap-10">
-            {/* {orders.map((item, index) => (
+          <div className="flex-row-center gap-10 x-auto">
+            {orders.map((item, index) => (
               <Button
-                key={index}
+                key={item.id}
+                close={item.id}
+                onClose={() => {
+                  setOrders(orders.filter((v, i) => i !== index));
+                  setOrderId(0);
+                  DeleteOrder(item.id).then((res) => {
+                    console.log(res);
+                  });
+                }}
                 text={item.customerName}
                 size="btnSmall"
                 color={orderId == item.id ? "btnPrimary" : "btnInverse"}
                 onClick={() => setOrderId(item.id)}
               />
-            ))} */}
+            ))}
           </div>
+          {orderId}
           <div className={style.items}>
-            {orderId}
-            {selectedItemId[0]
-              ? order.map((item, index) => (
-                  <OrderProductCard
-                    bayar={bayar}
-                    data={item}
-                    key={item.id}
-                    orderID={orderId}
-                    onClick={(e) => handleDelete(e, item.id)}
-                  />
-                ))
-              : "kosong"}
+            {orderIdItems &&
+              orderIdItems?.map((item, index) => (
+                <OrderProductCard
+                  bayar={bayar}
+                  data={item}
+                  key={index}
+                  orderID={orderId}
+                  onClick={(e) => handleDelete(e, item.id)}
+                />
+              ))}
           </div>
           <div className={style.form}>
             <div className={style.subTotal}>
@@ -205,7 +254,6 @@ const KasirTokoId: React.FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      {selectedCategory}
       <ModalEmpty
         title="Create Customer"
         onOK={() => null}
